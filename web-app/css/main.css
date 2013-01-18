@@ -20,3 +20,7 @@ div.well form {
 span.help-inline ul li {
 	list-style-type:none;
 }
+
+span.label {
+	margin-right: 5px;
+}

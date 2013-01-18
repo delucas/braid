@@ -28,7 +28,10 @@
 		<g:each in="${announcements}" var="announcement">
 			<blockquote>
 				<markdown:renderHtml>${announcement.text}</markdown:renderHtml>
-				<small>${announcement.announcer.name} - ${announcement.dateCreated}</small>
+				<small>
+					${announcement.announcer.name} 
+					<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" format="EEE, d MMM yyyy HH:mm:ss z" timeZone="America/Argentina/Buenos_Aires"/></span>
+				</small>
 			</blockquote>
 		</g:each>
 
@@ -41,7 +44,7 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#submitAnnouncement").on('click', function() {
-				return window.confirm("¿Está seguro de que desea publicar ese comentario?")
+				return window.confirm("¿Está seguro de que desea publicar ese anuncio?")
 			});
 		});
 

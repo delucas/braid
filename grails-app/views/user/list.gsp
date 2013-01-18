@@ -29,9 +29,6 @@
 							${user.username}
 						</td>
 						<td>
-							<a class="btn btn-small" href="http://www.github.com/${user.username}">
-								Repo Github
-							</a>
 							<g:link class="btn btn-small btn-primary" controller="user" action="profile" params="[userId: user.id]">
 								Ver perfil
 							</g:link>

@@ -36,10 +36,11 @@
 					</dd>
 				</dl>
 				<dl class="dl-horizontal">
-					<dt>Usuario de github</dt>
+					<dt>Cuenta en Github</dt>
 					<dd>
+						<i class="icon-share"></i>
 						<a href="http://www.github.com/${user.username}">
-							${user.username}
+							http://www.github.com/${user.username}
 						</a>
 					</dd>
 				</dl>
