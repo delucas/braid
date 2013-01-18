@@ -16,3 +16,7 @@ textarea {
 div.well form {
 	margin-bottom: 0px;
 }
+
+span.help-inline ul li {
+	list-style-type:none;
+}

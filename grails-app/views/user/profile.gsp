@@ -13,6 +13,9 @@
 	<div class="span12">
 		<legend>
 			${user.name}
+			<g:each in="${user.authorities}" var="rol">
+				<span class="label label-info">${rol.authority}</span>
+			</g:each>
 		</legend>
 
 

@@ -15,6 +15,6 @@ yes, more''')
 	
 		uc1(UserCourse, user: obi, course: taller, approved: true)
 		uc2(UserCourse, user: anakin, course: taller, approved: true)
-		uc3(UserCourse, user: jarjar, course: taller)
+//		uc3(UserCourse, user: jarjar, course: taller)
 		
 	}

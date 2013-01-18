@@ -7,7 +7,6 @@ class User {
 	String name
 	String dni
 	
-	
 	String username
 	String password
 	

@@ -1,3 +1,4 @@
+<%@page import="braid.Course"%>
 <html>
 <head>
 
@@ -40,38 +41,50 @@
 			<div>
 				<legend> Datos personales </legend>
 			</div>
-			<form class="form-horizontal">
+			<g:form class="form-horizontal" controller="home"
+				action="finishRegistration">
 				<div class="control-group"></div>
 				<div>
-					<div class="control-group">
-						<label class="control-label" for="nombre"> Nombre completo
+				
+					<div class="control-group ${hasErrors(bean:command,field:'name', 'error')}">
+						<label class="control-label" for="name"> Nombre completo
 						</label>
 						<div class="controls">
-							<input id="nombre" name="nombre" placeholder="Roberto C. Martin"
-								type="text">
+							<g:textField id="name" name="name"
+								placeholder="Roberto C. Martin" type="text" 
+								value="${command?.name}"/>
 						</div>
+						<span class="help-inline"><g:renderErrors bean="${command}" field="name" /></span>
 					</div>
-					<div class="control-group">
+					
+					<div class="control-group ${hasErrors(bean:command,field:'dni', 'error')}">
 						<label class="control-label" for="dni"> DNI </label>
 						<div class="controls">
-							<input id="dni" name="dni" placeholder="35123456" type="text">
+							<g:textField id="dni" name="dni" placeholder="35123456"
+								type="text" value="${command?.dni}"/>
 						</div>
+						<span class="help-inline"><g:renderErrors bean="${command}" field="dni" /></span>
 					</div>
-					<div class="control-group">
+					
+					<div class="control-group ${hasErrors(bean:command,field:'courseId', 'error')}">
 						<label class="control-label" for="curso"> Curso </label>
 						<div class="controls">
-							<select>
-								<option value="1">Taller Web 1 - UNLaM</option>
-								<option value="2">Taller Web 2 - UNLaM</option>
-								<option value="3">Lenguaje de Programación 1 - UNTreF</option>
-							</select>
+							<g:select id="courseId"
+								name="courseId" value="${command?.courseId}"
+							    noSelection="${['null':'Seleccione un curso']}"
+							    from='${Course.list()}'
+							    optionKey="id" optionValue="name"></g:select>
+
 						</div>
+						<span class="help-inline"><g:renderErrors bean="${command}" field="courseId" /></span>
 					</div>
+					
 					<div class="form-actions">
-						<g:link class="btn btn-primary" action="announcements">¡Listo!</g:link>
+						<g:submitButton class="btn btn-primary" value="¡Listo!" name="submit"/>
 					</div>
+					
 				</div>
-			</form>
+			</g:form>
 		</div>
 	</div>
 

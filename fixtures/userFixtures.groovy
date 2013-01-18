@@ -6,12 +6,14 @@ fixture{
 	
 		yoda(User,
 		name:'Yoda',
+		dni:'1',
 		username:'yoda',
 		password:'yoda',
 		enabled: true)
 	
 		obi(User,
 		name:'Obi Wan Kenobi',
+		dni:'12345678',
 		username:'obi',
 		password:'obi',
 		enabled: true)
@@ -23,7 +25,6 @@ fixture{
 		enabled: true)
 	
 		jarjar(User,
-		name:'Jar Jar Binks',
 		username:'jarjar',
 		password:'jarjar',
 		enabled: true)

@@ -27,7 +27,7 @@ body {
 						Github</a> para poder ingresar.
 				</p>
 			</div>
-			<g:link class="btn btn-primary pull-right btn-large" controller="home" action="setup" 
+			<g:link class="btn btn-primary pull-right btn-large" controller="home" action="registration" 
 				onclick="javascript:alert('debería hacer login con github')">
 				Ingresar a Braid 
 			</g:link>
