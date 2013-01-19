@@ -4,6 +4,38 @@ package braid
 class QuestionController {
 
 	def courseService
+
+	private getNextQuestionNumber(){
+		Question.executeQuery('select max(q.id) from Question q')[0] + 1 
+	}
+	
+	def create() {
+		model: [nextQuestionNumber: nextQuestionNumber]
+	}
+	
+	def save(QuestionCommand command) {
+		if (command.validate()) {
+			Course theCourse = courseService.currentCourse
+			
+			def question = new Question()
+			question.wording = command.wording
+			question.level = command.level
+			question.tags = command.tags.split(',').collect { it -> it.trim() }
+			question.course = theCourse
+			question.save(flush:true)
+			
+			flash.message = 'Se ha creado correctamente la pregunta'
+			redirect(action:'list')
+		} else {
+			render view:'create', model: [command: command, nextQuestionNumber: nextQuestionNumber]
+		}
+	}
+		
+    def list() {
+		def course = courseService.currentCourse
+		def questions = Question.findAllByCourse(course)
+		model: [questions: questions]
+	}
 	
 	def random() {
 		def course = courseService.currentCourse
@@ -11,17 +43,11 @@ class QuestionController {
 		render view: 'list', model: [questions: questions]
 	}
 	
-    def list() {
-		def course = courseService.currentCourse
-		def questions = Question.findAllByCourse(course)
-		model: [questions: questions]
-	}
-	
-	def exam() {
+	def exam(Integer size) {
 		def course = courseService.currentCourse
 		// TODO: algoritmo que nos brinde una lista equilibrada de puntos.
 		// Por ahora, es un random con límite 5
-		def questions = Question.executeQuery('from Question q where q.course = :course order by rand()', [course: course, max: 5])
+		def questions = Question.executeQuery('from Question q where q.course = :course order by rand()', [course: course, max: (size?size:5)])
 		render view: 'list', model: [questions: questions]
 	}
 }
