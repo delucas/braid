@@ -22,13 +22,42 @@ class UserController {
     	def me = userService.currentUser
 		def course = courseService.currentCourse
 		
-		def users = UserCourse.findAllByCourse(course).collect { uc -> uc.user }
+		def users = findStudentsApprovedByCourse(course)
 		
 		if(me.hasRole('YODA')) {
 			users = User.list()
 		}
 		
 		model: [users: users.sort {a,b -> a.name <=> b.name}]
+	}
+	
+	private findStudentsApprovedByCourse(def course) {
+		findStudentsByCourseAndApproved(course, true)
+	}
+	
+	private findStudentsNotApprovedByCourse(def course) {
+		findStudentsByCourseAndApproved(course, false)
+	}
+	
+	private findStudentsByCourseAndApproved(def course, def approved) {
+		UserCourse.executeQuery("select uc.user from UserCourse uc, User u, UserRole ur, Role r " +
+			"where uc.user = u and ur.user = u and ur.role = r " +
+			"and r.authority = :role and uc.course = :course and uc.approved = :approved",
+			[role: 'PADAWAN', course: course, approved: approved])
+	}
+	
+	def pending(Long courseId) {
+		
+		def me = userService.currentUser
+		def course = courseService.currentCourse
+		
+		def users = findStudentsNotApprovedByCourse(course)
+		if(users.size() == 0) {
+			flash.message = 'No hay solicitudes de alumno pendientes de aceptación. Se mostrará el listado completo.'
+			redirect(action:'list')
+		}
+		
+		render view: 'list', model: [users: users.sort {a,b -> a.name <=> b.name}]
 	}
 	
 	def approve(Long userId) {
@@ -46,7 +75,7 @@ class UserController {
 		def padawan = Role.findByAuthority('PADAWAN')
 		UserRole.create(user, padawan, true)
 		
-		redirect(action:'list')
+		redirect(action:'pending')
 	}
 	
 	def reject(Long userId) {
@@ -60,7 +89,7 @@ class UserController {
 		user.name = null
 		user.save(flush: true)
 		
-		redirect(action:'list')
+		redirect(action:'pending')
 	}
 	
 }

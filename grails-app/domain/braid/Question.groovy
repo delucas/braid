@@ -6,7 +6,10 @@ class Question {
 	Integer level
 	
 	static belongsTo = [course: Course]
-
+	static hasMany = [tags: String]
+	
+	static embedded = ['tags']
+	
 	static constraints = {
 		level(range:1..3)
 	}

@@ -45,9 +45,10 @@ class HomeController {
 		model: [course: currentCourse]
 	}
 	
-//	def fakeLogin(String username) {
-//		User.findByUsername(username).authenticate()
-//		
-//		redirect(action:'announcements')
-//	}
+	def honorCode() {
+		def currentCourse = courseService.currentCourse
+		
+		model: [course: currentCourse]
+	}
+
 }

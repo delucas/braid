@@ -66,7 +66,11 @@ body {
 	                          </li>
 	                          <sec:ifAllGranted roles="JEDI">
 		                          <li class="nav-header">Opciones de profesor</li>
-		                          <li><a href="#">Aceptar alumnos</a></li>
+		                          <li>
+		                          	<g:link controller="user" action="pending">
+		                          		Solicitudes pendientes
+		                          	</g:link>
+		                          </li>
 		                          <li><a href="#">Volcar notas</a></li>
 	                          </sec:ifAllGranted>
 	                          <sec:ifAllGranted roles="YODA">
@@ -114,18 +118,24 @@ body {
 						</g:link>
 					</li>
 					<li><a href="#" class="bbnotgood">Tareas</a></li>
+					<li><a href="#" class="bbnotgood">Trabajos prácticos</a></li>
 					<li class="${pageProperty(name:'page.questions')}">
 						<g:link class="bbnotgood" controller="question" action="list">
 							Preguntas teóricas
 						</g:link>
 					</li>
 					<sec:ifAnyGranted roles="YODA, JEDI">
-						<li class="${pageProperty(name:'page.users')}">
+						<li class="${pageProperty(name:'page.students')}">
 							<g:link class="bbnotgood" controller="user" action="list">
-								Usuarios
+								Estudiantes
 							</g:link>
 						</li>
 					</sec:ifAnyGranted>
+					<li class="${pageProperty(name:'page.honorCode')}">
+						<g:link class="bbnotgood" controller="home" action="honorCode">
+							<strong>Código de Honor</strong>
+						</g:link>
+					</li>
 				</ul>
 				<div class="tab-content">
 					<g:layoutBody />

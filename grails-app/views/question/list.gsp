@@ -23,7 +23,7 @@
 			</ul>
 
 		<g:each in="${questions}" var="question">
-			<braid:question level="${question.level}">${question.wording}</braid:question>
+			<braid:question question="${question}"/>
 		</g:each>
 
 	</div>

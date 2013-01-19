@@ -6,7 +6,7 @@
 </title>
 <meta name="layout" content="main">
 
-<parameter name="users" value="active" />
+<parameter name="students" value="active" />
 </head>
 <body>
 

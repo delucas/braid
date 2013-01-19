@@ -20,6 +20,7 @@ fixture{
 	
 		anakin(User,
 		name:'Anakin Skywalker',
+		dni:'32313123',
 		username:'anakin',
 		password:'anakin',
 		enabled: true)
