@@ -25,10 +25,10 @@ class BootStrap {
 //				db['user.next_id'].drop()
 //				db['userRole.next_id'].drop()
 				
-			fixtureLoader.load('announcementFixtures')
+//			fixtureLoader.include('userFixtures')
+//			fixtureLoader.include('courseFixtures')
 //			fixtureLoader.load('questionFixtures')
-//			fixtureLoader.load('courseFixtures')
-//			fixtureLoader.load('userFixtures')
+			fixtureLoader.load('announcementFixtures')
 			}
 		
     }

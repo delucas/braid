@@ -11,7 +11,7 @@
 	<div class="span12">
 		<legend> Plan de estudios </legend>
 
-		<div class="syllabus">
+		<div class="syllabus md">
 			<markdown:renderHtml>${course.syllabus}</markdown:renderHtml>
 		</div>
 
