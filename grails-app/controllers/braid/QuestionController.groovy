@@ -32,9 +32,13 @@ class QuestionController {
 	}
 		
     def list() {
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		
 		def course = courseService.currentCourse
-		def questions = Question.findAllByCourse(course)
-		model: [questions: questions]
+		def questions = Question.findAllByCourse(course, [max:params.max, offset:params.offset])
+		def questionsTotal = Question.countByCourse(course)
+		
+		model: [questions: questions, questionsTotal: questionsTotal]
 	}
 	
 	def random() {

@@ -94,3 +94,6 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'braid.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'braid.UserRole'
 grails.plugins.springsecurity.authority.className = 'braid.Role'
+
+// Fix pagination with Twitter Bootstrap
+grails.plugins.twitterbootstrap.fixtaglib = true
