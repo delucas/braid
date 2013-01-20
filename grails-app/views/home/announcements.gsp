@@ -26,8 +26,8 @@
 						</small>
 					</div>
 					
-					<div class="preview md hidden">
-						<blockquote>
+					<div class="md hidden">
+						<blockquote class="preview">
 							<div id="previewArea">
 							</div>
 							<small>
@@ -69,10 +69,10 @@
 
 		function togglePreview(show) {
 			if (show) {
-				$("div.preview").removeClass('hidden')
+				$("blockquote.preview").parent().removeClass('hidden')
 				$("#submitAnnouncement").removeAttr('disabled');
 			} else {
-				$("div.preview").addClass('hidden')
+				$("blockquote.preview").parent().addClass('hidden')
 				$("#submitAnnouncement").attr('disabled','disabled');
 			}
 		}

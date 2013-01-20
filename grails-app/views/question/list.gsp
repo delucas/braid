@@ -32,9 +32,11 @@
 			<braid:question question="${question}"/>
 		</g:each>
 		
-		<div class="span8">
-			<g:paginate class="pull-right" controller="question" action="list" total="${questionsTotal}" />
-		</div>
+		<g:if test="${questionsTotal}">
+			<div class="span8">
+				<g:paginate class="pull-right" controller="question" action="list" total="${questionsTotal}" />
+			</div>
+		</g:if>
 
 	</div>
 

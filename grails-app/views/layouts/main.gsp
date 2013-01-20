@@ -117,13 +117,14 @@ body {
 							Plan de estudios
 						</g:link>
 					</li>
-					<li><a href="#" class="bbnotgood">Tareas</a></li>
-					<li><a href="#" class="bbnotgood">Trabajos prácticos</a></li>
 					<li class="${pageProperty(name:'page.questions')}">
 						<g:link class="bbnotgood" controller="question" action="list">
 							Preguntas teóricas
 						</g:link>
 					</li>
+					<li><a href="#" class="bbnotgood">Tareas</a></li>
+					<li><a href="#" class="bbnotgood">Trabajos prácticos</a></li>
+					<li><a href="#" class="bbnotgood">Evaluaciones</a></li>
 					<sec:ifAnyGranted roles="YODA, JEDI">
 						<li class="${pageProperty(name:'page.students')}">
 							<g:link class="bbnotgood" controller="user" action="list">
