@@ -42,8 +42,8 @@ class UserController {
 	private findStudentsByCourseAndApproved(def course, def approved) {
 		UserCourse.executeQuery("select uc.user from UserCourse uc, User u, UserRole ur, Role r " +
 			"where uc.user = u and ur.user = u and ur.role = r " +
-			"and r.authority = :role and uc.course = :course and uc.approved = :approved",
-			[role: 'PADAWAN', course: course, approved: approved])
+			"and r.authority in(:roles) and uc.course = :course and uc.approved = :approved",
+			[roles: ['PADAWAN', 'JAR_JAR'], course: course, approved: approved])
 	}
 	
 	def pending(Long courseId) {
