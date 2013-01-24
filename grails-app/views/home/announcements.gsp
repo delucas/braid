@@ -56,9 +56,24 @@
 
 	</div>
 
-	<div class="span4">
+	<aside class="span4 upcomingDates">
 		<legend> Próximas fechas </legend>
-	</div>
+		<g:each in="${upcomingDates}" var="date">
+			<div class="well">
+				<div>
+					<strong>
+						<g:link controller="${date.type}" action="show" id="${date.id}">
+							${date.title}
+						</g:link>
+					</strong>
+				</div>
+				<div>
+					<time><g:formatDate date="${date.dueDate}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></time>
+				</div>
+			
+			</div>
+		</g:each>
+	</aside>
 
 	<script type="text/javascript">
 		$(function(){

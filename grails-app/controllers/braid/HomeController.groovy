@@ -35,7 +35,14 @@ class HomeController {
 		def course = courseService.currentCourse
 		def announcements = Announcement.findAllByCourse(course,
 			   [sort: "dateCreated", order: "desc"])
-		model: [announcements: announcements]
+		
+		def homeworks = Homework.findAllByCourseAndDueDateGreaterThan(course, new Date())
+		def upcomingDates = []
+		upcomingDates.addAll(homeworks.collect { it ->
+			[id: it.id, type: 'homework', title: it.title, dueDate: it.dueDate]
+		})
+		
+		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
 	}
 	
 	def syllabus() {

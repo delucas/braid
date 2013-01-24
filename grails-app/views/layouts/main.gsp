@@ -122,7 +122,11 @@ body {
 							Preguntas teóricas
 						</g:link>
 					</li>
-					<li><a href="#" class="bbnotgood">Tareas</a></li>
+					<li class="${pageProperty(name:'page.homeworks')}">
+						<g:link class="bbnotgood" controller="homework" action="list">
+							Tareas
+						</g:link>
+					</li>
 					<li><a href="#" class="bbnotgood">Trabajos prácticos</a></li>
 					<li><a href="#" class="bbnotgood">Evaluaciones</a></li>
 					<sec:ifAnyGranted roles="YODA, JEDI">
