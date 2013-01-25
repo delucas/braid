@@ -9,14 +9,19 @@ class HomeworkController {
     def list() {
 		
 		def currentCourse = courseService.currentCourse
-		def homeworks = Homework.findAllByCourse(currentCourse,[sort: "dueDate"])
+		def homeworks = Homework.findAllByCourse(currentCourse,[sort: 'dueDate'])
 		
 		model: [homeworks: homeworks]
 	}
 	
 	def show(Long id) {
+		
 		def user = userService.currentUser
 		def homework = Homework.get(id)
+		
+		// TODO: cuando se tenga la entidad UserCourse con 
+		// role podemos pedir user.getRoleInCourse(course)
+		// y mejorar esto por una llamada dinámica.
 		
 		if (user.hasRole('JEDI')) {
 			showIfJedi(homework)
@@ -28,16 +33,19 @@ class HomeworkController {
 	}
 	
 	private showIfPadawan(Homework homework) {
+		
 		def user = userService.currentUser
 		def currentCourse = courseService.currentCourse
 		
 		def previousSolution = HomeworkSolution.findByUserAndHomework(user, homework)
+		def alreadySolved = previousSolution != null
 		def command = HomeworkSolutionCommand.createFrom previousSolution
 		
-		render view: 'showIfPadawan', model: [homework: homework, course: currentCourse, command: command]
+		render view: 'showIfPadawan', model: [homework: homework, course: currentCourse, command: command, alreadySolved: alreadySolved]
 	}
 	
 	private showIfJedi(Homework homework) {
+		
 		render view: 'showIfJedi', model: [homework: homework]
 	}
 
@@ -60,12 +68,12 @@ class HomeworkController {
 				flash.message = 'Tu respuesta se ha guardado correctamente. Recordá que podés corregirla dentro del período de vigencia'
 				redirect action: 'show', params: [id: homeworkId]
 				
-				
 			} else {
-				render view:'show', model: [homework: homework, course: course, command: command]
+				render view:'showIfPadawan', model: [homework: homework, course: course, command: command]
 			}
 		} else {
-			// TODO: prohibido! No se puede responder fuera de fecha
+			flash.message = 'No se puede responder fuera de fecha'
+			redirect action: 'show', params: [id: homeworkId]
 		}
 	}
 	

@@ -14,13 +14,30 @@
 	<div class="span12">
 		
 		<legend>
-			${homework.title} 
+			${homework.title}
+			
+			<braid:statusHomework solved="${alreadySolved}"/>
+			 
 			<small class="pull-right">
-				Entrega: <g:formatDate date="${homework.dueDate}" 
+				Fecha límite de entrega: <g:formatDate date="${homework.dueDate}" 
 			  		format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
 		
+		<g:if test="${flash.message}">
+			<braid:alertInfo title="Info">
+				${flash.message}
+			</braid:alertInfo>
+		</g:if>
+
+		<g:if test="${alreadySolved && !homework.outOfDate}">
+			<braid:alertInfo title="¡Atención! Ya contestaste esta pregunta">
+				Si querés podés revisar tu respuesta y volver a remitirla dentro del período de vigencia. Es gratis ;)
+			</braid:alertInfo>
+		</g:if>
+		
+		<braid:alertError command="${command}"/>
+
 		<div class="well">
 		
 			<legend>Consigna</legend>
@@ -30,7 +47,9 @@
 			</div>
 			
 			<legend>Mi respuesta</legend>
-			<div id="previewArea" class="well preview md">-</div>
+			<div id="previewArea" class="well preview md">
+				<markdown:renderHtml>${command?.text}</markdown:renderHtml>
+			</div>
 			
 		</div>
 		
@@ -91,12 +110,10 @@
 		});
 
 		$(function() {
-		  // When using more than one `textarea` on your page, change the following line to match the one you’re after
 		  var $textarea = $('textarea'),
 		      $preview = $('#previewArea'),
 		      convert = new Markdown.getSanitizingConverter().makeHtml;
 
-		  // instead of `keyup`, consider using `input` using this plugin: http://mathiasbynens.be/notes/oninput#comment-1
 		  $textarea.keyup(function() {
 			    $preview.html(convert($textarea.val()));
 		  }).trigger('keyup');
