@@ -13,27 +13,27 @@
 
 	<div class="span12">
 		
+		<g:if test="${esMomentoDeCorregir && !hayQueCorregir}">
+			<braid:alertInfo title="¡Buen trabajo!">
+				Ya se han corregido todas las tareas. Es momento de descansar...
+			</braid:alertInfo>
+		</g:if>
+		
 		<legend>
-			${homework.title} 
+			${homework.title}
 			<small class="pull-right">
 				Entrega: <g:formatDate date="${homework.dueDate}" 
 			  		format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
 		
-		<div class="well">
+		<homework:wording homework="${homework}"/>
 		
-			<legend>Consigna</legend>
-			
-			<div class="well">
-				<markdown:renderHtml >${homework.wording}</markdown:renderHtml>
-			</div>
-			
-			<button class="btn btn-large btn-block btn-primary" type="button" ${(homework.dueDate > new Date())?'disabled="disabled"':'' }>
+		<g:if test="${esMomentoDeCorregir && hayQueCorregir}">
+			<g:link action="grade" params="[homeworkId: homework.id]" class="btn btn-large btn-block btn-primary">
 				Corregir tareas de alumnos
-			</button>
-		</div>
-		
+			</g:link>
+		</g:if>
 
 </body>
 </html>

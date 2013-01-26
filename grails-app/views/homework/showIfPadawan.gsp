@@ -29,23 +29,18 @@
 				${flash.message}
 			</braid:alertInfo>
 		</g:if>
-
-		<g:if test="${alreadySolved && !homework.outOfDate}">
+		
+		<g:elseif test="${alreadySolved && !homework.outOfDate}">
 			<braid:alertInfo title="¡Atención! Ya contestaste esta pregunta">
 				Si querés podés revisar tu respuesta y volver a remitirla dentro del período de vigencia. Es gratis ;)
 			</braid:alertInfo>
-		</g:if>
+		</g:elseif>
 		
 		<braid:alertError command="${command}"/>
 
+		<homework:wording homework="${homework}"/>
+				
 		<div class="well">
-		
-			<legend>Consigna</legend>
-			
-			<div class="well">
-				<markdown:renderHtml >${homework.wording}</markdown:renderHtml>
-			</div>
-			
 			<legend>Mi respuesta</legend>
 			<div id="previewArea" class="well preview md">
 				<markdown:renderHtml>${command?.text}</markdown:renderHtml>
@@ -53,21 +48,27 @@
 			
 		</div>
 		
+		<g:if test="${command?.feedback}">
+		
+			<div class="well">
+				<legend>Feedback</legend>
+				<div class="well md">
+					<markdown:renderHtml>${command?.feedback}</markdown:renderHtml>
+				</div>
+				
+			</div>
+		
+		</g:if>
+		
 		<g:if test="${!homework.outOfDate}">
 			<div class="well">
 				<g:form action="solve">
 				
 					<g:hiddenField name="homeworkId" value="${homework.id}"/>
-					<g:hiddenField name="homeworkSolutionId" value="${command?.homeworkSolutionId}"/>
+					<g:hiddenField name="homeworkSolutionId" value="${command?.id}"/>
 				
-					<g:textArea rows="7" class="span12 wmd-panel ${hasErrors(bean:command,field:'text', 'error')}" 
-						name="text" id="solution">${command?.text}</g:textArea>
-					<small class="pull-right">
-						* Recuerde utilizar 
-						<a href="http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf" target="_blank">
-							formato markdown
-						</a>
-					</small>
+					<braid:textArea bean="${command}" beanField="text" name="text" id="solution"/>
+					
 					<div class="row-fluid">
 						<span class="span6">
 							<label class="checkbox ${hasErrors(bean:command,field:'honorCode', 'error')}" for="honorCode">

@@ -15,6 +15,16 @@ class HomeworkSolutionCommand {
 		honorCode validator: { val -> val==true }
 	}
 	
+	
+	// Para asegurar el duck typing
+	def getId() {
+		homeworkSolutionId?:null
+	}
+	
+	def getFeedback() {
+		null
+	}
+	
 	def toHomeworkSolution() {
 		def result
 		if (homeworkSolutionId) {

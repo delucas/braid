@@ -37,8 +37,8 @@
 			  			format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
 			  		</td>
 			  		<td>
-			  			<g:link class="btn btn-small btn-primary" action="show" id="${homework.id}">
-			  				Consigna
+			  			<g:link class="btn btn-small" action="show" id="${homework.id}">
+			  				Ver detalles
 			  			</g:link>
 			  		</td>
 		  	</tr>

@@ -84,3 +84,7 @@ div.preview::before {
 label.error {
 	background-color: transparent !important;
 }
+
+li.active > a:hover {
+	cursor: pointer !important;
+}
