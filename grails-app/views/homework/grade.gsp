@@ -23,12 +23,7 @@
 		
 		<homework:wording homework="${homework}"/>
 		
-		<div class="well">
-			<legend>Respuesta de ${homeworkSolution.user.name}</legend>
-			<div class="well md">
-				<markdown:renderHtml>${homeworkSolution.text}</markdown:renderHtml>
-			</div>
-		</div>
+		<homework:solution solution="${homeworkSolution}"/>
 		
 		<div class="well">
 			<legend>Feedback</legend>

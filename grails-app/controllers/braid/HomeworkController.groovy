@@ -94,14 +94,10 @@ class HomeworkController {
 	def grade(Long homeworkId) {
 		def homework = Homework.get(homeworkId)
 
-		def c = HomeworkSolution.createCriteria()
-		
-		// TODO: cuando tenga internet refactorizar, se puede pedir uno sólo
-		def homeworkSolution = c.list() {
-			eq('homework', homework)
-			isNull('feedback')
-		}[0]
-		
+		def homeworkSolution = HomeworkSolution.find(
+			'from HomeworkSolution s where s.homework = :homework and s.feedback is null order by rand()',
+			[homework: homework])
+				
 		if (! homeworkSolution) {
 			redirect action: 'show', params: [id: homeworkId]
 		}
@@ -111,6 +107,7 @@ class HomeworkController {
 	}
 	
 	def gradeDo(Long homeworkSolutionId, String feedback) {
+		
 		def homeworkSolution = HomeworkSolution.get(homeworkSolutionId)
 		homeworkSolution.feedback = feedback
 		homeworkSolution.save(flush: true)

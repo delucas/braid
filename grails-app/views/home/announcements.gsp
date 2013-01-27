@@ -26,23 +26,23 @@
 						</small>
 					</div>
 					
-					<div class="md hidden">
-						<blockquote class="preview">
-							<div id="previewArea">
-							</div>
-							<small>
-								${sec.loggedInUserInfo(field:"username")} 
-								<span class="pull-right"><g:formatDate date="${new Date()}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></span>
-							</small>
-						</blockquote>
-					</div>
-					
 					<div class="row-fluid">
 						<g:submitButton id="submitAnnouncement" class="btn btn-small btn-primary pull-right" name="submit" value="Publicar anuncio"/>
 					</div>
 				</g:form>
 			</div>
 		</sec:ifAnyGranted>
+
+		<div class="md hidden">
+			<blockquote class="preview">
+				<div id="previewArea">
+				</div>
+				<small>
+					${sec.loggedInUserInfo(field:"username")} 
+					<span class="pull-right"><g:formatDate date="${new Date()}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></span>
+				</small>
+			</blockquote>
+		</div>
 
 		<g:each in="${announcements}" var="announcement">
 			<blockquote class="md">
