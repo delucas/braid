@@ -47,20 +47,21 @@ class HomeworkController {
 	
 	private showIfJedi(Homework homework) {
 		
-		def totalRespuestas = HomeworkSolution.countByHomework(homework)
-		
 		def c = HomeworkSolution.createCriteria()
 		def totalACorregir = c.count() {
 			eq('homework', homework)
 			isNull('feedback')
 		}
 		
-		boolean esMomentoDeCorregir = homework.dueDate < new Date()
-		boolean hayQueCorregir = totalACorregir > 0
+		boolean isTimeToGrade = homework.dueDate < new Date()
+		boolean hasToGrade = totalACorregir > 0
+		
+		def solutions = HomeworkSolution.findAllByHomework(homework)
+		def solutionsTotal = solutions.size()
 		
 		render view: 'showIfJedi', model: [homework: homework,
-			totalRespuestas: totalRespuestas, hayQueCorregir: hayQueCorregir,
-			esMomentoDeCorregir: esMomentoDeCorregir]
+			solutions: solutions, solutionsTotal: solutionsTotal,
+			hasToGrade: hasToGrade, isTimeToGrade: isTimeToGrade]
 	}
 
 	def solve(Long homeworkId, HomeworkSolutionCommand command) {
@@ -76,6 +77,7 @@ class HomeworkController {
 				def solution = command.toHomeworkSolution()
 				solution.homework = homework
 				solution.user = user
+				solution.dateCreated = new Date()
 				
 				solution.save(flush: true)
 				
