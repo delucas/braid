@@ -15,8 +15,7 @@
 		<legend>
 			${homework.title} 
 			<small class="pull-right">
-				Entrega: <g:formatDate date="${homework.dueDate}" 
-			  		format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
+				Entrega: <g:formatDate date="${homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
 		

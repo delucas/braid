@@ -40,7 +40,7 @@
 				</div>
 				<small>
 					${sec.loggedInUserInfo(field:"username")} 
-					<span class="pull-right"><g:formatDate date="${new Date()}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></span>
+					<span class="pull-right"><g:formatDate date="${new Date()}" timeZone="America/Argentina/Buenos_Aires"/></span>
 				</small>
 			</blockquote>
 		</div>
@@ -50,7 +50,7 @@
 				<markdown:renderHtml>${announcement.text}</markdown:renderHtml>
 				<small>
 					${announcement.announcer.name} 
-					<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></span>
+					<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/></span>
 				</small>
 			</blockquote>
 		</g:each>
@@ -69,7 +69,7 @@
 					</strong>
 				</div>
 				<div>
-					<time><g:formatDate date="${date.dueDate}" format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/></time>
+					<time><g:formatDate date="${date.dueDate}" timeZone="America/Argentina/Buenos_Aires"/></time>
 				</div>
 			
 			</div>

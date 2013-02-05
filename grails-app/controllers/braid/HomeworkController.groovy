@@ -1,10 +1,14 @@
 package braid
 
+import braid.presenters.JediHomeworkPresenter
+
 
 class HomeworkController {
 
 	def userService
 	def courseService
+	def homeworkService
+	def dateService
 
     def list() {
 		
@@ -47,21 +51,14 @@ class HomeworkController {
 	
 	private showIfJedi(Homework homework) {
 		
-		def c = HomeworkSolution.createCriteria()
-		def totalACorregir = c.count() {
-			eq('homework', homework)
-			isNull('feedback')
-		}
+		def presenter = new JediHomeworkPresenter(
+			totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
+			homework: homework,
+			solutionsUpToDate: homeworkService.findAllByHomework(homework),
+			now: dateService.currentTime
+			)
 		
-		boolean isTimeToGrade = homework.dueDate < new Date()
-		boolean hasToGrade = totalACorregir > 0
-		
-		def solutions = HomeworkSolution.findAllByHomework(homework)
-		def solutionsTotal = solutions.size()
-		
-		render view: 'showIfJedi', model: [homework: homework,
-			solutions: solutions, solutionsTotal: solutionsTotal,
-			hasToGrade: hasToGrade, isTimeToGrade: isTimeToGrade]
+		render view: 'showIfJedi', model: [presenter: presenter]
 	}
 
 	def solve(Long homeworkId, HomeworkSolutionCommand command) {

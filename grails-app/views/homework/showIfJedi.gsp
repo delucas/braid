@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>tarea: ${homework.title}</title>
+	<title>tarea: ${presenter.homework.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
 	
@@ -11,29 +11,29 @@
 
 	<div class="span12">
 		
-		<g:if test="${isTimeToGrade && !hasToGrade}">
+		<g:if test="${presenter.finishedGrading()}">
 			<braid:alertInfo title="¡Buen trabajo!">
 				Ya se han corregido todas las tareas. Es momento de descansar...
 			</braid:alertInfo>
 		</g:if>
 		
 		<legend>
-			${homework.title}
+			${presenter.homework.title}
 			<small class="pull-right">
-				Fecha límite de entrega: <g:formatDate date="${homework.dueDate}" 
-			  		format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
+				Fecha límite de entrega:
+				<g:formatDate date="${presenter.homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
 		
-		<homework:wording homework="${homework}"/>
+		<homework:wording homework="${presenter.homework}"/>
 		
-		<g:if test="${isTimeToGrade && hasToGrade}">
-			<g:link action="grade" params="[homeworkId: homework.id]" class="btn btn-large btn-block btn-primary">
+		<g:if test="${presenter.hasToGrade()}">
+			<g:link action="grade" params="[homeworkId: presenter.homework.id]" class="btn btn-large btn-block btn-primary">
 				Corregir tareas de alumnos
 			</g:link>
 		</g:if>
 		
-		<g:if test="${isTimeToGrade && !hasToGrade}">
+		<g:if test="${presenter.finishedGrading()}">
 			<table class="table table-striped table-hover">
 				<thead>
 					<th>Fecha de entrega</th>
@@ -41,11 +41,10 @@
 				</thead>
 				<tbody>
 				
-					<g:each in="${solutions}" var="solution">
+					<g:each in="${presenter.solutionsUpToDate}" var="solution">
 						<tr>
 							<td width="50%">
-								<g:formatDate date="${solution.dateCreated}" 
-									format="EEE, d MMM yyyy HH:mm z" timeZone="America/Argentina/Buenos_Aires"/>
+								<g:formatDate date="${solution.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/>
 							</td>
 							<td>${solution.user.name}</td>
 						</tr>
