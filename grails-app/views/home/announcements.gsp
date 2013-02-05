@@ -1,13 +1,14 @@
 <html>
+
 <head>
-
-<title>anuncios</title>
-<meta name="layout" content="main">
-<g:javascript src="Markdown.Converter.js" />
-<g:javascript src="Markdown.Sanitizer.js" />
-
-<parameter name="announcements" value="active"/>
+	<title>anuncios</title>
+	
+	<meta name="layout" content="main">
+	<parameter name="announcements" value="active"/>
+	
+	<r:require module="markdown"/>
 </head>
+
 <body>
 
 	<div class="span8">

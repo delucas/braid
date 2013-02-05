@@ -36,9 +36,4 @@ class HomeworkSolutionCommand {
 		result
 	}
 	
-	static def createFrom(HomeworkSolution origin) {
-		if (origin) new HomeworkSolutionCommand(text: origin.text, homeworkSolutionId: origin.id)
-		else new HomeworkSolutionCommand()
-	}
-	
 }

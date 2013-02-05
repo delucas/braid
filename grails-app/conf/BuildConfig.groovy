@@ -51,11 +51,12 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.1"
 
         compile ':cache:1.0.0'
+		
 		compile ':spring-security-core:1.2.7.3'
 
 		compile ':fixtures:1.1'
 		compile ":markdown:1.0.0.RC1"
-		
+				
 		runtime ":resources:1.2.RC2"
         runtime ":twitter-bootstrap:2.2.2"
     }

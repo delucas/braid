@@ -17,7 +17,7 @@ class UserController {
 		
 	}
 	
-    def list(Long courseId) {
+    def list() {
 		
     	def me = userService.currentUser
 		def course = courseService.currentCourse
@@ -46,7 +46,7 @@ class UserController {
 			[roles: ['PADAWAN', 'JAR_JAR'], course: course, approved: approved])
 	}
 	
-	def pending(Long courseId) {
+	def pending() {
 		
 		def me = userService.currentUser
 		def course = courseService.currentCourse

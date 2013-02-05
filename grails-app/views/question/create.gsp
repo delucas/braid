@@ -1,12 +1,10 @@
 <html>
 <head>
-
-<title>preguntas teóricas</title>
-<meta name="layout" content="main">
-<g:javascript src="Markdown.Converter.js" />
-<g:javascript src="Markdown.Sanitizer.js" />
-
-<parameter name="questions" value="active" />
+	<title>preguntas teóricas</title>
+	<meta name="layout" content="main">
+	<parameter name="questions" value="active" />
+	
+	<r:require module="markdown"/>
 </head>
 <body>
 

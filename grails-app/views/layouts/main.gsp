@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
-	type="text/css">
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-
-<r:require modules="bootstrap" />
-<g:layoutHead />
-<r:layoutResources />
-
-<style>
-body {
-	padding-top: 60px; /* 60px to make the container go all the way
-      to the bottom of the topbar */
-}
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
+	<link rel="stylesheet"
+		href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+	
+	<r:require module="common"/>
+	<r:require modules="bootstrap" />
+	<g:layoutHead />
+	<r:layoutResources />
+	
+	<style>
+	body {
+		padding-top: 60px; /* 60px to make the container go all the way
+	      to the bottom of the topbar */
+	}
+	</style>
 
 </head>
 

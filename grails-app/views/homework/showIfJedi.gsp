@@ -1,13 +1,11 @@
 <html>
 <head>
-
-<title>tarea: ${homework.title}</title>
-<meta name="layout" content="main">
-<r:require modules="bootstrap-modal" />
-<g:javascript src="Markdown.Converter.js" />
-<g:javascript src="Markdown.Sanitizer.js" />
-
-<parameter name="homeworks" value="active" />
+	<title>tarea: ${homework.title}</title>
+	<meta name="layout" content="main">
+	<parameter name="homeworks" value="active" />
+	
+	<r:require modules="bootstrap-modal" />
+	<r:require module="markdown"/>
 </head>
 <body>
 
