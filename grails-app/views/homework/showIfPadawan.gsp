@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>tarea: ${homework.title}</title>
+	<title>tarea: ${presenter.homework.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
 	
@@ -12,13 +12,13 @@
 	<div class="span12">
 		
 		<legend>
-			${homework.title}
+			${presenter.homework.title}
 			
-			<braid:statusHomework solved="${alreadySolved}"/>
+			<braid:statusHomework solved="${presenter.alreadySolved}"/>
 			 
 			<small class="pull-right">
 				Fecha límite de entrega:
-				<g:formatDate date="${homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
+				<g:formatDate date="${presenter.homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
 		
@@ -28,48 +28,38 @@
 			</braid:alertInfo>
 		</g:if>
 		
-		<g:elseif test="${alreadySolved && !homework.outOfDate}">
+		<g:elseif test="${presenter.shouldAlertForAlreadySolved()}">
 			<braid:alertInfo title="¡Atención! Ya contestaste esta pregunta">
 				Si querés podés revisar tu respuesta y volver a remitirla dentro del período de vigencia. Es gratis ;)
 			</braid:alertInfo>
 		</g:elseif>
 		
-		<braid:alertError command="${command}"/>
+		<braid:alertError bean="${presenter.homeworkSolution}"/>
 
-		<homework:wording homework="${homework}"/>
+		<homework:wording homework="${presenter.homework}"/>
 				
 		<div class="well">
 			<legend>Mi respuesta</legend>
 			<div id="previewArea" class="well preview md">
-				<markdown:renderHtml>${command?.text}</markdown:renderHtml>
+				<markdown:renderHtml>${presenter.homeworkSolution?.text}</markdown:renderHtml>
 			</div>
 			
 		</div>
 		
-		<g:if test="${command?.feedback}">
+		<homework:feedback solution="${presenter.homeworkSolution}"/>
 		
-			<div class="well">
-				<legend>Feedback</legend>
-				<div class="well md">
-					<markdown:renderHtml>${command?.feedback}</markdown:renderHtml>
-				</div>
-				
-			</div>
-		
-		</g:if>
-		
-		<g:if test="${!homework.outOfDate}">
+		<g:if test="${presenter.canSolve()}">
 			<div class="well">
 				<g:form action="solve">
 				
-					<g:hiddenField name="homeworkId" value="${homework.id}"/>
-					<g:hiddenField name="homeworkSolutionId" value="${command?.id}"/>
+					<g:hiddenField name="homeworkId" value="${presenter.homework.id}"/>
+					<g:hiddenField name="homeworkSolutionId" value="${presenter.homeworkSolution?.id}"/>
 				
-					<braid:textArea bean="${command}" beanField="text" name="text" id="solution"/>
+					<braid:textArea bean="${presenter.homeworkSolution}" beanField="text" name="text" id="solution"/>
 					
 					<div class="row-fluid">
 						<span class="span6">
-							<label class="checkbox ${hasErrors(bean:command,field:'honorCode', 'error')}" for="honorCode">
+							<label class="checkbox ${hasErrors(bean:presenter.homeworkSolution, field:'honorCode', 'error')}" for="honorCode">
 						      <input id="honorCode" type="checkbox" name="honorCode"> Declaro estar de acuerdo con el 
 						      <a href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
 						    </label>
@@ -92,7 +82,7 @@
     <h3 id="myModalLabel">Código de Honor</h3>
   </div>
   <div class="modal-body">
-    <markdown:renderHtml>${course.honorCode}</markdown:renderHtml>
+    <markdown:renderHtml>${presenter.course.honorCode}</markdown:renderHtml>
   </div>
 </div>
 

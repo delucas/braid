@@ -59,5 +59,8 @@ grails.project.dependency.resolution = {
 				
 		runtime ":resources:1.2.RC2"
         runtime ":twitter-bootstrap:2.2.2"
+		
+		test ":code-coverage:1.2.5"
+		test ":spock:0.7"
     }
 }

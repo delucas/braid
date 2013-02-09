@@ -6,13 +6,13 @@ class AlertTagLib {
 	
 	def alertError = { attrs ->
 		
-		def command = attrs.command
+		def theBean = attrs.bean
 		
-		if (command?.hasErrors()) {
+		if (theBean?.hasErrors()) {
 			out << '<div class="alert alert-error">'
 			out << '	<strong>Oops! Parece que algo no salió como se esperaba...</strong>'
 			out << '	<p>'
-			out << g.renderErrors(bean: command)
+			out << g.renderErrors(bean: theBean)
 			out << '	</p>'
 			out << '</div>'
 		}

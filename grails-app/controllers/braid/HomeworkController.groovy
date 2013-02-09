@@ -1,6 +1,7 @@
 package braid
 
 import braid.presenters.JediHomeworkPresenter
+import braid.presenters.PadawanHomeworkPresenter
 
 
 class HomeworkController {
@@ -38,24 +39,27 @@ class HomeworkController {
 	
 	private showIfPadawan(Homework homework) {
 		
-		def user = userService.currentUser
-		def currentCourse = courseService.currentCourse
+		def currentUser = userService.currentUser
+		def homeworkSolution = HomeworkSolution.findByUserAndHomework(currentUser, homework)
 		
-		def previousSolution = HomeworkSolution.findByUserAndHomework(user, homework)
-		def alreadySolved = previousSolution != null
-		def command = previousSolution
+		def presenter = new PadawanHomeworkPresenter(
+				homework: homework,
+				homeworkSolution: homeworkSolution,
+				alreadySolved: homeworkSolution != null,
+				course: courseService.currentCourse,
+				now: dateService.currentTime
+			)
 		
-		render view: 'showIfPadawan', model: [homework: homework, course: currentCourse,
-			command: command, alreadySolved: alreadySolved]
+		render view: 'showIfPadawan', model: [presenter: presenter]
 	}
 	
 	private showIfJedi(Homework homework) {
 		
 		def presenter = new JediHomeworkPresenter(
-			totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
-			homework: homework,
-			solutionsUpToDate: homeworkService.findAllByHomework(homework),
-			now: dateService.currentTime
+				totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
+				homework: homework,
+				solutionsUpToDate: homeworkService.findAllByHomework(homework),
+				now: dateService.currentTime
 			)
 		
 		render view: 'showIfJedi', model: [presenter: presenter]
@@ -82,7 +86,14 @@ class HomeworkController {
 				redirect action: 'show', params: [id: homeworkId]
 				
 			} else {
-				render view:'showIfPadawan', model: [homework: homework, course: course, command: command]
+				def presenter = new PadawanHomeworkPresenter(
+						homework: homework,
+						homeworkSolution: command,
+						alreadySolved: false,
+						course: course,
+						now: dateService.currentTime
+					)
+				render view:'showIfPadawan', model: [presenter: presenter]
 			}
 		} else {
 			flash.message = 'No se puede responder fuera de fecha'

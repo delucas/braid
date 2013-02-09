@@ -2,6 +2,8 @@ package braid
 
 class Homework {
 
+	def dateService
+	
 	String title
 	String wording
 	Date dueDate
@@ -12,10 +14,10 @@ class Homework {
 		wording type: 'text'
 	}
 	
-	static transients = ['outOfDate']
+	static transients = ['outOfDate', 'dateService']
 	
 	boolean getOutOfDate() {
-		dueDate < new Date()
+		dueDate < dateService.currentTime
 	}
 
 }
