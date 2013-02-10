@@ -4,6 +4,7 @@ class HomeController {
 
 	def userService
 	def courseService
+	def dateService
 	
     def registration() {
 		User theUser = userService.currentUser
@@ -34,7 +35,7 @@ class HomeController {
 		def announcements = Announcement.findAllByCourse(course,
 			   [sort: "dateCreated", order: "desc"])
 		
-		def homeworks = Homework.findAllByCourseAndDueDateGreaterThan(course, new Date())
+		def homeworks = Homework.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
 		def upcomingDates = []
 		upcomingDates.addAll(homeworks.collect { it ->
 			[id: it.id, type: 'homework', title: it.title, dueDate: it.dueDate]

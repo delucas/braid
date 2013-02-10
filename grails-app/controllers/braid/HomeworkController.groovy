@@ -78,7 +78,7 @@ class HomeworkController {
 				def solution = command.toHomeworkSolution()
 				solution.homework = homework
 				solution.user = user
-				solution.dateCreated = new Date()
+				solution.dateCreated = dateService.currentTime
 				
 				solution.save(flush: true)
 				

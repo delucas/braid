@@ -4,7 +4,7 @@ class Announcement {
 
 	String text
 	User announcer
-	Date dateCreated = new Date()
+	Date dateCreated
 	
 	static belongsTo = [course: Course]
 

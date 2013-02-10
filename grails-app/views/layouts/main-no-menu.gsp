@@ -46,7 +46,7 @@ body {
 		<g:layoutBody />
 
 		<hr>
-		<div class="pull-right">© uno21 2012-2013</div>
+		<div class="pull-right">© uno21 2011-2013</div>
 	</div>
 
 	<g:javascript library="application" />
