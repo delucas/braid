@@ -31,14 +31,20 @@ class HomeController {
 	}
 	
 	def announcements() {
+		
 		def course = courseService.currentCourse
 		def announcements = Announcement.findAllByCourse(course,
 			   [sort: "dateCreated", order: "desc"])
 		
 		def homeworks = Homework.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
+		def assignments = Assignment.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
+		
 		def upcomingDates = []
 		upcomingDates.addAll(homeworks.collect { it ->
 			[id: it.id, type: 'homework', title: it.title, dueDate: it.dueDate]
+		})
+		upcomingDates.addAll(assignments.collect { it ->
+			[id: it.id, type: 'assignment', title: it.title, dueDate: it.dueDate]
 		})
 		
 		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]

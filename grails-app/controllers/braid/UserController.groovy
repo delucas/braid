@@ -47,8 +47,7 @@ class UserController {
 	}
 	
 	def pending() {
-		
-		def me = userService.currentUser
+
 		def course = courseService.currentCourse
 		
 		def users = findStudentsNotApprovedByCourse(course)

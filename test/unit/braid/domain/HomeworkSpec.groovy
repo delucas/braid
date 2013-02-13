@@ -3,7 +3,6 @@ package braid.domain
 import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
-import braid.DateService;
 import braid.Homework
 
 /**
@@ -24,7 +23,8 @@ class HomeworkSpec extends Specification {
 	
 	void "when dueDate after now then is not outOfDate"() {
 		
-		def tomorrow = now + 1
+		given:
+			def tomorrow = now + 1
 		when:
 			homework.dueDate = tomorrow
 		then:
@@ -33,7 +33,8 @@ class HomeworkSpec extends Specification {
 	
 	void "when dueDate before now then is outOfDate"() {
 		
-		def yesterday = now - 1
+		given:
+			def yesterday = now - 1
 		when:
 			homework.dueDate = yesterday
 		then:

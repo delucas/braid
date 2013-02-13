@@ -1,8 +1,8 @@
-import java.util.Date;
-
+import braid.Assignment
+import braid.AssignmentSolution
 import braid.Homework
-import braid.HomeworkSolution;
-import braid.User;
+import braid.HomeworkSolution
+import braid.github.Repository
 
 load "announcementFixtures"
 
@@ -38,5 +38,32 @@ fixture{
 		wording: '''Explicar en dos párrafos el concepto de **Encapsulamiento**''',
 		dueDate: new Date() + 4,
 		course: taller)
-		
+	
+	a1(Assignment,
+		title: 'Piedra, papel, tijera, lagarto, Spock',
+		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		dueDate: new Date() + 7,
+		course: taller)
+	
+	as1(AssignmentSolution,
+		assignment: a1,
+		user: anakin,
+		dateCreated: new Date() - 1,
+		score: 8.3,
+		feedback: 'Errores mínimos',
+		commit: 'adfeef3436744dfee232ae'
+		)
+	
+	a2(Assignment,
+		title: 'Cuentas bancarias',
+		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		dueDate: new Date() + 28,
+		course: taller)
+	
+	a3(Assignment,
+		title: 'Ecuaciones',
+		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		dueDate: new Date() + 56,
+		course: taller)
+	
 }

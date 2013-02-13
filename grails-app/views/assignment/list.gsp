@@ -1,15 +1,15 @@
 <html>
 <head>
 
-<title>tareas</title>
+<title>trabajos prácticos</title>
 <meta name="layout" content="main">
 
-<parameter name="homeworks" value="active" />
+<parameter name="assignments" value="active" />
 </head>
 <body>
 
 	<div class="span12">
-		<legend> Tareas </legend>
+		<legend> Trabajos prácticos </legend>
 
 		<div class="alert alert-info">
 			<strong>Sobre las fechas de entrega</strong>
@@ -28,21 +28,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				<g:each in="${homeworks}" var="homework">
+				<g:each in="${assignments}" var="assignment">
 					<tr>
 						<td>
-							${homework.title}
+							${assignment.title}
 						</td>
-						<td><g:formatDate date="${homework.dueDate}"
+						<td><g:formatDate date="${assignment.dueDate}"
 								timeZone="America/Argentina/Buenos_Aires" /></td>
 						<td><g:link class="btn btn-small" action="show"
-								id="${homework.id}">
+								id="${assignment.id}">
 			  				Ver detalles
 			  			</g:link></td>
 					</tr>
 				</g:each>
 			</tbody>
 		</table>
+
 	</div>
 
 </body>

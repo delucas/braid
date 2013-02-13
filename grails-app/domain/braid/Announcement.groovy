@@ -7,8 +7,5 @@ class Announcement {
 	Date dateCreated
 	
 	static belongsTo = [course: Course]
-
-	static constraints = {
-		
-	}
+	
 }

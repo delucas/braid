@@ -88,3 +88,7 @@ label.error {
 li.active > a:hover {
 	cursor: pointer !important;
 }
+
+.headless-wording.md h1 {
+	display: none !important;
+}

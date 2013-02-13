@@ -63,4 +63,10 @@ grails.project.dependency.resolution = {
 		test ":code-coverage:1.2.5"
 		test ":spock:0.7"
     }
+
+codenarc {
+	ruleSetFiles = 'file:grails-app/conf/CodeNarcRules.groovy'
+	propertiesFile = 'codenarc.properties'
+}
+
 }

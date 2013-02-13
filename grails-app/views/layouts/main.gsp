@@ -127,8 +127,12 @@
 							Tareas
 						</g:link>
 					</li>
-					<li><a href="#" class="bbnotgood">Trabajos prácticos</a></li>
-					<li><a href="#" class="bbnotgood">Evaluaciones</a></li>
+					<li class="${pageProperty(name:'page.assignments')}">
+						<g:link class="bbnotgood" controller="assignment" action="list">
+							Trabajos prácticos
+						</g:link>
+					</li>
+					<li><a href="#" class="bbnotgood" onclick="alert('soon')">Evaluaciones</a></li>
 					<sec:ifAnyGranted roles="YODA, JEDI">
 						<li class="${pageProperty(name:'page.students')}">
 							<g:link class="bbnotgood" controller="user" action="list">
