@@ -59,20 +59,8 @@
 
 	<aside class="span4 upcomingDates">
 		<legend> Próximas fechas </legend>
-		<g:each in="${upcomingDates}" var="date">
-			<div class="well">
-				<div>
-					<strong>
-						<g:link controller="${date.type}" action="show" id="${date.id}">
-							${date.title}
-						</g:link>
-					</strong>
-				</div>
-				<div>
-					<time><g:formatDate date="${date.dueDate}" timeZone="America/Argentina/Buenos_Aires"/></time>
-				</div>
-			
-			</div>
+		<g:each in="${upcomingDates}" var="event">
+			<announcement:upcomingDate event="${event}"/>
 		</g:each>
 	</aside>
 
