@@ -41,18 +41,11 @@
 						<li class="active">
 							<g:link controller="home" action="announcements">Principal</g:link>
 						</li>
+						<g:each in="${braid.Link.list([sort:'position'])}" var="link">
 						<li>
-							<a href="https://groups.google.com/forum/?fromgroups#!forum/tallerwebjava">Grupo</a>
+							<a href="${link.url}">${link.caption}</a>
 						</li>
-						<li>
-							<a href="https://github.com/tallerweb">Repo Github</a>
-						</li>
-						<li>
-							<a href="https://github.com/tallerweb/notas/wiki">Wiki</a>
-						</li>
-						<li>
-							<a href="https://docs.google.com/spreadsheet/viewform?formkey=dDdYNnIzRWFiV2FwbGtyNjA3a2NFZGc6MQ#gid=0">Feedback</a>
-						</li>
+						</g:each>
 					</ul>
 					
 					<ul class="nav pull-right">	

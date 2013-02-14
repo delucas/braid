@@ -1,4 +1,5 @@
 import braid.Course
+import braid.Link
 import braid.UserCourse
 
 load "userFixtures"
@@ -21,5 +22,31 @@ yes, more''',
 		uc1(UserCourse, user: obi, course: taller, approved: true)
 		uc2(UserCourse, user: anakin, course: taller, approved: true)
 //		uc3(UserCourse, user: jarjar, course: taller)
+		
+		link1(Link,
+			caption: 'Grupo',
+			url: 'https://groups.google.com/forum/?fromgroups#!forum/tallerwebjava',
+			position: 1,
+			course: taller)
+		link2(Link,
+			caption: 'Repo Github',
+			url: 'https://github.com/tallerweb',
+			position: 2,
+			course: taller)
+		link3(Link,
+			caption: '"Notas" del Taller',
+			url: 'https://github.com/tallerweb/notas',
+			position: 3,
+			course: taller)
+		link4(Link,
+			caption: 'Wiki',
+			url: 'https://github.com/tallerweb/notas/wiki',
+			position: 4,
+			course: taller)
+		link5(Link,
+			caption: 'Feedback',
+			url: 'https://docs.google.com/spreadsheet/viewform?formkey=dDdYNnIzRWFiV2FwbGtyNjA3a2NFZGc6MQ#gid=0',
+			position: 5,
+			course: taller)
 		
 	}
