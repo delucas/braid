@@ -12,5 +12,9 @@ class AssignmentPresenter {
 	def getBestSolution(){
 		solutions.max { it.score }
 	}
+	
+	boolean canSubmit() {
+		!solutions.findAll { !it.graded }
+	}
 		
 }

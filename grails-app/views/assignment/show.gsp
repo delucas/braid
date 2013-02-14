@@ -30,14 +30,20 @@
 
 		<assignment:wording assignment="${presenter.assignment}"/>
 		
-		<g:if test="${!presenter.assignment.outOfDate}">
+		<g:if test="${!presenter.canSubmit()}">
+			<braid:alertInfo title="Info">
+				Por favor, espera que graduemos tu última respuesta para poder
+				remitir una nueva.
+			</braid:alertInfo>
+		</g:if>
+		
+		<g:if test="${!presenter.assignment.outOfDate && presenter.canSubmit()}">
 			<section class="solve">
 				<div class="well">
 				
 					<legend>Solución</legend>
-				
+					
 					<g:form action="solve">
-	
 						<g:hiddenField name="assignmentId"
 							value="${presenter.assignment.id}" />
 	
@@ -53,20 +59,19 @@
 						</div>
 	
 						<div class="row-fluid">
-							<span class="span6"> <label
-								class="checkbox ${hasErrors(bean:presenter.command,field:'honorCode', 'error')}"
-								for="honorCode"> <input id="honorCode" type="checkbox"
-									name="honorCode"> Declaro estar de acuerdo con el <a
-									href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
-							</label>
-							</span> <span class="span6"> <g:submitButton id="submitHomework"
-									class="btn btn-large btn-primary pull-right" name="submit"
-									value="Remitir solución" />
-							</span>
+								<span class="span6"> <label
+									class="checkbox ${hasErrors(bean:presenter.command,field:'honorCode', 'error')}"
+									for="honorCode"> <input id="honorCode" type="checkbox"
+										name="honorCode"> Declaro estar de acuerdo con el <a
+										href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
+								</label>
+								</span> <span class="span6"> <g:submitButton id="submitHomework"
+										class="btn btn-large btn-primary pull-right" name="submit"
+										value="Remitir solución" />
+								</span>
 						</div>
 	
 					</g:form>
-	
 				</div>
 			</section>
 		</g:if>
@@ -89,10 +94,19 @@
 									<td><g:formatDate date="${solution.dateCreated}"
 											timeZone="America/Argentina/Buenos_Aires" /></td>
 									<td>
-										${solution.score}/10.00
+										<g:if test="${solution.graded}">
+											${solution.score}/10.00
+										</g:if>
+										<g:else>
+											Esperando graduación
+										</g:else>
 									</td>
-									<td><g:link action="feedback" id="${solution.id}"
-											role="button" class="btn">Ver detalles</g:link></td>
+									<td>
+										<g:if test="${solution.graded}">
+											<g:link action="feedback" id="${solution.id}"
+												role="button" class="btn">Ver detalles</g:link>
+										</g:if>
+									</td>
 								</tr>
 							</g:each>
 							<tfoot>

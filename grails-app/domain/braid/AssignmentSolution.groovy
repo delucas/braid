@@ -3,8 +3,9 @@ package braid
 class AssignmentSolution {
 
 	String commit
-	Double score = 0.0
-	String feedback = 'Sin detalles por el momento'
+	
+	Double score
+	String feedback
 	Date dateCreated //TODO: cambiar este y el de HS por submissionDate
 	
 	User user
@@ -18,6 +19,12 @@ class AssignmentSolution {
 	
 	static mapping = {
 		feedback(type: "text")
+	}
+	
+	static transients = ['graded']
+	
+	boolean isGraded() {
+		feedback != null
 	}
 
 }

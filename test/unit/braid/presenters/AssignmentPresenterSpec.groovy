@@ -30,4 +30,43 @@ class AssignmentPresenterSpec extends Specification {
 			solutionTwo == presenter.bestSolution
 	}
 
+	void "when no solution then is able to resubmit"() {
+		
+		given: 'an empty solutions'
+			def presenter = new AssignmentPresenter(solutions: [])
+		expect: 'can submit'
+			presenter.canSubmit()
+	}
+		
+	void "when all solutions are graded is able to resubmit"() {
+		
+		given: 'a solutions list with some elements, all graded'
+			def solutionOne = new AssignmentSolutionStub(graded: true)
+			def solutionTwo = new AssignmentSolutionStub(graded: true)
+			def presenter = new AssignmentPresenter(solutions: [solutionOne, solutionTwo])
+		expect: 'can submit'
+			presenter.canSubmit()
+	}
+	
+	void "when a solution is not graded then is not able to resubmit"() {
+		
+		given: 'a solutions list with some elements, one ungraded'
+			def solutionOne = new AssignmentSolutionStub(graded: true)
+			def solutionTwo = new AssignmentSolutionStub(graded: false)
+			def presenter = new AssignmentPresenter(solutions: [solutionOne, solutionTwo])
+		expect: 'can not submit'
+			!presenter.canSubmit()
+	}
+	
+	void "test duck types"() {
+		expect: 'duck responds to graded'
+			duck.metaClass.hasProperty(duck, 'graded')
+		where:
+			duck << [new AssignmentSolution(), new AssignmentSolutionStub()]
+	}
+
+}
+
+public class AssignmentSolutionStub {
+	def graded
 }
