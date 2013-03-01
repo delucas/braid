@@ -7,14 +7,26 @@ import braid.Homework
 @TestMixin(GrailsUnitTestMixin)
 class PadawanHomeworkPresenterTests {
 	
-	void testWhenCanSolve() {
-		def presenter = new PadawanHomeworkPresenter(homework: new HomeworkStub(outOfDate: false))
+	void testWhenCanSolveAndPadawan() {
+		def presenter = new PadawanHomeworkPresenter(padawan: true, homework: new HomeworkStub(outOfDate: false))
 
 		assert presenter.canSolve()
 	}
 	
-	void testWhenCannotSolve() {
-		def presenter = new PadawanHomeworkPresenter(homework: new HomeworkStub(outOfDate: true))
+	void testWhenCannotSolveAndPadawan() {
+		def presenter = new PadawanHomeworkPresenter(padawan: true, homework: new HomeworkStub(outOfDate: true))
+
+		assert !presenter.canSolve()
+	}
+	
+	void testWhenCanSolveAndNotPadawan() {
+		def presenter = new PadawanHomeworkPresenter(padawan: false, homework: new HomeworkStub(outOfDate: false))
+
+		assert !presenter.canSolve()
+	}
+	
+	void testWhenCannotSolveAndNotPadawan() {
+		def presenter = new PadawanHomeworkPresenter(padawan: false, homework: new HomeworkStub(outOfDate: true))
 
 		assert !presenter.canSolve()
 	}

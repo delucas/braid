@@ -64,12 +64,11 @@
 		                          		Solicitudes pendientes
 		                          	</g:link>
 		                          </li>
-		                          <li><a href="#">Volcar notas</a></li>
 	                          </sec:ifAllGranted>
 	                          <sec:ifAllGranted roles="YODA">
 		                          <li class="nav-header">Opciones de administrador</li>
-		                          <li><a href="#">Nombrar profesores</a></li>
-		                          <li><a href="#">Crear cursos</a></li>
+		                          <li><a href="javascript:alert('tbd')">Nombrar profesores</a></li>
+		                          <li><a href="javascript:alert('tbd')">Crear cursos</a></li>
 		                      </sec:ifAllGranted>
 	                          <li class="divider"></li>
 	                          <li>
