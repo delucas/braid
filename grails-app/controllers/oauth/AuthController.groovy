@@ -3,7 +3,6 @@ package oauth
 import security.SpringSecuritySigninService
 import braid.User
 
-import com.sun.tools.internal.ws.wscompile.AuthInfo
 
 class AuthController {
 
