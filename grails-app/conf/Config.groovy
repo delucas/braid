@@ -97,3 +97,5 @@ grails.plugins.springsecurity.authority.className = 'braid.Role'
 
 // Fix pagination with Twitter Bootstrap
 grails.plugins.twitterbootstrap.fixtaglib = true
+
+auth.providers = [github: 'github']

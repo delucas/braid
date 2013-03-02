@@ -31,6 +31,10 @@ body {
 				onclick="javascript:alert('debería hacer login con github')">
 				Ingresar a Braid 
 			</g:link>
+			
+			<g:link controller="auth" action="signin" params="[provider: 'github']" >
+            	<span  style="text-transform: uppercase">Github</span>
+            </g:link>
 		</div>
 		<hr>
 		<div class="pull-right">© uno21 2012-2013</div>

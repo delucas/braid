@@ -14,6 +14,12 @@ class User {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+	
+	
+	String email
+	String oauthId
+	String oauthProvider
+	String avatarUrl
 
 	static constraints = {
 		username blank: false, unique: true
