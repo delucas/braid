@@ -47,7 +47,7 @@ class AuthController {
             springSecuritySigninService.signIn(user)
             redirect(uri: (session["${params.provider}_originalUrl"] ?: '/') - request.contextPath)
         } else {
-            redirect(controller: 'user', action: 'register', params: params)
+            redirect(controller: 'registerUser', action: 'register', params: params)
         }
     }
 
