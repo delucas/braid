@@ -17,10 +17,8 @@
 
                 <g:form controller="registerUser" action="save">
                     <div class="control-group">
-                        <f:with bean="${user}">
-                            <f:field property="username"/>
-                            <f:field property="email"/>
-                        </f:with>
+                     User: <g:textField name="username" value="${user?.username}"/>       
+                     Email: <g:textField name="email" value="${user?.email}"/>
                     </div>
 
                     <input type="hidden" name="oauthProvider" value="${user?.oauthProvider}"/>
