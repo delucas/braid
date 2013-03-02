@@ -99,3 +99,6 @@ grails.plugins.springsecurity.authority.className = 'braid.Role'
 grails.plugins.twitterbootstrap.fixtaglib = true
 
 auth.providers = [github: 'github']
+
+auth.github.key = "81579d5f148d474d091a"	
+auth.github.secret = "14d723746dff47a9a6c5c79789b8ec0893e27ef9"
