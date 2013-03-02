@@ -6,7 +6,6 @@ class AssignmentController {
 
 	def userService
 	def courseService
-	def homeworkService
 	def dateService
 
     def list() {

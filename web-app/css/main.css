@@ -92,3 +92,8 @@ li.active > a:hover {
 .headless-wording.md h1 {
 	display: none !important;
 }
+
+/* Datepicker */
+div.datepicker select {
+	width: 90px;
+}

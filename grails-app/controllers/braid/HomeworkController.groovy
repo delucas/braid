@@ -19,6 +19,38 @@ class HomeworkController {
 		model: [homeworks: homeworks]
 	}
 	
+	def create() {
+		
+	}
+	
+	def save(HomeworkCommand command) {
+		
+		if (command.validate()) {
+
+			def homework = new Homework()
+			homework.title = command.title
+			homework.wording = command.wording
+			homework.dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+			homework.course = courseService.currentCourse
+			
+			homework.save(flush: true)
+			
+			flash.message = 'Se ha creado correctamente la tarea'
+			redirect(action:'list')
+			
+		} else {
+			render view:'create', model: [command: command]
+		}
+		
+	}
+	
+	private Date convertToUTC(Date dateInZone, TimeZone tz) {
+		// TODO: es esto REALMENTE necesario?
+		def cal = dateInZone.toCalendar()
+		cal.timeZone = tz
+		cal.time
+	}
+	
 	def show(Long id) {
 		
 		def user = userService.currentUser
@@ -30,8 +62,7 @@ class HomeworkController {
 		
 		if (user.hasRole('JEDI')) {
 			showIfJedi(homework)
-		} 
-		if (user.hasRole('PADAWAN')) {
+		} else {
 			showIfPadawan(homework)
 		}
 		
