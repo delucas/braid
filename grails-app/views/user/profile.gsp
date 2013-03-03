@@ -21,7 +21,7 @@
 
 		<div class="row-fluid">
 			<div class="span3">
-				<img src="http://lorempixel.com/150/150/people/" class="pull-right"/>
+				<img src="${user.avatarUrl}" class="pull-right"/>
 			</div>
 	
 			<div class="span9 well">

@@ -3,7 +3,9 @@ package oauth
 import org.springframework.security.authentication.BadCredentialsException
 
 import security.SpringSecuritySigninService
+import braid.Role
 import braid.User
+import braid.UserRole
 
 class RegisterUserController {
 
@@ -39,13 +41,14 @@ class RegisterUserController {
         user.oauthId = profile.uid
         user.avatarUrl = profile.picture
 
-		//agregar roles
+		def jarjar = Role.findByAuthority('JAR_JAR')
 		
         user.save(failOnError: true)
 
+		UserRole.create(user, jarjar, true)
         springSecuritySigninService.signIn(user)
 
-        redirect(uri: (originalUrl ?: '/') - request.contextPath)
+		redirect (controller:'home', action:'announcements')
     }
 
 }
