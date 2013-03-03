@@ -34,9 +34,9 @@ class RegisterUserController {
         def user = new User(params)
 		user.password = new Date().time.toString()
         def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
-        def originalUrl = session["${user.oauthProvider}_originalUrl"]
+        def originalUrl = session["${params.oauthProvider}_originalUrl"]
 
-        if (!profile || !session["${user.oauthProvider}_authToken"]) {
+        if (!profile || !session["${params.oauthProvider}_authToken"]) {
             log.warn("No profile or authToken found")
             throw new BadCredentialsException("No profile or authToken found")
         }
@@ -62,9 +62,9 @@ class RegisterUserController {
 			
 			
 			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
-			def originalUrl = session["${user.oauthProvider}_originalUrl"]
+			def originalUrl = session["${params.oauthProvider}_originalUrl"]
 	
-			if (!profile || !session["${user.oauthProvider}_authToken"]) {
+			if (!profile || !session["${params.oauthProvider}_authToken"]) {
 				log.warn("No profile or authToken found")
 				throw new BadCredentialsException("No profile or authToken found")
 			}
