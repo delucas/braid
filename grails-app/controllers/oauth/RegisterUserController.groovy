@@ -27,6 +27,7 @@ class RegisterUserController {
 
     def save = {
         def user = new User(params)
+		user.password = new Date().time.toString()
         def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
         def originalUrl = session["${user.oauthProvider}_originalUrl"]
 
