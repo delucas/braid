@@ -6,7 +6,7 @@ import grails.validation.Validateable;
 class RegistrationCommand {
 
 	String name
-	String dni
+	Integer dni
 	Integer courseId
 	String username
 	String oauthProvider
