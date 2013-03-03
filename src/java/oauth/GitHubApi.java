@@ -7,7 +7,7 @@ import org.scribe.utils.Preconditions;
 
 public class GitHubApi extends DefaultApi20 {
 
-	private static final String AUTHORIZE_URL = "https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s";
+	private static final String AUTHORIZE_URL = "https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s&scope=user";
 
 	@Override
 	public String getAccessTokenEndpoint() {
