@@ -39,17 +39,9 @@ class AuthController {
         session["${params.provider}_authToken"] = accessToken
 
         def profile = service.getProfile(authInfo.service, accessToken)
-		log.error("nombre de auth profile: ${params.provider}_profile (Auth)")
         session["${params.provider}_profile"] = profile
 
         def uid = profile.uid
-		profile.properties.each { prop, val ->
-			
-			log.error("$prop = $val")
-		}
-		log.error("profile ${profile.uid}")
-		log.error("$profile.picture")
-		log.error("$profile")
         User user = User.findByOauthIdAndOauthProvider(uid, params.provider)
 
         if (user) {

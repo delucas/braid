@@ -51,10 +51,8 @@ class RegisterUserController {
 			theUser.dni = command.dni
 			theUser.username = command.username
 			theUser.oauthProvider = command.oauthProvider
-			log.error("profile ${profile.uid}")
 			theUser.oauthId = profile.uid
 			theUser.avatarUrl = profile.picture
-			log.error("url del avatar ${profile.picture}")
 			theUser.save(failOnError: true)
 			
 			
