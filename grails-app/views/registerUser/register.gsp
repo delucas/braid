@@ -51,7 +51,7 @@
 							${user.username}
 						</label>
 						<g:hiddenField name="username"  value="${user?.username?:command.username}"/>
-						<g:hiddenField name="oauthProvider"  value="${oauthProvider?:command.oauthProvider}"/>
+						<g:hiddenField name="oauthProvider"  value="${provider?:command.oauthProvider}"/>
 						
 						<div class="controls">
 						
