@@ -40,7 +40,7 @@ class RegisterUserController {
 
         user.oauthId = profile.uid
         user.avatarUrl = profile.picture
-
+		log.info("url del avatar ${profile.picture}")
 		def jarjar = Role.findByAuthority('JAR_JAR')
 		
         user.save(failOnError: true)

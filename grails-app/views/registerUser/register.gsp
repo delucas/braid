@@ -17,7 +17,7 @@
 
                 <g:form controller="registerUser" action="save">
                     <div class="control-group">
-                     User: <g:textField name="username" value="${user?.username}"/>       
+                     User: ${user?.username}       
                      Email: <g:textField name="email" value="${user?.email}"/>
                     </div>
 
