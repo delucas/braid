@@ -29,6 +29,7 @@ class User {
 		email nullable: true
 		oauthProvider nullable: true
 		avatarUrl nullable: true
+		oauthId nullable: true
 	}
 
 	static mapping = {
