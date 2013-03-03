@@ -50,6 +50,7 @@ class RegisterUserController {
 			theUser.name = command.name
 			theUser.dni = command.dni
 			theUser.username = command.username
+			log.error("profile ${profile.uid}")
 			theUser.oauthId = profile.uid
 			theUser.avatarUrl = profile.picture
 			log.error("url del avatar ${profile.picture}")
