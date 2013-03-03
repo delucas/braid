@@ -30,31 +30,6 @@ class RegisterUserController {
         render(view: "register", model: [user: user, provider: params.provider])
     }
 
-    def save = {
-        def user = new User(params)
-		user.password = new Date().time.toString()
-        def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
-        def originalUrl = session["${params.oauthProvider}_originalUrl"]
-
-        if (!profile || !session["${params.oauthProvider}_authToken"]) {
-            log.warn("No profile or authToken found")
-            throw new BadCredentialsException("No profile or authToken found")
-        }
-
-        user.oauthId = profile.uid
-        user.avatarUrl = profile.picture
-		log.info("url del avatar ${profile.picture}")
-		def jarjar = Role.findByAuthority('JAR_JAR')
-		
-        user.save(failOnError: true)
-
-		UserRole.create(user, jarjar, true)
-        springSecuritySigninService.signIn(user)
-
-		redirect (controller:'home', action:'announcements')
-    }
-	
-	
 	def finishRegistration(RegistrationCommand command) {
 		
 		
@@ -77,6 +52,7 @@ class RegisterUserController {
 			theUser.oauthId = profile.uid
 			theUser.avatarUrl = profile.picture
 			log.error("url del avatar ${profile.picture}")
+			println "url del avatar ${profile.picture}"
 			theUser.save(failOnError: true)
 			
 			
@@ -91,7 +67,7 @@ class RegisterUserController {
 			UserCourse.create(theUser, theCourse)
 			theUser.save(flush:true)
 			
-			redirect(action:'announcements')
+			redirect (controller:'home', action:'announcements')
 		} else {
 			render view:'register', model: [command: command]
 		}
