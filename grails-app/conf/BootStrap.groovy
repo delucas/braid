@@ -31,7 +31,7 @@ class BootStrap {
 //			fixtureLoader.load('announcementFixtures')
 			fixtureLoader.load('homeworkFixtures')
 		}
-		
+		fixtureLoader.load('homeworkFixtures')
     }
     def destroy = {
     }

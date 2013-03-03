@@ -8,6 +8,7 @@ class RegistrationCommand {
 	String name
 	String dni
 	Integer courseId
+	String username
 	
 	static constraints = {
 		name blank: false

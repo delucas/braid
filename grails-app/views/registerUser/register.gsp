@@ -50,7 +50,7 @@
 						<label class="control-label" for="username"> Username
 							${user.username}
 						</label>
-						<g:hiddenField name="username"  value="${user.username?:command.username}"/>
+						<g:hiddenField name="username"  value="${user?.username?:command.username}"/>
 						<div class="controls">
 						
 						</div>
