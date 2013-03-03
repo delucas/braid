@@ -50,11 +50,11 @@ class RegisterUserController {
 			theUser.name = command.name
 			theUser.dni = command.dni
 			theUser.username = command.username
+			theUser.oauthProvider = command.oauthProvider
 			log.error("profile ${profile.uid}")
 			theUser.oauthId = profile.uid
 			theUser.avatarUrl = profile.picture
 			log.error("url del avatar ${profile.picture}")
-			println "url del avatar ${profile.picture}"
 			theUser.save(failOnError: true)
 			
 			
@@ -63,11 +63,12 @@ class RegisterUserController {
 			UserRole.create(theUser, jarjar, true)
 			springSecuritySigninService.signIn(theUser)
 			
-			
+			theUser.save(flush:true)
+			log.error(theUser.errors)
 			def theCourse = Course.get(command.courseId)
 			
 			UserCourse.create(theUser, theCourse)
-			theUser.save(flush:true)
+			
 			
 			redirect (controller:'home', action:'announcements')
 		} else {

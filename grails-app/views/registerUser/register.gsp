@@ -47,11 +47,7 @@
 				<div>
 				
 					<div class="control-group ${hasErrors(bean:command,field:'name', 'error')}">
-						<label class="control-label" for="username"> Username
-							${user.username}
-						</label>
 						<g:hiddenField name="username"  value="${user?.username?:command.username}"/>
-						provider ${provider?:command.oauthProvider}
 						<g:hiddenField name="oauthProvider"  value="${provider?:command.oauthProvider}"/>
 						
 						<div class="controls">
