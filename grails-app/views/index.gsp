@@ -27,14 +27,10 @@ body {
 						Github</a> para poder ingresar.
 				</p>
 			</div>
-			<g:link class="btn btn-primary pull-right btn-large" controller="home" action="registration" 
-				onclick="javascript:alert('debería hacer login con github')">
+			<g:link class="btn btn-primary pull-right btn-large" 
+				controller="auth" action="signin" params="[provider: 'github']">
 				Ingresar a Braid 
 			</g:link>
-			
-			<g:link controller="auth" action="signin" params="[provider: 'github']" >
-            	<span  style="text-transform: uppercase">Github</span>
-            </g:link>
 		</div>
 		<hr>
 		<div class="pull-right">© uno21 2012-2013</div>
