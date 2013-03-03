@@ -93,7 +93,7 @@ class RegisterUserController {
 			
 			redirect(action:'announcements')
 		} else {
-			render view:'registration', model: [command: command]
+			render view:'register', model: [command: command]
 		}
 	}
 
