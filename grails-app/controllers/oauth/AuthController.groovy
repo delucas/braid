@@ -39,7 +39,7 @@ class AuthController {
         session["${params.provider}_authToken"] = accessToken
 
         def profile = service.getProfile(authInfo.service, accessToken)
-		println "nombre de auth profile: ${params.provider}_profile (Auth)"
+		log.error("nombre de auth profile: ${params.provider}_profile (Auth)")
         session["${params.provider}_profile"] = profile
 
         def uid = profile.uid

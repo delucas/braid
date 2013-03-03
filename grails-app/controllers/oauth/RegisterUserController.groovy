@@ -36,7 +36,7 @@ class RegisterUserController {
 		if (command.validate()) {
 			
 			
-			println "nombre de auth profile: ${params.oauthProvider}_profile (register)"
+			log.error("nombre de auth profile: ${params.oauthProvider}_profile (register)")
 			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
 			def originalUrl = session["${params.oauthProvider}_originalUrl"]
 	
