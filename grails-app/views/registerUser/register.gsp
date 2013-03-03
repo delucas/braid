@@ -23,7 +23,7 @@
 				</blockquote>
 
 				<p>
-					¡Hola, <strong>@${sec.loggedInUserInfo(field:"username")}</strong>!
+					¡Hola, <strong>@${user?.username?:command.username}</strong>!
 				</p>
 				<p>Sólamente te falta un paso para terminar con la registración
 					en la plataforma.</p>
@@ -51,6 +51,7 @@
 							${user.username}
 						</label>
 						<g:hiddenField name="username"  value="${user?.username?:command.username}"/>
+						provider ${provider?:command.oauthProvider}
 						<g:hiddenField name="oauthProvider"  value="${provider?:command.oauthProvider}"/>
 						
 						<div class="controls">

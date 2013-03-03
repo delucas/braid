@@ -19,7 +19,8 @@ class AuthController {
         def callbackParams = [provider: params.provider]
         def callback = "${createLink(action: 'callback', absolute: 'true', params: callbackParams)}"
         def authInfo = service.getAuthInfo(callback)
-
+		
+		
         session["${params.provider}_authInfo"] = authInfo
 
         redirect(url: authInfo.authUrl)
@@ -38,6 +39,7 @@ class AuthController {
         session["${params.provider}_authToken"] = accessToken
 
         def profile = service.getProfile(authInfo.service, accessToken)
+		println "nombre de auth profile: ${params.provider}_profile (Auth)"
         session["${params.provider}_profile"] = profile
 
         def uid = profile.uid
