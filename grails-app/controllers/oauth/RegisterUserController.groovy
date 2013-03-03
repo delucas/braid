@@ -3,8 +3,11 @@ package oauth
 import org.springframework.security.authentication.BadCredentialsException
 
 import security.SpringSecuritySigninService
+import braid.Course
+import braid.RegistrationCommand
 import braid.Role
 import braid.User
+import braid.UserCourse
 import braid.UserRole
 
 class RegisterUserController {
@@ -50,5 +53,48 @@ class RegisterUserController {
 
 		redirect (controller:'home', action:'announcements')
     }
+	
+	
+	def finishRegistration(RegistrationCommand command) {
+		
+		
+		if (command.validate()) {
+			
+			
+			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
+			def originalUrl = session["${user.oauthProvider}_originalUrl"]
+	
+			if (!profile || !session["${user.oauthProvider}_authToken"]) {
+				log.warn("No profile or authToken found")
+				throw new BadCredentialsException("No profile or authToken found")
+			}
+	
+			def theUser = new User()
+			theUser.password = new Date().time.toString()
+			theUser.name = command.name
+			theUser.dni = command.dni
+			theUser.username = command.username
+			theUser.oauthId = profile.uid
+			theUser.avatarUrl = profile.picture
+			log.error("url del avatar ${profile.picture}")
+			theUser.save(failOnError: true)
+			
+			
+			def jarjar = Role.findByAuthority('JAR_JAR')
+	
+			UserRole.create(theUser, jarjar, true)
+			springSecuritySigninService.signIn(theUser)
+			
+			
+			def theCourse = Course.get(command.courseId)
+			
+			UserCourse.create(theUser, theCourse)
+			theUser.save(flush:true)
+			
+			redirect(action:'announcements')
+		} else {
+			render view:'registration', model: [command: command]
+		}
+	}
 
 }
