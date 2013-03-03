@@ -43,7 +43,7 @@ class AuthController {
         session["${params.provider}_profile"] = profile
 
         def uid = profile.uid
-		log.error("$profile.avatarUrl")
+		log.error("$profile.picture")
 		log.error("$profile")
         User user = User.findByOauthIdAndOauthProvider(uid, params.provider)
 
