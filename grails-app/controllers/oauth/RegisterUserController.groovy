@@ -36,9 +36,7 @@ class RegisterUserController {
 		if (command.validate()) {
 			
 			
-			log.error("nombre de auth profile: ${params.oauthProvider}_profile (register)")
 			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
-			def originalUrl = session["${params.oauthProvider}_originalUrl"]
 	
 			if (!profile || !session["${params.oauthProvider}_authToken"]) {
 				log.warn("No profile or authToken found")

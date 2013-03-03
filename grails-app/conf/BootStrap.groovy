@@ -29,7 +29,7 @@ class BootStrap {
 //			fixtureLoader.include('courseFixtures')
 //			fixtureLoader.load('questionFixtures')
 //			fixtureLoader.load('announcementFixtures')
-			fixtureLoader.load('homeworkFixtures')
+			//fixtureLoader.load('homeworkFixtures')
 		}
 		fixtureLoader.load('homeworkFixtures')
     }

@@ -33,11 +33,6 @@ class GithubAuthService extends GrailsOAuthService {
         def response = request.send()
 
         def user = JSON.parse(response.body)
-		user.properties.each { prop, val ->
-			
-			log.error("$prop = $val")
-			println "$prop = $val"
-		}
-        new OAuthProfile(username: user.login, uid: user.id, email: user.email)
+        new OAuthProfile(username: user.login, uid: user.id, email: user.email,picture:user.picture)
     }
 }

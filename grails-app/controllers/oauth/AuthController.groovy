@@ -1,5 +1,6 @@
 package oauth
 
+import grails.util.GrailsUtil
 import security.SpringSecuritySigninService
 import braid.User
 
@@ -9,21 +10,28 @@ class AuthController {
     SpringSecuritySigninService springSecuritySigninService
 
     def signin = {
-        GrailsOAuthService service = resolveService(params.provider)
-        if (!service) {
-            redirect(url: '/')
-        }
-
-        session["${params.provider}_originalUrl"] = params.originalUrl
-
-        def callbackParams = [provider: params.provider]
-        def callback = "${createLink(action: 'callback', absolute: 'true', params: callbackParams)}"
-        def authInfo = service.getAuthInfo(callback)
 		
-		
-        session["${params.provider}_authInfo"] = authInfo
-
-        redirect(url: authInfo.authUrl)
+		if (GrailsUtil.environment == 'development') {
+			
+			redirect(controller:'githubMock')
+			
+		}else{
+	        GrailsOAuthService service = resolveService(params.provider)
+	        if (!service) {
+	            redirect(url: '/')
+	        }
+	
+	        session["${params.provider}_originalUrl"] = params.originalUrl
+	
+	        def callbackParams = [provider: params.provider]
+	        def callback = "${createLink(action: 'callback', absolute: 'true', params: callbackParams)}"
+	        def authInfo = service.getAuthInfo(callback)
+			
+			
+	        session["${params.provider}_authInfo"] = authInfo
+	
+	        redirect(url: authInfo.authUrl)
+		}
     }
 
     def callback = {
