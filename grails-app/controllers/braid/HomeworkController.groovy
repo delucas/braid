@@ -78,7 +78,8 @@ class HomeworkController {
 				homeworkSolution: homeworkSolution,
 				alreadySolved: homeworkSolution != null,
 				course: courseService.currentCourse,
-				now: dateService.currentTime
+				now: dateService.currentTime,
+				padawan: currentUser.hasRole('PADAWAN')
 			)
 		
 		render view: 'showIfPadawan', model: [presenter: presenter]
@@ -90,7 +91,8 @@ class HomeworkController {
 				totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
 				homework: homework,
 				solutionsUpToDate: homeworkService.findAllByHomework(homework),
-				now: dateService.currentTime
+				now: dateService.currentTime,
+				padawan: false
 			)
 		
 		render view: 'showIfJedi', model: [presenter: presenter]

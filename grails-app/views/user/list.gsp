@@ -38,7 +38,7 @@
 							${user.name}
 						</td>
 						<td>
-							<a href="http://www..github.com/${user.username}">
+							<a href="http://www.github.com/${user.username}">
 								${user.username}
 							</a>
 						</td>

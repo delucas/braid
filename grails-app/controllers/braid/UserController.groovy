@@ -9,7 +9,7 @@ class UserController {
 	def profile(Long userId) {
 		User user = userService.currentUser
 		
-		if(user.hasRole('JEDI')) {
+		if(user.hasRole('JEDI') || user.hasRole('YODA')) {
 			user = User.get(userId)?:user
 		}
 		
