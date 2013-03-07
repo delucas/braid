@@ -101,15 +101,15 @@ class HomeworkController {
 		
 		def homework = Homework.get(homeworkId)
 		def course = courseService.currentCourse
+		def currentUser = userService.currentUser
 		
 		if (!homework.outOfDate) {
 			
 			if (command.validate()) {
-				def user = userService.currentUser
 				
 				def solution = command.toHomeworkSolution()
 				solution.homework = homework
-				solution.user = user
+				solution.user = currentUser
 				solution.dateCreated = dateService.currentTime
 				
 				solution.save(flush: true)
@@ -123,7 +123,8 @@ class HomeworkController {
 						homeworkSolution: command,
 						alreadySolved: false,
 						course: course,
-						now: dateService.currentTime
+						now: dateService.currentTime,
+						padawan: currentUser.hasRole('PADAWAN')
 					)
 				render view:'showIfPadawan', model: [presenter: presenter]
 			}

@@ -21,14 +21,20 @@
 		
 		<homework:wording homework="${homework}"/>
 		
-		<homework:solution solution="${homeworkSolution}"/>
-		
-		<div class="well">
-			<legend>Feedback</legend>
-			<div id="previewArea" class="well preview md">
-				<markdown:renderHtml></markdown:renderHtml>
+		<div class="row-fluid">
+			<div class="span6">
+				<homework:solution solution="${homeworkSolution}"/>
 			</div>
 			
+			<div class="span6">
+				<div class="well">
+					<legend>Feedback</legend>
+					<div id="previewArea" class="well preview md">
+						<markdown:renderHtml></markdown:renderHtml>
+					</div>
+					
+				</div>
+			</div>
 		</div>
 		
 		<div class="well">

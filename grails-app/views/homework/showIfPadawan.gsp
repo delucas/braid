@@ -37,42 +37,49 @@
 		<braid:alertError bean="${presenter.homeworkSolution}"/>
 
 		<homework:wording homework="${presenter.homework}"/>
-				
-		<div class="well">
-			<legend>Mi respuesta</legend>
-			<div id="previewArea" class="well preview md">
-				<markdown:renderHtml>${presenter.homeworkSolution?.text}</markdown:renderHtml>
-			</div>
-			
-		</div>
-		
-		<homework:feedback solution="${presenter.homeworkSolution}"/>
-		
-		<g:if test="${presenter.canSolve()}">
-			<div class="well">
-				<g:form action="solve">
-				
-					<g:hiddenField name="homeworkId" value="${presenter.homework.id}"/>
-					<g:hiddenField name="homeworkSolutionId" value="${presenter.homeworkSolution?.id}"/>
-				
-					<braid:textArea bean="${presenter.homeworkSolution}" beanField="text" name="text" id="solution"/>
-					
-					<div class="row-fluid">
-						<span class="span6">
-							<label class="checkbox ${hasErrors(bean:presenter.homeworkSolution, field:'honorCode', 'error')}" for="honorCode">
-						      <input id="honorCode" type="checkbox" name="honorCode"> Declaro estar de acuerdo con el 
-						      <a href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
-						    </label>
-						</span>
-						<span class="span6">
-							<g:submitButton id="submitHomework" class="btn btn-small btn-primary pull-right" name="submit" value="Responder"/>
-						</span>
+
+		<div class="row-fluid">
+			<div class="span6">				
+				<div class="well">
+					<legend>Mi respuesta</legend>
+					<div id="previewArea" class="well preview md">
+						<markdown:renderHtml>${presenter.homeworkSolution?.text}</markdown:renderHtml>
 					</div>
 					
-				</g:form>
-				
+				</div>
 			</div>
-		</g:if>
+			
+			<div class="span6">
+				<homework:feedback solution="${presenter.homeworkSolution}"/>
+				
+				<g:if test="${presenter.canSolve()}">
+					<div class="well">
+						<g:form action="solve">
+						
+							<g:hiddenField name="homeworkId" value="${presenter.homework.id}"/>
+							<g:hiddenField name="homeworkSolutionId" value="${presenter.homeworkSolution?.id}"/>
+						
+							<braid:textArea bean="${presenter.homeworkSolution}" beanField="text" name="text" id="solution"/>
+							
+							<div class="row-fluid">
+								<span class="span6">
+									<label class="checkbox ${hasErrors(bean:presenter.homeworkSolution, field:'honorCode', 'error')}" for="honorCode">
+								      <input id="honorCode" type="checkbox" name="honorCode"> Declaro estar de acuerdo con el 
+								      <a href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
+								    </label>
+								</span>
+								<span class="span6">
+									<g:submitButton id="submitHomework" class="btn btn-small btn-primary pull-right" name="submit" value="Responder"/>
+								</span>
+							</div>
+							
+						</g:form>
+						
+					</div>
+				</g:if>
+			</div>
+		</div>
+		
 
 	</div>
 
