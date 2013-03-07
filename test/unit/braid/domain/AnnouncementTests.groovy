@@ -22,7 +22,6 @@ class AnnouncementTests {
 		mockForConstraintsTests(Announcement, [announcement])
 		
 		assert !announcement.validate()
-		def p = announcement.errors['text']
 		assert 'nullable' == announcement.errors['text']
 		assert 'nullable' == announcement.errors['announcer']
 		assert 'nullable' == announcement.errors['course']

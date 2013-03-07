@@ -19,7 +19,7 @@ class AssignmentTagLib {
 			out << '</section>'
 			
 		} catch (UnknownHostException e) {
-			println e
+		
 			out << '<div class="alert alert-error">'
 			out << '	<strong>Oops! Parece que algo no salió como se esperaba...</strong>'
 			out << '	<p>No se pudo cargar la consigna desde el repositorio. Probablemente Github se encuentre caído.</p>'

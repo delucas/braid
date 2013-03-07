@@ -1,8 +1,6 @@
 package braid
 
-import java.util.Date;
-
-import grails.validation.Validateable;
+import grails.validation.Validateable
 
 @Validateable
 class HomeworkCommand {

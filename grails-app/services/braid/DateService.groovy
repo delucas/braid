@@ -1,7 +1,6 @@
 package braid
 
 import groovy.time.TimeCategory
-import groovy.time.TimeDuration
 
 class DateService {
 

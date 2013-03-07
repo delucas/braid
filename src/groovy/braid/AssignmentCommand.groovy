@@ -1,10 +1,6 @@
 package braid
 
-import java.util.Date;
-
-import braid.github.Repository;
-
-import grails.validation.Validateable;
+import grails.validation.Validateable
 
 @Validateable
 class AssignmentCommand {
