@@ -9,7 +9,15 @@
 <body>
 
 	<div class="span12">
-		<legend> Trabajos prácticos </legend>
+		<legend> Trabajos prácticos 
+		
+			<sec:ifAllGranted roles="JEDI">
+				<g:link controller="assignment" action="create" class="btn btn-success pull-right">
+					Nuevo trabajo práctico
+				</g:link>
+			</sec:ifAllGranted>
+		
+		</legend>
 
 		<div class="alert alert-info">
 			<strong>Sobre las fechas de entrega</strong>

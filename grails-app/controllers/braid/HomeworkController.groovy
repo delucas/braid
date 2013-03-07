@@ -91,8 +91,7 @@ class HomeworkController {
 				totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
 				homework: homework,
 				solutionsUpToDate: homeworkService.findAllByHomework(homework),
-				now: dateService.currentTime,
-				padawan: false
+				now: dateService.currentTime
 			)
 		
 		render view: 'showIfJedi', model: [presenter: presenter]

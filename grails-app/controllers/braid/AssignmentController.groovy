@@ -1,5 +1,6 @@
 package braid
 
+import braid.github.Repository
 import braid.presenters.AssignmentPresenter
 
 class AssignmentController {
@@ -14,6 +15,42 @@ class AssignmentController {
 		def assignments = Assignment.findAllByCourse(currentCourse,[sort: 'dueDate'])
 		
 		model: [assignments: assignments]
+	}
+	
+	def create() {
+		
+	}
+	
+	def save(AssignmentCommand command) {
+		
+		if (command.validate()) {
+	
+			def assignment = new Assignment()
+			assignment.title = command.title
+			assignment.repo = createRepository(command.repoName)
+			assignment.dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+			assignment.course = courseService.currentCourse
+			
+			assignment.save(flush: true)
+			
+			flash.message = 'Se ha creado correctamente el trabajo práctico'
+			redirect(action:'list')
+			
+		} else {
+			render view:'create', model: [command: command]
+		}
+		
+	}
+	
+	private def createRepository(String repoName) {
+		new Repository(user: 'tallerweb', name: repoName)
+	}
+	
+	private Date convertToUTC(Date dateInZone, TimeZone tz) {
+		// TODO: es esto REALMENTE necesario?
+		def cal = dateInZone.toCalendar()
+		cal.timeZone = tz
+		cal.time
 	}
 	
 	def show(Long id) {

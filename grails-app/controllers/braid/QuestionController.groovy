@@ -32,7 +32,7 @@ class QuestionController {
 	}
 		
     def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		params.max = Math.min(params.max ? params.int('max') : 5, 10)
 		
 		def course = courseService.currentCourse
 		def questions = Question.findAllByCourse(course, [max:params.max, offset:params.offset])

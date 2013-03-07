@@ -58,7 +58,7 @@
 		</div>
 		<div class="span8">
 			<button id="submitHomework" class="btn btn-small btn-primary pull-right">
-				Crear pregunta
+				Crear tarea
 			</button>
 		</div>
 
