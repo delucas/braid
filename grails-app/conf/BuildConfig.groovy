@@ -71,3 +71,15 @@ codenarc {
 }
 
 }
+
+coverage {
+	exclusions = [
+        '**/*TagLib*/**',
+		'**/ApplicationResources**',
+		"**/*CodeNarcRules*",
+		"**/*LoginController*",
+		"**/*LogoutController*",
+		"**/oauth/**",
+		"**/security/**"
+		]
+}
