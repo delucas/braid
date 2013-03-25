@@ -57,8 +57,8 @@
 							</td>
 							<td>
 								<div class="well">
-									<legend>Feedback</legend>
-									<markdown:renderHtml>${solution.feedback}</markdown:renderHtml>
+									<legend>Feedback <span class="badge">${solution.feedback?.score}</span></legend>
+									<markdown:renderHtml>${solution.feedback?.text}</markdown:renderHtml>
 								</div>
 							</td>
 						</tr>

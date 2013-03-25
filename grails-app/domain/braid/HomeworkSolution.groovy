@@ -4,10 +4,12 @@ class HomeworkSolution {
 
 	String text
 	Date dateCreated
-	String feedback
+	Feedback feedback
 	
 	User user
 	Homework homework
+	
+	static embedded = ['feedback']
 	
 	static constraints = {
 		feedback nullable: true
@@ -15,7 +17,6 @@ class HomeworkSolution {
 	
 	static mapping = {
 		text type: 'text'
-		feedback type: 'text'
 	}
 
 }

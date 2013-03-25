@@ -38,7 +38,7 @@
 		</div>
 		
 		<div class="well">
-			<g:form action="gradeDo">
+			<g:form elementId="gradeForm" action="gradeDo">
 			
 				<g:hiddenField name="homeworkSolutionId" value="${homeworkSolution.id}"/>
 			
@@ -52,7 +52,40 @@
 				</small>
 				<div class="row-fluid">
 					<div class="span12">
-						<g:submitButton id="submitFeedback" class="btn btn-small btn-primary pull-right" name="submit" value="Dar feedback"/>
+						<g:hiddenField name="score"/>
+
+						<div class="btn-group dropup pull-right">
+							<button class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown">
+								Dar feedback <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="submitter" data-feedback="3">
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										( 3 / 3 )
+									</a>
+								</li>
+								<li>
+									<a class="submitter" data-feedback="2">
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star-empty"></i>
+										( 2 / 3 )
+									</a>
+								</li>
+								<li>
+									<a class="submitter" data-feedback="1">
+										<i class="icon-star"></i>
+										<i class="icon-star-empty"></i>
+										<i class="icon-star-empty"></i>
+										( 1 / 3 )
+									</a>
+								</li>
+							</ul>
+						</div>
+
 					</div>
 				</div>
 				
@@ -72,6 +105,11 @@
 			    $preview.html(convert($textarea.val()));
 		  }).trigger('keyup');
 
+		  $(".submitter").click(function(){
+			  $("#score").val($(this).attr('data-feedback'))
+			  $(this).parents('form:first').submit()
+		  });
+		  
 		});
 	</script>
 

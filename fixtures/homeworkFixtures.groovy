@@ -1,5 +1,6 @@
 import braid.Assignment
 import braid.AssignmentSolution
+import braid.Feedback;
 import braid.Homework
 import braid.HomeworkSolution
 import braid.github.Repository
@@ -14,9 +15,13 @@ fixture{
 		dueDate: new Date() - 10,
 		course: taller)
 	
+	fb1(Feedback,
+		text: '''Es una buena visión, pero **no** es correcta.''',
+		score: 1)
+	
 	hws1(HomeworkSolution,
 		text: '''Esta es mi solución para la pregunta de SRP: Es lo mejor que me pasó en la vida!''',
-		feedback: '''Es una buena visión, pero **no** es correcta.''',
+		feedback: fb1,
 		dateCreated: new Date() - 11,
 		user: anakin,
 		homework: hw1)

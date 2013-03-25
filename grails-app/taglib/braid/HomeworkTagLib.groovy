@@ -39,7 +39,7 @@ class HomeworkTagLib {
 			out << '<div class="well">'
 			out << '	<legend>Feedback</legend>'
 			out << '	<div class="well md">'
-			out << markdown.renderHtml(){ solution.feedback }
+			out << markdown.renderHtml(){ solution.feedback.text }
 			out << '	</div>'
 			out << '</div>'
 		}
