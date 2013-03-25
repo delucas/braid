@@ -1,5 +1,7 @@
 package braid
 
+import grails.validation.Validateable
+import groovy.json.JsonSlurper
 import braid.github.Repository
 import braid.presenters.AssignmentPresenter
 
@@ -115,4 +117,33 @@ class AssignmentController {
 		[solution: solution]
 	}
 	
+	def saveFeedback(String json) {
+		// TODO: debería venir con algún token
+		def feedbackData = new JsonSlurper().parseText( json )
+		println feedbackData
+		
+//		def feedback = new Feedback(score: feedbackData.score, text: feedbackData.text)
+		
+	}
+	
 }
+
+
+@Validateable
+class AssignmentCommand {
+
+	def dateService
+	
+	String title
+	String repoName
+	Date dueDate
+		
+	static constraints = {
+		title blank: false
+		repoName blank: false
+		dueDate validator: { val ->
+			val.after(dateService.currentTime)
+		}
+	}
+}
+

@@ -34,7 +34,7 @@
 		</g:if>
 		
 		<g:if test="${presenter.finishedGrading()}">
-			<table class="table table-striped table-hover">
+			<table id="scores" class="table table-striped table-hover">
 				<thead>
 					<th>Fecha de entrega</th>
 					<th>Estudiante</th>
@@ -42,7 +42,7 @@
 				<tbody>
 				
 					<g:each in="${presenter.solutionsUpToDate}" var="solution">
-						<tr>
+						<tr class="score">
 							<td width="50%">
 								<g:formatDate date="${solution.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/>
 							</td>
@@ -73,7 +73,7 @@
 	<script type="text/javascript">
 
 		$(function(){
-			$("tr").on('click', function(){
+			$("tr.score").on('click', function(){
 				$(".data").addClass('hidden')
 				$(this).parent().children().removeClass('hidden')
 			});

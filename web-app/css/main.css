@@ -97,3 +97,8 @@ li.active > a:hover {
 div.datepicker select {
 	width: 90px;
 }
+
+/* Scores table */
+table tbody tr.score {
+	cursor: pointer;
+}

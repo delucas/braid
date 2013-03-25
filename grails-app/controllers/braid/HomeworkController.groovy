@@ -1,5 +1,9 @@
 package braid
 
+import grails.validation.Validateable;
+
+import java.util.Date;
+
 import braid.presenters.JediHomeworkPresenter
 import braid.presenters.PadawanHomeworkPresenter
 
@@ -149,13 +153,33 @@ class HomeworkController {
 		
 	}
 	
-	def gradeDo(Long homeworkSolutionId, String feedback) {
+	def gradeDo(Long homeworkSolutionId, String feedback, Integer score) {
 		
 		def homeworkSolution = HomeworkSolution.get(homeworkSolutionId)
-		homeworkSolution.feedback = feedback
+		homeworkSolution.feedback = new Feedback(text: feedback, score: score)
 		homeworkSolution.save(flush: true)
 		
 		redirect action:'grade', params: [homeworkId: homeworkSolution.homework.id]
+	}
+	
+}
+
+
+@Validateable
+class HomeworkCommand {
+
+	def dateService
+	
+	String title
+	String wording
+	Date dueDate
+	
+	static constraints = {
+		title blank: false
+		wording blank: false
+		dueDate validator: { val ->
+			val.after(dateService.currentTime)
+		}
 	}
 	
 }
