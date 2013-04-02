@@ -33,7 +33,7 @@ body {
 			</g:link>
 		</div>
 		<hr>
-		<div class="pull-right">© uno21 2012-2013</div>
+		<div class="pull-right">© uno21 2011-<g:formatDate format="yyyy" date="${new Date()}"/></div>
 	</div>
 </body>
 </html>

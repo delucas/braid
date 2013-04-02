@@ -80,6 +80,9 @@ coverage {
 		"**/*LoginController*",
 		"**/*LogoutController*",
 		"**/oauth/**",
-		"**/security/**"
+		"**/security/**",
+		"**/*User*",
+		"**/*Role*",
+		"**/*UserRole*"
 		]
 }

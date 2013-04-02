@@ -32,8 +32,10 @@
 		
 		<g:if test="${!presenter.canSubmit()}">
 			<braid:alertInfo title="Info">
-				Por favor, espera que graduemos tu última respuesta para poder
-				remitir una nueva.
+				<p>Por favor, espera que graduemos tu última respuesta para poder
+				remitir una nueva. En caso de error, podrás reintentar en unos minutos.</p>
+				<p>Tu rol para participar en esta actividad debe ser <span class="label label-info">PADAWAN</span>.
+				En caso contrario deberás esperar por la aprobación de un docente.</p>
 			</braid:alertInfo>
 		</g:if>
 		

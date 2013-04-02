@@ -76,7 +76,8 @@ class AssignmentController {
 			assignment: assignment,
 			course: courseService.currentCourse,
 			now: dateService.currentTime,
-			solutions: solutions
+			solutions: solutions,
+			padawan: userService.currentUser.hasRole('PADAWAN')
 			)
 	}
 	
@@ -127,7 +128,6 @@ class AssignmentController {
 	}
 	
 }
-
 
 @Validateable
 class AssignmentCommand {

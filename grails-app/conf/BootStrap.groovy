@@ -30,8 +30,8 @@ class BootStrap {
 //			fixtureLoader.load('questionFixtures')
 //			fixtureLoader.load('announcementFixtures')
 			//fixtureLoader.load('homeworkFixtures')
+			fixtureLoader.load('homeworkFixtures')
 		}
-		fixtureLoader.load('homeworkFixtures')
     }
     def destroy = {
     }
