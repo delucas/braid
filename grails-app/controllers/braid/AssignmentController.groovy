@@ -10,7 +10,9 @@ class AssignmentController {
 	def userService
 	def courseService
 	def dateService
-
+	
+	def jmsService
+	
     def list() {
 		
 		def currentCourse = courseService.currentCourse
@@ -97,7 +99,7 @@ class AssignmentController {
 				
 				solution.save(flush: true)
 				
-				// TODO: enviar a graduación!
+				jmsService.send(queue: 'assignment.grader', solution.id)
 				
 				flash.message = 'Tu respuesta se ha guardado correctamente. Recordá que podés reentregar tantas veces como quieras dentro del período de vigencia.'
 				redirect action: 'show', params: [id: assignmentId]

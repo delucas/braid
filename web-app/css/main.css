@@ -102,3 +102,7 @@ div.datepicker select {
 table tbody tr.score {
 	cursor: pointer;
 }
+
+pre {
+	font-size: 12px;
+}

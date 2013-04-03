@@ -5,9 +5,6 @@ import groovy.time.TimeCategory
 import spock.lang.Specification
 import braid.AssignmentSolution
 
-/**
- * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
- */
 @TestMixin(GrailsUnitTestMixin)
 class AssignmentPresenterSpec extends Specification {
 	

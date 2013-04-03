@@ -62,10 +62,18 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+		grader{
+			host='localhost'
+			port=4242
+		}
     }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+		grader{
+			host=System.env.GRADER_IP
+			port=System.env.GRADER_PORT
+		}
     }
 }
 
@@ -101,5 +109,5 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 
 auth.providers = [github: 'github']
 
-auth.github.key = "81579d5f148d474d091a"	
-auth.github.secret = "14d723746dff47a9a6c5c79789b8ec0893e27ef9"
+auth.github.key = System.env.GITHUB_KEY
+auth.github.secret = System.env.GITHUB_SECRET
