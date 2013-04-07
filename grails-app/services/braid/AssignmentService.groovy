@@ -1,53 +1,22 @@
 package braid
 
 import grails.converters.JSON
-import grails.plugin.jms.*
 
 class AssignmentService {
 
 	static transactional = true
-	static exposes = ['jms']
 	def grailsApplication
 
-	@Queue(name='assignment.grader')
-	def onMessage(assignmentSolutionId) {
-		grade(assignmentSolutionId)
-	}
+	static rabbitQueue = 'alreadyGradedQueue'
 
+	void handleMessage(message) {
+		def returnedMap = JSON.parse(new String(message))
 
-	def grade(Long assignmentSolutionId){
-
-		def solution = AssignmentSolution.get(assignmentSolutionId)
-
-		def map = [:]
-		map.put('githubUser', solution.user.username)
-		map.put('nombreTarea', solution.assignment.title)
-
-		def correcciones
-		def s = crearSocket()
-
-		s.withStreams { input, output ->
-			output << (map as JSON)
-			output << '\n'
-			correcciones = input.newReader().readLine()
-		}
-		s.close()
-
-		def returnedMap = JSON.parse(correcciones)
+		AssignmentSolution solution = AssignmentSolution.get(returnedMap.get('solutionId') as Long)
 
 		solution.feedback = returnedMap.get('testDetail')
-		solution.score = returnedMap.get('testScore').get('score') as Double
+		solution.score = returnedMap.get('testScore')
 
 		solution.save(flush: true)
-
-	}
-
-	private crearSocket(){
-
-		def graderConf = grailsApplication.config.grader
-		def graderHost = graderConf.host
-		def graderPort = graderConf.port
-
-		new Socket(graderHost, graderPort);
 	}
 }

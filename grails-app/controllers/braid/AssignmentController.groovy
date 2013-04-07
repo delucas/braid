@@ -1,5 +1,6 @@
 package braid
 
+import grails.converters.JSON
 import grails.validation.Validateable
 import groovy.json.JsonSlurper
 import braid.github.Repository
@@ -7,11 +8,12 @@ import braid.presenters.AssignmentPresenter
 
 class AssignmentController {
 
-	def userService
-	def courseService
 	def dateService
 	
-	def jmsService
+	def userService
+	def courseService
+	
+	def graderService
 	
     def list() {
 		
@@ -99,7 +101,7 @@ class AssignmentController {
 				
 				solution.save(flush: true)
 				
-				jmsService.send(queue: 'assignment.grader', solution.id)
+				graderService.send(solution)
 				
 				flash.message = 'Tu respuesta se ha guardado correctamente. Recordá que podés reentregar tantas veces como quieras dentro del período de vigencia.'
 				redirect action: 'show', params: [id: assignmentId]
