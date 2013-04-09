@@ -7,6 +7,10 @@ class Repository {
 	
 	static transients = ['readmeUrl', 'url', 'gitUrl']
 	
+	static mapping = {
+		user column: '`user`'
+	}
+	
 	def getUrl() {
 		"https://github.com/${user}/${name}"
 	}

@@ -36,6 +36,7 @@ grails.project.dependency.resolution = {
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
 		compile 'org.scribe:scribe:1.3.3'
+		runtime 'postgresql:postgresql:9.1-901.jdbc4'
 		
     }
 

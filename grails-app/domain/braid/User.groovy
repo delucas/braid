@@ -34,6 +34,7 @@ class User {
 
 	static mapping = {
 		password column: '`password`'
+		table 'braid_user'
 	}
 	
 	boolean hasRole(String authority) {
