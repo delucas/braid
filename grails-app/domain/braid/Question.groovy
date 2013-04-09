@@ -4,6 +4,7 @@ class Question {
 
 	String wording
 	Integer level
+	Integer position
 	
 	static belongsTo = [course: Course]
 	static hasMany = [tags: String]

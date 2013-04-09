@@ -6,7 +6,8 @@ class QuestionController {
 	def courseService
 
 	private getNextQuestionNumber(){
-		Question.executeQuery('select max(q.id) from Question q')[0] + 1 
+		def list = Question.executeQuery('select max(q.position) from Question q')
+		list ? [0] + 1 : 1 
 	}
 	
 	def create() {
@@ -20,6 +21,7 @@ class QuestionController {
 			def question = new Question()
 			question.wording = command.wording
 			question.level = command.level
+			question.position = nextQuestionNumber
 			question.tags = command.tags.split(',').collect { it -> it.trim() }
 			question.course = theCourse
 			question.save(flush:true)

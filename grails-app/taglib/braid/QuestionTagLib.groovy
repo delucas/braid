@@ -18,7 +18,7 @@ class QuestionTagLib {
 		out << '<div class="row-fluid">'
 		
 		out << '<div class="span3">'
-		out << "#${question.id} - "
+		out << "#${question.position} - "
 		stars.times {
 			out << '<i class="icon-star"></i>'
 		}

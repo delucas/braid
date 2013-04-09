@@ -56,11 +56,36 @@ class HomeController {
 		
 		model: [course: currentCourse]
 	}
-	
+
+	def saveSyllabus(String syllabus) {
+		
+		def currentCourse = courseService.currentCourse
+		
+		currentCourse.syllabus = syllabus
+		currentCourse.save(flush: true)
+		
+		flash.msg = 'Se ha modificado el Plan de Estudios'
+		
+		redirect(action: 'syllabus')
+	}
+		
 	def honorCode() {
+		
 		def currentCourse = courseService.currentCourse
 		
 		model: [course: currentCourse]
+	}
+	
+	def saveHonorCode(String honorCode) {
+		
+		def currentCourse = courseService.currentCourse
+		
+		currentCourse.honorCode = honorCode
+		currentCourse.save(flush: true)
+		
+		flash.msg = 'Se ha modificado el Código de Honor'
+		
+		redirect(action: 'honorCode')
 	}
 
 }
