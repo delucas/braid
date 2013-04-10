@@ -7,5 +7,9 @@ class Announcement {
 	Date dateCreated
 	
 	static belongsTo = [course: Course]
-	
+
+	static mapping = {
+		text type: 'text'
+	}
+		
 }
