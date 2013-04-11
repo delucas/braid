@@ -59,7 +59,11 @@ grails.project.dependency.resolution = {
 
 		compile ':fixtures:1.1'
 		compile ":markdown:1.0.0.RC1"
-		
+
+//		compile ":webxml:1.4.1"
+//		compile ':heroku:1.0.1'
+//		compile ':cloud-support:1.0.8'
+				
 		compile ":rabbitmq:1.0.0"
 				
 		runtime ":resources:1.2.RC2"

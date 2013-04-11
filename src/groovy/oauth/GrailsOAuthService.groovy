@@ -26,7 +26,7 @@ public abstract class GrailsOAuthService {
 
 }
 
-class AuthInfo {
+class AuthInfo implements Serializable {
     OAuthService service
     String authUrl
     Token requestToken
