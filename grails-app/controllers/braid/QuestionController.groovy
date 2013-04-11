@@ -7,7 +7,7 @@ class QuestionController {
 
 	private getNextQuestionNumber(){
 		def list = Question.executeQuery('select max(q.position) from Question q')
-		list ? [0] + 1 : 1 
+		list ? list[0] + 1 : 1 
 	}
 	
 	def create() {
