@@ -21,7 +21,7 @@ body {
 		<div class="hero-unit">
 			<div>
 				<h1>braid <small>/breɪd/</small></h1>
-				<p><strong>trenza.</strong> Conjunto de tres o más ramales que se entretejen, cruzándolos alternativamente</p>
+				<p><strong>trenza.</strong> Conjunto de tres o más ramales que se entretejen, cruzándolos alternativamente.</p>
 				<p>
 				Asegurate de tener una cuenta en <a href="http://www.github.com">
 						Github</a> para poder ingresar.

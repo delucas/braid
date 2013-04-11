@@ -136,7 +136,7 @@ class AssignmentController {
 @Validateable
 class AssignmentCommand {
 
-	def dateService
+//	def dateService
 	
 	String title
 	String repoName
@@ -146,7 +146,8 @@ class AssignmentCommand {
 		title blank: false
 		repoName blank: false
 		dueDate validator: { val ->
-			val.after(dateService.currentTime)
+//			val.after(dateService.currentTime)
+			val.after(new Date())
 		}
 	}
 }

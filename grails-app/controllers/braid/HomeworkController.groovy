@@ -168,7 +168,7 @@ class HomeworkController {
 @Validateable
 class HomeworkCommand {
 
-	def dateService
+//	def dateService
 	
 	String title
 	String wording
@@ -178,7 +178,8 @@ class HomeworkCommand {
 		title blank: false
 		wording blank: false
 		dueDate validator: { val ->
-			val.after(dateService.currentTime)
+//			val.after(dateService.currentTime)
+			val.after(new Date())
 		}
 	}
 	
