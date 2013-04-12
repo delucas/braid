@@ -54,7 +54,7 @@ class RegisterUserController {
 			theUser.save(failOnError: true)
 			
 			
-			def jarjar = Role.findByAuthority('JAR_JAR')
+			def jarjar = Role.findByAuthority('ROLE_JAR_JAR')
 	
 			UserRole.create(theUser, jarjar, true)
 			springSecuritySigninService.signIn(theUser)

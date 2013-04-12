@@ -14,7 +14,7 @@
 	<div class="span8">
 		<legend> Anuncios </legend>
 		
-		<sec:ifAnyGranted roles="YODA, JEDI">
+		<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
 			<div class="well">
 				<g:form controller="announcement" action="post">
 					<div class="row-fluid">

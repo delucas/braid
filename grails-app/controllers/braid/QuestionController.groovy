@@ -1,5 +1,7 @@
 package braid
 
+import grails.plugins.springsecurity.Secured
+
 
 class QuestionController {
 
@@ -9,11 +11,13 @@ class QuestionController {
 		def list = Question.executeQuery('select max(q.position) from Question q')
 		list ? list[0] + 1 : 1 
 	}
-	
+
+	@Secured(['ROLE_JEDI'])
 	def create() {
 		model: [nextQuestionNumber: nextQuestionNumber]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def save(QuestionCommand command) {
 		if (command.validate()) {
 			Course theCourse = courseService.currentCourse
@@ -33,6 +37,7 @@ class QuestionController {
 		}
 	}
 		
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 		params.max = Math.min(params.max ? params.int('max') : 5, 10)
 		
@@ -43,12 +48,14 @@ class QuestionController {
 		model: [questions: questions, questionsTotal: questionsTotal]
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def random() {
 		def course = courseService.currentCourse
 		def questions = Question.executeQuery('from Question q where q.course = :course order by rand()', [course: course, max: 1])
 		render view: 'list', model: [questions: questions]
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def exam(Integer size) {
 		def course = courseService.currentCourse
 		// TODO: algoritmo que nos brinde una lista equilibrada de puntos.

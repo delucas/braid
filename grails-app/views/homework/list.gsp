@@ -11,7 +11,7 @@
 	<div class="span12">
 		<legend> Tareas 
 		
-			<sec:ifAllGranted roles="JEDI">
+			<sec:ifAllGranted roles="ROLE_JEDI">
 				<g:link controller="homework" action="create" class="btn btn-success pull-right">
 					Nueva tarea
 				</g:link>

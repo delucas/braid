@@ -18,7 +18,7 @@
 			</div>
 		</g:if>
 		
-		<sec:ifAnyGranted roles="YODA, JEDI">
+		<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
 			<div class="well">
 				<g:form controller="home" action="saveSyllabus">
 					<div class="row-fluid">
@@ -38,7 +38,7 @@
 			</div>
 		</sec:ifAnyGranted>
 
-		<sec:ifAnyGranted roles="JAR_JAR, PADAWAN">
+		<sec:ifAnyGranted roles="ROLE_JAR_JAR, ROLE_PADAWAN">
 
 			<div class="syllabus md">
 				<markdown:renderHtml>${course.syllabus}</markdown:renderHtml>

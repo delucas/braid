@@ -4,6 +4,14 @@ class LabelTagLib {
 
 	static namespace = 'braid'
 	
+	def roleLabel = { attrs ->
+		
+		def role = attrs.role
+		
+		out << "<span class='label label-info'>${role.replaceAll('ROLE_','')}</span>"
+		
+	}
+	
 	def statusHomework = { attrs ->
 		
 		def solved = attrs.solved

@@ -1,15 +1,18 @@
 package braid
 
+import grails.plugins.springsecurity.Secured
+
 
 class UserController {
 
 	def userService
 	def courseService
-	
+
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def profile(Long userId) {
 		User user = userService.currentUser
 		
-		if(user.hasRole('JEDI') || user.hasRole('YODA')) {
+		if(user.hasRole('ROLE_JEDI') || user.hasRole('ROLE_YODA')) {
 			user = User.get(userId)?:user
 		}
 		
@@ -17,6 +20,7 @@ class UserController {
 		
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI'])
     def list() {
 		
     	def me = userService.currentUser
@@ -24,7 +28,7 @@ class UserController {
 		
 		def users = findStudentsApprovedByCourse(course)
 		
-		if(me.hasRole('YODA')) {
+		if(me.hasRole('ROLE_YODA')) {
 			users = User.list()
 		}
 		
@@ -43,9 +47,10 @@ class UserController {
 		UserCourse.executeQuery("select uc.user from UserCourse uc, User u, UserRole ur, Role r " +
 			"where uc.user = u and ur.user = u and ur.role = r " +
 			"and r.authority in(:roles) and uc.course = :course and uc.approved = :approved",
-			[roles: ['PADAWAN', 'JAR_JAR'], course: course, approved: approved])
+			[roles: ['ROLE_PADAWAN', 'ROLE_JAR_JAR'], course: course, approved: approved])
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def pending() {
 
 		def course = courseService.currentCourse
@@ -59,6 +64,7 @@ class UserController {
 		render view: 'list', model: [users: users.sort {a,b -> a.name <=> b.name}]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def approve(Long userId) {
 		
 		def user = User.get(userId)
@@ -68,15 +74,16 @@ class UserController {
 		userCourse.approved = true
 		userCourse.save(flush: true)
 		
-		def jarjar = Role.findByAuthority('JAR_JAR')
+		def jarjar = Role.findByAuthority('ROLE_JAR_JAR')
 		UserRole.remove(user, jarjar, true)
 
-		def padawan = Role.findByAuthority('PADAWAN')
+		def padawan = Role.findByAuthority('ROLE_PADAWAN')
 		UserRole.create(user, padawan, true)
 		
 		redirect(action:'pending')
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def reject(Long userId) {
 		
 		def user = User.get(userId)

@@ -1,5 +1,7 @@
 package braid
 
+import grails.plugins.springsecurity.Secured;
+
 class HomeController {
 
 	def userService
@@ -30,6 +32,7 @@ class HomeController {
 		}
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def announcements() {
 		
 		def course = courseService.currentCourse
@@ -49,7 +52,8 @@ class HomeController {
 		
 		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
 	}
-	
+
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def syllabus() {
 		
 		def currentCourse = courseService.currentCourse
@@ -57,6 +61,7 @@ class HomeController {
 		model: [course: currentCourse]
 	}
 
+	@Secured(['ROLE_JEDI'])
 	def saveSyllabus(String syllabus) {
 		
 		def currentCourse = courseService.currentCourse
@@ -68,7 +73,8 @@ class HomeController {
 		
 		redirect(action: 'syllabus')
 	}
-		
+	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def honorCode() {
 		
 		def currentCourse = courseService.currentCourse
@@ -76,6 +82,7 @@ class HomeController {
 		model: [course: currentCourse]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def saveHonorCode(String honorCode) {
 		
 		def currentCourse = courseService.currentCourse

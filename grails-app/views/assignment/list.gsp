@@ -11,7 +11,7 @@
 	<div class="span12">
 		<legend> Trabajos prácticos 
 		
-			<sec:ifAllGranted roles="JEDI">
+			<sec:ifAllGranted roles="ROLE_JEDI">
 				<g:link controller="assignment" action="create" class="btn btn-success pull-right">
 					Nuevo trabajo práctico
 				</g:link>

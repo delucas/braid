@@ -41,7 +41,7 @@ class QuestionTagLib {
 		out << '</div>'
 		
 //		TODO: habilitar cuando se defina política de edición de preguntas
-//		if (userService.currentUser.hasRole('JEDI')) {
+//		if (userService.currentUser.hasRole('ROLE_JEDI')) {
 //			
 //			out << '<div class="row-fluid"><div class="pull-right">'
 //			

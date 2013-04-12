@@ -21,7 +21,7 @@
 <%--						action="random">Pregunta aleatoria</g:link></li>--%>
 <%--				<li class="${(actionName=='exam')?'active':''}"><g:link--%>
 <%--						action="exam">Modelo de examen</g:link></li>--%>
-				<sec:ifAnyGranted roles="JEDI">
+				<sec:ifAnyGranted roles="ROLE_JEDI">
 					<li class="pull-right ${(actionName=='create')?'active':''}"><g:link
 							action="create">Nueva pregunta</g:link></li>
 				</sec:ifAnyGranted>

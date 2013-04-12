@@ -30,10 +30,10 @@ fixture{
 		password:'jarjar',
 		enabled: true)
 	
-		rolYoda(Role, authority: 'YODA')
-		rolJedi(Role, authority: 'JEDI')
-		rolPadawan(Role, authority: 'PADAWAN')
-		rolJarJar(Role, authority: 'JAR_JAR')
+		rolYoda(Role, authority: 'ROLE_YODA')
+		rolJedi(Role, authority: 'ROLE_JEDI')
+		rolPadawan(Role, authority: 'ROLE_PADAWAN')
+		rolJarJar(Role, authority: 'ROLE_JAR_JAR')
 	
 		ur1(UserRole, user: yoda, role: rolYoda)
 		ur2(UserRole, user: obi, role: rolJedi)

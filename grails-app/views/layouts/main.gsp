@@ -57,7 +57,7 @@
 	                          		Mi perfil
 	                          	</g:link>
 	                          </li>
-	                          <sec:ifAllGranted roles="JEDI">
+	                          <sec:ifAllGranted roles="ROLE_JEDI">
 		                          <li class="nav-header">Opciones de profesor</li>
 		                          <li>
 		                          	<g:link controller="user" action="pending">
@@ -65,7 +65,7 @@
 		                          	</g:link>
 		                          </li>
 	                          </sec:ifAllGranted>
-	                          <sec:ifAllGranted roles="YODA">
+	                          <sec:ifAllGranted roles="ROLE_YODA">
 		                          <li class="nav-header">Opciones de administrador</li>
 		                          <li><a href="javascript:alert('tbd')">Nombrar profesores</a></li>
 		                          <li><a href="javascript:alert('tbd')">Crear cursos</a></li>
@@ -131,7 +131,7 @@
 						</g:link>
 					</li>
 					
-					<sec:ifAnyGranted roles="YODA, JEDI">
+					<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
 						<li class="${pageProperty(name:'page.students')}">
 							<g:link class="bbnotgood" controller="user" action="list">
 								Estudiantes

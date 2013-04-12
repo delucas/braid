@@ -1,6 +1,6 @@
 package braid
 
-import grails.converters.JSON
+import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
 import groovy.json.JsonSlurper
 import braid.github.Repository
@@ -14,7 +14,8 @@ class AssignmentController {
 	def courseService
 	
 	def graderService
-	
+
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 		
 		def currentCourse = courseService.currentCourse
@@ -23,10 +24,12 @@ class AssignmentController {
 		model: [assignments: assignments]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def create() {
 		
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def save(AssignmentCommand command) {
 		
 		if (command.validate()) {
@@ -59,6 +62,7 @@ class AssignmentController {
 		cal.time
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show(Long id) {
 		
 		def assignment = Assignment.get(id)
@@ -81,10 +85,11 @@ class AssignmentController {
 			course: courseService.currentCourse,
 			now: dateService.currentTime,
 			solutions: solutions,
-			padawan: userService.currentUser.hasRole('PADAWAN')
+			padawan: userService.currentUser.hasRole('ROLE_PADAWAN')
 			)
 	}
 	
+	@Secured(['ROLE_PADAWAN'])
 	def solve(Long assignmentId, AssignmentSolutionCommand command) {
 		
 		def assignment = Assignment.get(assignmentId)
@@ -117,11 +122,13 @@ class AssignmentController {
 		}
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def feedback() {
 		def solution = AssignmentSolution.get(params.id)
 		[solution: solution]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def saveFeedback(String json) {
 		// TODO: debería venir con algún token
 		def feedbackData = new JsonSlurper().parseText( json )

@@ -1,9 +1,7 @@
 package braid
 
-import grails.validation.Validateable;
-
-import java.util.Date;
-
+import grails.plugins.springsecurity.Secured
+import grails.validation.Validateable
 import braid.presenters.JediHomeworkPresenter
 import braid.presenters.PadawanHomeworkPresenter
 
@@ -15,6 +13,7 @@ class HomeworkController {
 	def homeworkService
 	def dateService
 
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 		
 		def currentCourse = courseService.currentCourse
@@ -23,10 +22,12 @@ class HomeworkController {
 		model: [homeworks: homeworks]
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def create() {
 		
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def save(HomeworkCommand command) {
 		
 		if (command.validate()) {
@@ -55,6 +56,7 @@ class HomeworkController {
 		cal.time
 	}
 	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show(Long id) {
 		
 		def user = userService.currentUser
@@ -64,7 +66,7 @@ class HomeworkController {
 		// role podemos pedir user.getRoleInCourse(course)
 		// y mejorar esto por una llamada dinámica.
 		
-		if (user.hasRole('JEDI')) {
+		if (user.hasRole('ROLE_JEDI')) {
 			showIfJedi(homework)
 		} else {
 			showIfPadawan(homework)
@@ -83,7 +85,7 @@ class HomeworkController {
 				alreadySolved: homeworkSolution != null,
 				course: courseService.currentCourse,
 				now: dateService.currentTime,
-				padawan: currentUser.hasRole('PADAWAN')
+				padawan: currentUser.hasRole('ROLE_PADAWAN')
 			)
 		
 		render view: 'showIfPadawan', model: [presenter: presenter]
@@ -101,6 +103,7 @@ class HomeworkController {
 		render view: 'showIfJedi', model: [presenter: presenter]
 	}
 
+	@Secured(['ROLE_PADAWAN'])
 	def solve(Long homeworkId, HomeworkSolutionCommand command) {
 		
 		def homework = Homework.get(homeworkId)
@@ -128,7 +131,7 @@ class HomeworkController {
 						alreadySolved: false,
 						course: course,
 						now: dateService.currentTime,
-						padawan: currentUser.hasRole('PADAWAN')
+						padawan: currentUser.hasRole('ROLE_PADAWAN')
 					)
 				render view:'showIfPadawan', model: [presenter: presenter]
 			}
@@ -138,6 +141,7 @@ class HomeworkController {
 		}
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def grade(Long homeworkId) {
 		def homework = Homework.get(homeworkId)
 
@@ -153,6 +157,7 @@ class HomeworkController {
 		
 	}
 	
+	@Secured(['ROLE_JEDI'])
 	def gradeDo(Long homeworkSolutionId, String feedback, Integer score) {
 		
 		def homeworkSolution = HomeworkSolution.get(homeworkSolutionId)
