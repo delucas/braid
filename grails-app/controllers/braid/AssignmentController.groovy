@@ -128,16 +128,6 @@ class AssignmentController {
 		[solution: solution]
 	}
 	
-	@Secured(['ROLE_JEDI'])
-	def saveFeedback(String json) {
-		// TODO: debería venir con algún token
-		def feedbackData = new JsonSlurper().parseText( json )
-		println feedbackData
-		
-//		def feedback = new Feedback(score: feedbackData.score, text: feedbackData.text)
-		
-	}
-	
 }
 
 @Validateable

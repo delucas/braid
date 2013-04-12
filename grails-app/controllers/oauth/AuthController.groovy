@@ -27,19 +27,12 @@ class AuthController {
 	        def callback = "${createLink(action: 'callback', absolute: 'true', params: callbackParams)}"
 	        def authInfo = service.getAuthInfo(callback)
 			
-			println "authito: " + authInfo
 			session['rtoken'] = authInfo.requestToken
-			println "rtoken: " + authInfo.requestToken
-			println "rtoken session: " + session['rtoken']
 			
 			session['authurl'] = authInfo.authUrl
-			println "authurl: " + session['authurl']
 			
-//	        session["${params.provider}_authInfo"] = [authUrl : authInfo.authUrl, requestToken: authInfo.requestToken]
 			session["${params.provider}_authInfo"] = authInfo
-			println "authitoSession: " + session["${params.provider}_authInfo"]
 			session["basofia"] = "mi string"
-			println "basofia " + session["basofia"] 
 			
 	        redirect(url: authInfo.authUrl)
 		}
@@ -51,13 +44,9 @@ class AuthController {
             redirect(url: '/')
         }
 
-		println "pepe"
         AuthInfo authInfo = session["${params.provider}_authInfo"]
 
-		println "basofia " + session["basofia"]
-		println "pipo: ${authInfo}"
         def requestToken = authInfo.requestToken
-		println "popo"
         def accessToken = service.getAccessToken(authInfo.service, params, requestToken)
         session["${params.provider}_authToken"] = accessToken
 

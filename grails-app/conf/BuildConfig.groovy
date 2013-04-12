@@ -34,7 +34,6 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        // runtime 'mysql:mysql-connector-java:5.1.20'
 		compile 'org.scribe:scribe:1.3.3'
 		runtime 'postgresql:postgresql:9.1-901.jdbc4'
 		
@@ -60,10 +59,6 @@ grails.project.dependency.resolution = {
 		compile ':fixtures:1.1'
 		compile ":markdown:1.0.0.RC1"
 
-//		compile ":webxml:1.4.1"
-//		compile ':heroku:1.0.1'
-//		compile ':cloud-support:1.0.8'
-				
 		compile ":rabbitmq:1.0.0"
 				
 		runtime ":resources:1.2.RC2"
