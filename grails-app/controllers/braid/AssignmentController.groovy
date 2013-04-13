@@ -122,7 +122,7 @@ class AssignmentController {
 		}
 	}
 	
-	@Secured(['ROLE_JEDI'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN'])
 	def feedback() {
 		def solution = AssignmentSolution.get(params.id)
 		[solution: solution]
