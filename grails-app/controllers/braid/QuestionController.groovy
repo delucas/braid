@@ -42,7 +42,7 @@ class QuestionController {
 		params.max = Math.min(params.max ? params.int('max') : 5, 10)
 		
 		def course = courseService.currentCourse
-		def questions = Question.findAllByCourse(course, [max:params.max, offset:params.offset])
+		def questions = Question.findAllByCourse(course, [max:params.max, offset:params.offset, sort: 'position'])
 		def questionsTotal = Question.countByCourse(course)
 		
 		model: [questions: questions, questionsTotal: questionsTotal]
@@ -51,16 +51,22 @@ class QuestionController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def random() {
 		def course = courseService.currentCourse
-		def questions = Question.executeQuery('from Question q where q.course = :course order by rand()', [course: course, max: 1])
+		def questionIds = Question.executeQuery('select distinct q.id from Question q where q.course = :course', [course: course])
+		def questions = Question.get(questionIds[new Random().nextInt(questionIds.size())]) as List
 		render view: 'list', model: [questions: questions]
 	}
 	
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
-	def exam(Integer size) {
+	def exam() {
 		def course = courseService.currentCourse
 		// TODO: algoritmo que nos brinde una lista equilibrada de puntos.
 		// Por ahora, es un random con límite 5
-		def questions = Question.executeQuery('from Question q where q.course = :course order by rand()', [course: course, max: (size?size:5)])
+		
+		def questionIds = Question.executeQuery('select distinct q.id from Question q where q.course = :course', [course: course])
+		Collections.shuffle(questionIds)
+		def max = (questionIds.size() > 4) ? 5 : questionIds.size() 
+		
+		def questions = Question.findAllByIdInList(questionIds[0..(max-1)], [sort: 'position'])
 		render view: 'list', model: [questions: questions]
 	}
 }
