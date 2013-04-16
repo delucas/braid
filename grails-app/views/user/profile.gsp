@@ -20,11 +20,11 @@
 
 
 		<div class="row-fluid">
-			<div class="span3">
-				<img src="${user.avatarUrl}" class="pull-right"/>
+			<div class="span2">
+				<img src="${user.avatarUrl}" class="pull-right profile"/>
 			</div>
 	
-			<div class="span9 well">
+			<div class="span10 well">
 				<dl class="dl-horizontal">
 					<dt>Nombre completo</dt>
 					<dd>
