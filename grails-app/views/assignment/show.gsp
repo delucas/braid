@@ -43,6 +43,35 @@
 			<section class="solve">
 				<div class="well">
 				
+					<legend>Preparación</legend>
+					
+					<p>Recordá que antes de empezar a trabajar necesitás 
+					<a href="${resource(dir:'images',file:'fork.gif')}" target="_blank">hacer un fork</a> 
+					del repositorio original. Una vez que lo hagas, deberás <b>clonar</b> tu
+					copia en el workspace y comenzar la resolución. Ejemplo:</p>
+					
+<pre>
+${sec.loggedInUserInfo(field:"username")}@computadora:~/workspace$ git clone git@github.com:${sec.loggedInUserInfo(field:"username")}/${presenter.assignment.repo.name}.git
+Cloning into '${presenter.assignment.repo.name}'...
+remote: Counting objects: 39, done.
+remote: Compressing objects: 100% (27/27), done.
+remote: Total 39 (delta 5), reused 38 (delta 4)
+Receiving objects: 100% (39/39), 8.38 KiB, done.
+Resolving deltas: 100% (5/5), done.
+${sec.loggedInUserInfo(field:"username")}@computadora:~/workspace$ cd ${presenter.assignment.repo.name}/
+${sec.loggedInUserInfo(field:"username")}@computadora:~/workspace/${presenter.assignment.repo.name}$
+</pre>
+					
+					<p>Una vez termines, tendrás que hacer los <code>commit</code> y 
+					<code>push</code> correspondientes</p>
+					
+					<a href="${presenter.assignment.repo.url}" target="_blank"
+					class="btn btn-large btn-primary pull-right">
+						Ir al repositorio original<br><small>(recordá realizar un fork)</small>
+					</a>
+					
+					<div class="clearfix"></div>
+				
 					<legend>Solución</legend>
 					
 					<g:form action="solve">
