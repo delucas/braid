@@ -2,10 +2,18 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
 	
-		<link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
+	
+	<link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
 	<link rel="stylesheet"
 		href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 	
