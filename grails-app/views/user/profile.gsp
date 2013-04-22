@@ -54,6 +54,11 @@
 	
 			<div class="span3">
 				<legend>Actividad</legend>
+				
+				<g:each in="${activity}" var="ac">
+					<braid:activity type="${ac.type}" what="${ac.what}" when="${ac.when}"/>
+				</g:each>
+				
 			</div>
 		</div>
 

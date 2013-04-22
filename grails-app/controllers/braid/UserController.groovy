@@ -16,7 +16,19 @@ class UserController {
 			user = User.get(userId)?:user
 		}
 		
-		model: [user: user]
+		def activity = []
+		
+		def homeworkSolutions = HomeworkSolution.findAllByUser(user, [sort: 'dateCreated', order: 'desc'])
+		activity += homeworkSolutions.collect {
+			[type: 'homework', what: it.homework.title, when: it.dateCreated]
+		}
+				
+		def assignmentSolutions = AssignmentSolution.findAllByUser(user, [sort: 'dateCreated', order: 'desc'])
+		activity += assignmentSolutions.collect {
+			[type: 'assignment', what: it.assignment.title, when: it.dateCreated]
+		}
+		
+		model: [user: user, activity: activity.sort { a, b -> a.dateCreated <=> b.dateCreated }]
 		
 	}
 	
