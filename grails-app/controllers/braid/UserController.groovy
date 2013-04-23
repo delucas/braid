@@ -28,7 +28,8 @@ class UserController {
 			[type: 'assignment', what: it.assignment.title, when: it.dateCreated]
 		}
 		
-		model: [user: user, activity: activity.sort { a, b -> a.dateCreated <=> b.dateCreated }]
+		model: [user: user, activity: activity.sort { a, b -> a.dateCreated <=> b.dateCreated },
+			homeworkSolutions: homeworkSolutions, assignmentSolutions: assignmentSolutions]
 		
 	}
 	

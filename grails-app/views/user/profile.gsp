@@ -50,6 +50,11 @@
 		<div class="row-fluid">
 			<div class="span9">
 				<legend>Progreso</legend>
+				
+				<g:render template="homework-solutions"></g:render>
+				
+				<g:render template="assignment-solutions"></g:render>
+				
 			</div>
 	
 			<div class="span3">
