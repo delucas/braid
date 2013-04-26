@@ -46,7 +46,7 @@ fixture{
 	
 	a1(Assignment,
 		title: 'Piedra, papel, tijera, lagarto, Spock',
-		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		repo: new Repository(user:'tallerweb', name:'piedra-papel-tijera-lagarto-Spock'),
 		dueDate: new Date() + 7,
 		course: taller)
 	
@@ -61,7 +61,7 @@ fixture{
 	
 	a2(Assignment,
 		title: 'Cuentas bancarias',
-		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		repo: new Repository(user:'tallerweb', name:'cuentas-bancarias'),
 		dueDate: new Date() + 28,
 		course: taller)
 	
