@@ -146,13 +146,14 @@ class HomeworkController {
 		def homework = Homework.get(homeworkId)
 
 		def homeworkSolution = HomeworkSolution.find(
-			'from HomeworkSolution s where s.homework = :homework and s.feedback is null order by rand()',
+			'from HomeworkSolution s where s.homework = :homework and s.feedback is null',
 			[homework: homework])
-				
+		
 		if (! homeworkSolution) {
 			redirect action: 'show', params: [id: homeworkId]
 		}
 		
+		//TODO: agregar el corrector, para luego recuperar primero las propias no contestadas
 		[homework: homework, homeworkSolution: homeworkSolution]
 		
 	}
