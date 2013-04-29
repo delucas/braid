@@ -145,15 +145,24 @@ class HomeworkController {
 	def grade(Long homeworkId) {
 		def homework = Homework.get(homeworkId)
 
+		// primero verificamos que no haya un feedback en curso para ese instructor
 		def homeworkSolution = HomeworkSolution.find(
+			'from HomeworkSolution s where s.homework = :homework and s.feedback is null and s.reviewer = :reviewer',
+			[homework: homework, reviewer: userService.currentUser])
+		
+		// si no lo hay, le damos una nueva tarea
+		homeworkSolution = homeworkSolution ?: HomeworkSolution.find(
 			'from HomeworkSolution s where s.homework = :homework and s.feedback is null',
 			[homework: homework])
 		
+		// si no hay, lo redirigimos al inicio
 		if (! homeworkSolution) {
 			redirect action: 'show', params: [id: homeworkId]
+		} else {
+			homeworkSolution.reviewer = userService.currentUser
+			homeworkSolution.save()
 		}
 		
-		//TODO: agregar el corrector, para luego recuperar primero las propias no contestadas
 		[homework: homework, homeworkSolution: homeworkSolution]
 		
 	}

@@ -24,6 +24,7 @@ fixture{
 		feedback: fb1,
 		dateCreated: new Date() - 11,
 		user: anakin,
+		reviewer: obi,
 		homework: hw1)
 	
 	hw2(Homework,

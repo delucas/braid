@@ -4,7 +4,9 @@ class HomeworkSolution {
 
 	String text
 	Date dateCreated
+	
 	Feedback feedback
+	User reviewer
 	
 	User user
 	Homework homework
@@ -13,6 +15,7 @@ class HomeworkSolution {
 	
 	static constraints = {
 		feedback nullable: true
+		reviewer nullable: true
 	}
 	
 	static mapping = {

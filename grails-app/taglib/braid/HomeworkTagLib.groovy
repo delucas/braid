@@ -37,9 +37,10 @@ class HomeworkTagLib {
 		
 		if (solution?.feedback) {
 			out << '<div class="well">'
-			out << '	<legend>Feedback</legend>'
+			out << "	<legend>Feedback <small>(${solution.feedback.score}/3)</small></legend>"
 			out << '	<div class="well md">'
 			out << markdown.renderHtml(){ solution.feedback.text }
+			out << "		<small class='pull-right'>revisado por ${solution.reviewer.name}</small>"
 			out << '	</div>'
 			out << '</div>'
 		}
