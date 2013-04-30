@@ -65,9 +65,7 @@ class HomeController {
 	def dashboard() {
 		
 		def homeworkGraph = HomeworkSolution.executeQuery('select h.user.name, count(h.id), sum(h.feedback.score), avg(h.feedback.score) ' +
-			'from HomeworkSolution h where h.feedback.score is not null group by h.user.id')
-		
-		println homeworkGraph
+			'from HomeworkSolution h where h.feedback.score is not null group by h.user.name')
 		
 		model: [homeworkGraph: homeworkGraph]
 	}

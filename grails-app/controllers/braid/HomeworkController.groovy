@@ -96,8 +96,7 @@ class HomeworkController {
 		def presenter = new JediHomeworkPresenter(
 				totalToGrade: homeworkService.countByHomeworkAndNotFeedback(homework),
 				homework: homework,
-				solutionsUpToDate: homeworkService.findAllByHomework(homework,
-					[sort: 'dateCreated', order: 'desc']),
+				solutionsUpToDate: homeworkService.findAllByHomework(homework),
 				now: dateService.currentTime
 			)
 		

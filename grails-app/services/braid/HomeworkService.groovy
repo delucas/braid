@@ -14,7 +14,7 @@ class HomeworkService {
 	}
 	
 	def findAllByHomework(Homework homework) {
-		HomeworkSolution.findAllByHomework(homework)
+		HomeworkSolution.findAllByHomework(homework, [sort: 'dateCreated', order: 'desc'])
 	}
 	
 }
