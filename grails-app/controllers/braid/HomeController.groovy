@@ -64,9 +64,8 @@ class HomeController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def dashboard() {
 		
-		def homeworkGraph = HomeworkSolution.executeQuery('select h.user.name, count(h.id), sum(h.feedback.score), avg(h.feedback.score) ' +
-			'from HomeworkSolution h where h.feedback.score is not null group by h.user.name')
-		
+		def homeworkGraph = HomeworkSolution.executeQuery('select h.user.name, count(h.id) as resueltas, sum(h.feedback.score) as puntos, avg(h.feedback.score) ' +
+			'from HomeworkSolution h where h.feedback.score is not null group by h.user.name order by puntos desc, resueltas desc')
 		model: [homeworkGraph: homeworkGraph]
 	}
 
