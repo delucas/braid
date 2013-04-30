@@ -87,12 +87,6 @@
 	                        </ul>
 	                      </li>
 					</ul>
-
-<%--					<p class="navbar-text pull-right">--%>
-<%--					--%>
-<%--						<i class="icon-cog icon-white"></i> Hola, <a href="#"--%>
-<%--							class="navbar-link">@username</a>--%>
-<%--					</p>--%>
 				</div>
 				<!--/.nav-collapse -->
 
@@ -107,6 +101,13 @@
 
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs span2">
+					<sec:ifAllGranted roles="ROLE_JEDI">
+						<li class="${pageProperty(name:'page.dashboard')}">
+							<g:link class="bbnotgood" controller="home" action="dashboard">
+								<strong>Dashboard</strong>
+							</g:link>
+						</li>
+					</sec:ifAllGranted>
 					<li class="${pageProperty(name:'page.announcements')}">
 						<g:link class="bbnotgood" controller="home" action="announcements">
 							Anuncios

@@ -8,6 +8,14 @@ class HomeController {
 	def courseService
 	def dateService
 	
+	def index() {
+		if (userService.currentUser.hasRole('ROLE_JEDI')) {
+			redirect(action:'dashboard')
+		} else {
+			redirect(action:'announcements')
+		}
+	}
+	
     def registration() {
 		User theUser = userService.currentUser
 		if (theUser.name && theUser.dni) {
@@ -51,6 +59,17 @@ class HomeController {
 		})
 		
 		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
+	}
+	
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	def dashboard() {
+		
+		def homeworkGraph = HomeworkSolution.executeQuery('select h.user.name, count(h.id), sum(h.feedback.score), avg(h.feedback.score) ' +
+			'from HomeworkSolution h where h.feedback.score is not null group by h.user.id')
+		
+		println homeworkGraph
+		
+		model: [homeworkGraph: homeworkGraph]
 	}
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])

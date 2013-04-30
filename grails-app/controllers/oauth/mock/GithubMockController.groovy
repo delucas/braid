@@ -16,7 +16,7 @@ class GithubMockController {
 		
 		def user = User.get(id)
 		springSecurityService.reauthenticate (user.username)
-		redirect (controller:'home', action:'announcements')
+		redirect (controller:'home', action:'index')
 	}
 	
 	def register(){

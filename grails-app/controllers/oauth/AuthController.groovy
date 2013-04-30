@@ -58,7 +58,7 @@ class AuthController {
 
         if (user) {
             springSecuritySigninService.signIn(user)
-            redirect (controller:'home', action:'announcements')
+            redirect (controller:'home', action:'index')
         } else {
             redirect(controller: 'registerUser', action: 'register', params: params)
         }
