@@ -150,7 +150,12 @@ class HomeworkController {
 			'from HomeworkSolution s where s.homework = :homework and s.feedback is null and s.reviewer = :reviewer',
 			[homework: homework, reviewer: userService.currentUser])
 		
-		// si no lo hay, le damos una nueva tarea
+		// si no lo hay, le damos una nueva tarea sin revisor
+		homeworkSolution = homeworkSolution ?: HomeworkSolution.find(
+			'from HomeworkSolution s where s.homework = :homework and s.feedback is null and s.reviewer is null',
+			[homework: homework])
+		
+		// si no lo hay, le damos la que tenga colgado el último revisor
 		homeworkSolution = homeworkSolution ?: HomeworkSolution.find(
 			'from HomeworkSolution s where s.homework = :homework and s.feedback is null',
 			[homework: homework])
