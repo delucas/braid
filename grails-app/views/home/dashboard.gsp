@@ -39,7 +39,7 @@
 								${bubble[1]}
 							</td>
 							<td>
-								${bubble[3]}
+								<g:formatNumber number="${bubble[3]}" type="number" minFractionDigits="2" maxFractionDigits="2" roundingMode="HALF_DOWN" />
 							</td>
 						</tr>
 					</g:each>
