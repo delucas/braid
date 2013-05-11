@@ -12,7 +12,7 @@ class AnnouncementController {
     def list() {
 		def course = courseService.currentCourse
 		def announcements = Announcement.findAllByCourse(course,
-               [sort: "dateCreated", order: "desc"])
+               [sort: 'dateCreated', order: 'desc'])
 		model: [announcements: announcements]
 	}
 	

@@ -173,7 +173,6 @@ ruleset {
     GrailsDomainHasToString 
     GrailsDuplicateConstraint 
     GrailsDuplicateMapping 
-    GrailsPublicControllerMethod 
     GrailsServletContextReference 
     GrailsSessionReference   // DEPRECATED
     GrailsStatelessService 
