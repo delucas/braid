@@ -83,7 +83,7 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
 		
-		graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost/vhost')
+		graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost')
 		// El fallback es por las dudas, pero debería conectarse a producción
 		
 		rabbitmq {
@@ -91,7 +91,7 @@ environments {
 				username = graderQueueUri.userInfo.split(':')[0]
 				password = graderQueueUri.userInfo.split(':')[1]
 				hostname = graderQueueUri.host
-				virtualHost = graderQueueUri.path[1..-1]
+//				virtualHost = graderQueueUri.path[1..-1]
 			}
 			
 			queues = {
