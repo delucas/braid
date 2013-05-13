@@ -1,0 +1,7 @@
+language: groovy
+branches:
+  only:
+    - master
+    - development
+script: ./grailsw refresh-dependencies
+  && ./grailsw test-app
