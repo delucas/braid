@@ -62,42 +62,10 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-		
-		graderQueueUri = new URI('amqp://guest:guest@localhost')
-		
-		rabbitmq {
-			connectionfactory {
-				username = graderQueueUri.userInfo.split(':')[0]
-				password = graderQueueUri.userInfo.split(':')[1]
-				hostname = graderQueueUri.host
-				//virtualHost = graderQueueUri.path[1..-1]
-			}
-		
-			queues = {
-				graderQueue()
-			}
-		}
-		
     }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
-		
-		graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost')
-		// El fallback es por las dudas, pero debería conectarse a producción
-		
-		rabbitmq {
-			connectionfactory {
-				username = graderQueueUri.userInfo.split(':')[0]
-				password = graderQueueUri.userInfo.split(':')[1]
-				hostname = graderQueueUri.host
-//				virtualHost = graderQueueUri.path[1..-1]
-			}
-			
-			queues = {
-				graderQueue()
-			}
-		}
 		
     }
 }
@@ -136,3 +104,18 @@ auth.providers = [github: 'github']
 
 auth.github.key = System.env.GITHUB_KEY
 auth.github.secret = System.env.GITHUB_SECRET
+
+
+graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost')
+// El fallback es por las dudas, pero debería conectarse a producción
+rabbitmq {
+	connectionfactory {
+		username = graderQueueUri.userInfo.split(':')[0]
+		password = graderQueueUri.userInfo.split(':')[1]
+		hostname = graderQueueUri.host
+	}
+	
+	queues = {
+		graderQueue()
+	}
+}
