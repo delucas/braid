@@ -107,7 +107,6 @@ auth.github.secret = System.env.GITHUB_SECRET
 
 
 graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost')
-// El fallback es por las dudas, pero debería conectarse a producción
 rabbitmq {
 	connectionfactory {
 		username = graderQueueUri.userInfo.split(':')[0]

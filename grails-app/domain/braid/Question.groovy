@@ -18,4 +18,5 @@ class Question {
 	static constraints = {
 		level(range:1..3)
 	}
+
 }
