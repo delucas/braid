@@ -6,15 +6,11 @@ import grails.plugins.springsecurity.Secured
 class QuestionController {
 
 	def courseService
-
-	private getNextQuestionNumber(){
-		def list = Question.executeQuery('select max(q.position) from Question q')
-		list ? list[0] + 1 : 1 
-	}
+	def questionService
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-		model: [nextQuestionNumber: nextQuestionNumber]
+		render view: 'create', model: [nextQuestionNumber: questionService.nextQuestionNumber]
 	}
 	
 	@Secured(['ROLE_JEDI'])
