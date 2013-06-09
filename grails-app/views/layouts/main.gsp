@@ -134,10 +134,10 @@
 						</g:link>
 					</li>
 					
-					<li class="${pageProperty(name:'page.exams')}">
-						<g:link class="bbnotgood" controller="exam" action="list">
+					<li>
+						<a href="http://github.com/tallerweb/parciales" class="bbnotgood">
 							Evaluaciones
-						</g:link>
+						</a>
 					</li>
 					
 					<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
