@@ -54,6 +54,30 @@ fixture{
 	as1(AssignmentSolution,
 		assignment: a1,
 		user: anakin,
+		dateCreated: new Date() - 4,
+		score: 2.3,
+		feedback: 'Errores mínimos',
+		commit: 'adfeef3436744dfee232ae'
+		)
+	as2(AssignmentSolution,
+		assignment: a1,
+		user: anakin,
+		dateCreated: new Date() - 3,
+		score: 4.3,
+		feedback: 'Errores mínimos',
+		commit: 'adfeef3436744dfee232ae'
+		)
+	as3(AssignmentSolution,
+		assignment: a1,
+		user: anakin,
+		dateCreated: new Date() - 2,
+		score: 3.3,
+		feedback: 'Errores mínimos',
+		commit: 'adfeef3436744dfee232ae'
+		)
+	as4(AssignmentSolution,
+		assignment: a1,
+		user: anakin,
 		dateCreated: new Date() - 1,
 		score: 8.3,
 		feedback: 'Errores mínimos',

@@ -58,7 +58,11 @@
 
 				</div>
 				<div class="tab-pane" id="assignments">
-					<div id="assignment_div" style="width: 900px; height: 500px;"></div>
+
+					<div class="alert alert-info">
+						Próximamente dashboard de Trabajos Prácticos
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -76,7 +80,7 @@
 			<g:each in="${homeworkGraph}" var="bubble">
 			['${bubble[0]}', ${bubble[1]}, ${bubble[2]}, ${bubble[3]}],</g:each>
 			]);
-		
+
 			var options = {
 				title: 'Correlación entre tareas entregadas, puntos obtenidos y promedio por alumno',
 				hAxis: {title: 'Tareas entregadas', minValue: 0, maxValue: ${homeworkGraph.max { it[1] }[1]} + 1},
@@ -85,32 +89,12 @@
 				legend: {position: 'none'},
 				sortBubblesBySize: true
 			};
-			
+
 			var chart = new google.visualization.BubbleChart(document.getElementById('homework_chart'));
 			chart.draw(data, options);
 		}
 
     </script>
-        <script type="text/javascript">
-      google.load('visualization', '1', {'packages':['motionchart']});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Fruit');
-        data.addColumn('date', 'Date');
-        data.addColumn('number', 'Sales');
-        data.addColumn('number', 'Expenses');
-        data.addRows([
-          ['Apples',  new Date (1988,0,1), 1000, 300],
-          ['Oranges', new Date (1988,0,1), 1150, 200],
-          ['Bananas', new Date (1988,0,1), 300,  250],
-          ['Apples',  new Date (1989,6,1), 1200, 400],
-          ['Oranges', new Date (1989,6,1), 750,  150],
-          ['Bananas', new Date (1989,6,1), 788,  617]
-        ]);
-        var chart = new google.visualization.MotionChart(document.getElementById('assignment_div'));
-        chart.draw(data, {width: 600, height:300});
-      }
-    </script>
+
 </body>
 </html>

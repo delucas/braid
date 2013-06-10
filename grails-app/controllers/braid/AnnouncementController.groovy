@@ -19,7 +19,8 @@ class AnnouncementController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI'])
 	def post() {
 		def ann = new Announcement(text: params.text,
-			course: courseService.currentCourse, announcer: userService.currentUser)
+			course: courseService.currentCourse,
+			announcer: userService.currentUser)
 		ann.save()
 		
 		redirect(controller:'home', action:'announcements')
