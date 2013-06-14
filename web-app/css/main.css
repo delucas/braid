@@ -112,3 +112,39 @@ img.profile {
 	margin-top: 2px;
 	width: 150px;
 }
+
+/* -- esquema --
+@color1: #244c7a;
+@color2: #2865aa;
+@color3: #2f7ed8;
+@color4: #5599e7;
+@color5: #7eb4f2;
+*/
+
+.dashboard-panel {
+	background-color: #244c7a;
+    color: white;
+	height: 200px;
+	margin: 0 -24px 0 1px !important;
+}
+
+.dashboard-title {
+    opacity: 0.3;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -8px;
+    margin-top: 35px;
+    text-align: center;
+}
+
+.dashboard-main-data {
+    font-size: 7em;
+    font-weight: bold;
+    line-height: 1em;
+    margin: 15px 0 -8px;
+    text-align: center;
+}
+
+.dashboard-main-data > .small {
+	font-size: 0.4em;
+}
