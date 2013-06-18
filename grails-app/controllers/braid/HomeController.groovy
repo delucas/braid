@@ -71,7 +71,7 @@ class HomeController {
 			"from HomeworkSolution hs where hs.feedback.score is not null and hs.homework.course.id = ${course.id} group by hs.homework.id order by hs.homework.id")
 
 		def assignmentGraph = AssignmentSolution.executeQuery('select sol.assignment.title, count(sol.id) as resueltas ' +
-			"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} group by sol.assignment.title order by sol.assignment.dueDate")
+			"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} group by sol.assignment.title, sol.assignment.dueDate order by sol.assignment.dueDate")
 
 		model: [
 			homeworks: generateBarChartData(homeworkGraph),
