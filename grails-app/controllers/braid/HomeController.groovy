@@ -65,11 +65,34 @@ class HomeController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def dashboard() {
 
-		// TODO: filtrar por curso!
-		def homeworkGraph = HomeworkSolution.executeQuery('select h.user.name, count(h.id) as resueltas, sum(h.feedback.score) as puntos, avg(h.feedback.score) ' +
-			'from HomeworkSolution h where h.feedback.score is not null group by h.user.name order by puntos desc, resueltas desc')
+		def course = courseService.currentCourse
 
-		model: [homeworkGraph: homeworkGraph]
+		def homeworkGraph = HomeworkSolution.executeQuery('select hs.homework.id, count(hs.id) as resueltas ' +
+			"from HomeworkSolution hs where hs.feedback.score is not null and hs.homework.course.id = ${course.id} group by hs.homework.id order by hs.homework.id")
+
+		def assignmentGraph = AssignmentSolution.executeQuery('select sol.assignment.title, count(sol.id) as resueltas ' +
+			"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} group by sol.assignment.title order by sol.assignment.dueDate")
+
+		model: [
+			homeworks: generateBarChartData(homeworkGraph),
+			assignments: generateBarChartData(assignmentGraph)
+			]
+	}
+
+	private def generateBarChartData(def graphData) {
+		def bars = transformToBars(graphData)
+		def submissions = bars[1].sum()
+		def total = bars[0].size()
+		[bars: bars, submissions: submissions, total: total, avg: (submissions/total as Double).round(2)]
+	}
+
+	private def transformToBars(def list) {
+		def result = [[],[]]
+		list.each {
+			result[0] << it[0]
+			result[1] << it[1]
+		}
+		result
 	}
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])

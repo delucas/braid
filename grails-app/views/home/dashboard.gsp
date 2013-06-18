@@ -26,8 +26,8 @@
 						<div class="span4 dashboard-panel">
 							<div class="dashboard-title">Entrega de tareas</div>
 							<div class="dashboard-main-data">
-								<span title="13.75 entregas promedio por tarea">110</span><span
-									title="8 tareas en total" class="small">/8</span>
+								<span title="${homeworks.avg} entregas promedio por tarea">${homeworks.submissions}</span><span
+									title="${homeworks.total} tareas en total" class="small">/${homeworks.total}</span>
 							</div>
 						</div>
 
@@ -49,8 +49,8 @@
 							<div class="dashboard-title">Entrega de trabajos prácticos
 							</div>
 							<div class="dashboard-main-data">
-								<span title="166 entregas promedio por trabajo práctico">332</span><span
-									title="2 trabajos prácticos en total" class="small">/2</span>
+								<span title="${assignments.avg} entregas promedio por trabajo práctico">${assignments.submissions}</span><span
+									title="${assignments.total} trabajos prácticos en total" class="small">/${assignments.total}</span>
 							</div>
 						</div>
 
@@ -83,9 +83,7 @@
 							enabled : false
 						},
 						xAxis : {
-							categories : [
-									'Piedra, papel, tijera, lagarto, Spock',
-									'Cuentas bancarias' ]
+							categories : ${assignments.bars[0].collect {"'$it'"}}
 						},
 						yAxis : {
 							title : {
@@ -105,7 +103,7 @@
 						},
 						series : [ {
 							name : null,
-							data : [ 95, 237 ],
+							data : ${assignments.bars[1]},
 							dataLabels : {
 								enabled : true,
 								color : '#fff',
@@ -131,7 +129,7 @@
 					enabled : false
 				},
 				xAxis : {
-					categories : [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+					categories : ${homeworks.bars[0]}
 				},
 				yAxis : {
 					title : {
@@ -151,7 +149,7 @@
 				},
 				series : [ {
 					name : null,
-					data : [ 18, 17, 19, 19, 10, 13, 14, 0 ],
+					data : ${homeworks.bars[1]},
 					dataLabels : {
 						enabled : true,
 						color : '#fff',
