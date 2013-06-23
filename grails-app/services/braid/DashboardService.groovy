@@ -14,13 +14,13 @@ class DashboardService {
 			sum(case when hs.feedback.score = 1 then 1 else 0 end) as one 
 			from HomeworkSolution hs
 			where hs.homework.course.id = ${course.id}
-			group by hs.homework.id, hs.feedback.score"""
+			group by hs.homework.id"""
 				)
 
 		def homeworkTransformation = { list ->
 			def result = [[], [], [], []]
 			list.eachWithIndex { it, index ->
-				result[0] << index
+				result[0] << index + 1
 				result[1] << it[1]
 				result[2] << it[2]
 				result[3] << it[3]
