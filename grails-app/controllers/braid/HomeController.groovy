@@ -8,6 +8,7 @@ class HomeController {
 	def userService
 	def courseService
 	def dateService
+	def dashboardService
 
 	def index() {
 		if (userService.currentUser.hasRole('ROLE_JEDI')) {
@@ -17,7 +18,7 @@ class HomeController {
 		}
 	}
 
-    def registration() {
+	def registration() {
 		User theUser = userService.currentUser
 		if (theUser.name && theUser.dni) {
 			redirect(action:'announcements')
@@ -41,12 +42,17 @@ class HomeController {
 		}
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured([
+		'ROLE_YODA',
+		'ROLE_JEDI',
+		'ROLE_PADAWAN',
+		'ROLE_JAR_JAR'
+	])
 	def announcements() {
 
 		def course = courseService.currentCourse
 		def announcements = Announcement.findAllByCourse(course,
-			   [sort: "dateCreated", order: "desc"])
+				[sort: "dateCreated", order: "desc"])
 
 		def homeworks = Homework.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
 		def assignments = Assignment.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
@@ -62,40 +68,26 @@ class HomeController {
 		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured([
+		'ROLE_YODA',
+		'ROLE_JEDI',
+		'ROLE_PADAWAN',
+		'ROLE_JAR_JAR'
+	])
 	def dashboard() {
 
-		def course = courseService.currentCourse
-
-		def homeworkGraph = HomeworkSolution.executeQuery('select hs.homework.id, count(hs.id) as resueltas ' +
-			"from HomeworkSolution hs where hs.feedback.score is not null and hs.homework.course.id = ${course.id} group by hs.homework.id order by hs.homework.id")
-
-		def assignmentGraph = AssignmentSolution.executeQuery('select sol.assignment.title, count(sol.id) as resueltas ' +
-			"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} group by sol.assignment.title, sol.assignment.dueDate order by sol.assignment.dueDate")
-
 		model: [
-			homeworks: generateBarChartData(homeworkGraph),
-			assignments: generateBarChartData(assignmentGraph)
-			]
+			homeworks: dashboardService.homeworkGraph(),
+			assignments: dashboardService.assignmentGraph()
+		]
 	}
 
-	private def generateBarChartData(def graphData) {
-		def bars = transformToBars(graphData)
-		def submissions = bars[1].sum()
-		def total = bars[0].size()
-		[bars: bars, submissions: submissions, total: total, avg: (submissions/total as Double).round(2)]
-	}
-
-	private def transformToBars(def list) {
-		def result = [[],[]]
-		list.each {
-			result[0] << it[0]
-			result[1] << it[1]
-		}
-		result
-	}
-
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured([
+		'ROLE_YODA',
+		'ROLE_JEDI',
+		'ROLE_PADAWAN',
+		'ROLE_JAR_JAR'
+	])
 	def syllabus() {
 
 		def currentCourse = courseService.currentCourse
@@ -116,7 +108,12 @@ class HomeController {
 		redirect(action: 'syllabus')
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured([
+		'ROLE_YODA',
+		'ROLE_JEDI',
+		'ROLE_PADAWAN',
+		'ROLE_JAR_JAR'
+	])
 	def honorCode() {
 
 		def currentCourse = courseService.currentCourse
@@ -136,5 +133,4 @@ class HomeController {
 
 		redirect(action: 'honorCode')
 	}
-
 }
