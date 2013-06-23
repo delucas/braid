@@ -19,8 +19,8 @@ class DashboardService {
 
 		def homeworkTransformation = { list ->
 			def result = [[], [], [], []]
-			list.each {
-				result[0] << it + 1
+			list.eachWithIndex { it, index ->
+				result[0] << index
 				result[1] << it[1]
 				result[2] << it[2]
 				result[3] << it[3]
