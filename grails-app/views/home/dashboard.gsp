@@ -133,7 +133,6 @@
 				},
 				yAxis: {
 	                min: 0,
-	                max: 4,
 	                title: {
 	                    text: null
 	                },
