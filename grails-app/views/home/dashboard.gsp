@@ -171,15 +171,15 @@
 				series : [ {
 						name : '3pts',
 						data : ${homeworks.bars[3]},
-						color: '#737426'
+						color: '#244c7a'
 					}, {
 						name : '2pts',
 						data : ${homeworks.bars[2]},
-						color: '#d0b273'
+						color: '#2f7ed8'
 					}, {
 						name : '1pt',
 						data : ${homeworks.bars[1]},
-						color: '#af673a'
+						color: '#7eb4f2'
 					}
 				]
 			});

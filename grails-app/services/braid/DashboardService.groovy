@@ -9,12 +9,13 @@ class DashboardService {
 
 		def homeworkGraph = Homework.executeQuery(
 				"""select hs.homework.id,
-			sum(case when hs.feedback.score = 3 then 1 else 0 end) as three,
+			sum(case when hs.feedback.score = 1 then 1 else 0 end) as one,
 			sum(case when hs.feedback.score = 2 then 1 else 0 end) as two,
-			sum(case when hs.feedback.score = 1 then 1 else 0 end) as one 
+			sum(case when hs.feedback.score = 3 then 1 else 0 end) as three
 			from HomeworkSolution hs
 			where hs.homework.course.id = ${course.id}
-			group by hs.homework.id"""
+			group by hs.homework.id
+			order by hs.homework.id"""
 				)
 
 		def homeworkTransformation = { list ->
