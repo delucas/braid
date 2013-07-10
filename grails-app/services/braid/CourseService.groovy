@@ -4,8 +4,10 @@ import braid.course.Course;
 
 class CourseService {
 
+	def userService
+
     def getCurrentCourse() {
-		// TODO: resolver cuando sea multicurso
-		Course.list().asList()[0]
+		// TODO: por ahora no solapan: es 1 a 1
+		UserCourse.findByUser(userService.currentUser).course
 	}
 }

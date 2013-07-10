@@ -48,11 +48,7 @@
 						<li class="active">
 							<g:link controller="home" action="announcements">Principal</g:link>
 						</li>
-						<g:each in="${braid.Link.list([sort:'position'])}" var="link">
-						<li>
-							<a href="${link.url}">${link.caption}</a>
-						</li>
-						</g:each>
+						<g:render template="/layouts/links" model="[links: coursePresenter.links]"/>
 					</ul>
 					
 					<ul class="nav pull-right">	
@@ -101,62 +97,13 @@
 		<div class="row-fluid">
 
 			<div class="tabbable tabs-left">
-				<ul class="nav nav-tabs span2">
-					<sec:ifAllGranted roles="ROLE_JEDI">
-						<li class="${pageProperty(name:'page.dashboard')}">
-							<g:link class="bbnotgood" controller="home" action="dashboard">
-								<strong>Dashboard</strong>
-							</g:link>
-						</li>
-					</sec:ifAllGranted>
-					<li class="${pageProperty(name:'page.announcements')}">
-						<g:link class="bbnotgood" controller="home" action="announcements">
-							Anuncios
-						</g:link>
-					</li>
-					<li class="${pageProperty(name:'page.syllabus')}">
-						<g:link class="bbnotgood" controller="home" action="syllabus">
-							Plan de estudios
-						</g:link>
-					</li>
-					<li class="${pageProperty(name:'page.questions')}">
-						<g:link class="bbnotgood" controller="question" action="list">
-							Preguntas teóricas
-						</g:link>
-					</li>
-					<li class="${pageProperty(name:'page.homeworks')}">
-						<g:link class="bbnotgood" controller="homework" action="list">
-							Tareas
-						</g:link>
-					</li>
-					<li class="${pageProperty(name:'page.assignments')}">
-						<g:link class="bbnotgood" controller="assignment" action="list">
-							Trabajos prácticos
-						</g:link>
-					</li>
-					
-					<li>
-						<a href="http://github.com/${coursePresenter.githubUsername}/parciales" class="bbnotgood">
-							Evaluaciones
-						</a>
-					</li>
-					
-					<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
-						<li class="${pageProperty(name:'page.students')}">
-							<g:link class="bbnotgood" controller="user" action="list">
-								Estudiantes
-							</g:link>
-						</li>
-					</sec:ifAnyGranted>
-					<li class="${pageProperty(name:'page.honorCode')}">
-						<g:link class="bbnotgood" controller="home" action="honorCode">
-							<strong>Código de Honor</strong>
-						</g:link>
-					</li>
-				</ul>
+
+				<g:render template="/layouts/sidebar" model="[coursePresenter: coursePresenter]"/>
+
 				<div class="tab-content">
 					<g:layoutBody />
 				</div>
+
 			</div>
 
 

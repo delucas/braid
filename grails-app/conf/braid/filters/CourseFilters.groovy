@@ -4,10 +4,13 @@ import braid.course.Course
 import braid.presenters.CoursePresenter
 
 class CourseFilters {
+
+	def courseService
+
 	def filters = {
-		addCoursePresenterToModel(controller: '*', action: '*') {
+		addCoursePresenterToModel(controller: 'githubMock', action: '*', invert: true) {
 			after = { model ->
-				if (model) model.coursePresenter = new CoursePresenter(course: Course.list()[0])
+				if (model) model.coursePresenter = new CoursePresenter(course: courseService.currentCourse)
 			}
 		}
 	}

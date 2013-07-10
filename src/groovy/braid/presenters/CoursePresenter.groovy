@@ -1,13 +1,17 @@
 package braid.presenters
 
-import braid.course.Option;
-import groovy.time.TimeCategory
+import braid.Link
+import braid.course.Option
 
 
 class CoursePresenter {
 
 	def course
-	
+
+	def hasOption(Option option) {
+		course.settings.has(option)
+	}
+
 	def getOptions() {
 		def options = []
 		Option.values().each { option ->
@@ -16,6 +20,10 @@ class CoursePresenter {
 			}
 		}
 		options
+	}
+
+	def getLinks() {
+		Link.findAllByCourse(course, [sort:'position'])
 	}
 
 	def getGithubUsername() {

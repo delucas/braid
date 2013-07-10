@@ -13,7 +13,8 @@ class Settings {
 
 enum Option {
 
-	syllabus(0x1), homework(0x2), assignment(0x4)
+	homework(0x1), assignment(0x2),
+	questions(0x4), exams(0x8)
 	
 	Integer value
 	

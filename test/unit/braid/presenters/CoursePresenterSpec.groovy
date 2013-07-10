@@ -30,10 +30,10 @@ class CoursePresenterSpec extends Specification {
 	
 	void "gets an option"() {
 		given: 'a course with one option'
-			course << [options: 1]
+			course << [options: 2]
 		expect: 'one option'
 			1 == presenter.options.size()
-			presenter.options.contains(Option.syllabus)
+			presenter.options.contains(Option.assignment)
 	}
 	
 	void "gets two options"() {
@@ -41,7 +41,7 @@ class CoursePresenterSpec extends Specification {
 			course << [options: 3]
 		expect: 'two option'
 			2 == presenter.options.size()
-			presenter.options.contains(Option.syllabus)
+			presenter.options.contains(Option.assignment)
 			presenter.options.contains(Option.homework)
 	}
 	
