@@ -1,5 +1,6 @@
 package braid
 
+import braid.course.Course;
 import grails.plugins.springsecurity.Secured
 
 

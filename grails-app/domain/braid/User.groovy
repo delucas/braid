@@ -15,7 +15,6 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 	
-	
 	String email
 	String oauthId
 	String oauthProvider

@@ -1,5 +1,7 @@
 package braid
 
+import braid.course.Course;
+
 class Announcement {
 
 	String text

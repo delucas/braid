@@ -7,8 +7,8 @@ import grails.test.mixin.support.*
 import org.junit.*
 
 import braid.Announcement
-import braid.Course
 import braid.User
+import braid.course.Course;
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions

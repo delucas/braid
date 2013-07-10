@@ -24,8 +24,7 @@
 	
 	<style>
 	body {
-		padding-top: 60px; /* 60px to make the container go all the way
-	      to the bottom of the topbar */
+		padding-top: 46px;
 	}
 	</style>
 
@@ -94,10 +93,12 @@
 		</div>
 	</div>
 
+	<div class="course-banner" style="background-color: ${coursePresenter.bannerColor};">
+		<div class="container">${coursePresenter.banner}</div>
+	</div>
+
 	<div class="container">
 		<div class="row-fluid">
-
-
 
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs span2">
@@ -135,7 +136,7 @@
 					</li>
 					
 					<li>
-						<a href="http://github.com/tallerweb/parciales" class="bbnotgood">
+						<a href="http://github.com/${coursePresenter.githubUsername}/parciales" class="bbnotgood">
 							Evaluaciones
 						</a>
 					</li>
@@ -160,9 +161,6 @@
 
 
 		</div>
-
-		<hr>
-		<div class="pull-right">© uno21 2011-<g:formatDate format="yyyy" date="${new Date()}"/></div>
 	</div>
 
 	<g:javascript library="application" />

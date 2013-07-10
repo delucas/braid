@@ -53,7 +53,8 @@ class AssignmentController {
 	}
 
 	private def createRepository(String repoName) {
-		new Repository(user: 'tallerweb', name: repoName)
+		def user = courseService.currentCourse.settings.githubUsername
+		new Repository(user: user, name: repoName)
 	}
 
 	private Date convertToUTC(Date dateInZone, TimeZone tz) {

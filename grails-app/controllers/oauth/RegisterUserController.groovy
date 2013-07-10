@@ -3,12 +3,12 @@ package oauth
 import org.springframework.security.authentication.BadCredentialsException
 
 import security.SpringSecuritySigninService
-import braid.Course
 import braid.RegistrationCommand
 import braid.Role
 import braid.User
 import braid.UserCourse
 import braid.UserRole
+import braid.course.Course;
 
 class RegisterUserController {
 

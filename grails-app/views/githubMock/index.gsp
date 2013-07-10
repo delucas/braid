@@ -1,4 +1,4 @@
-Seleccionar el usuario para logearse
+Seleccionar el usuario para loguearse
 
 <g:form action="singingUser">
 

@@ -1,4 +1,4 @@
-<%@page import="braid.Course"%>
+<%@page import="braid.course.Course"%>
 <html>
 <head>
 

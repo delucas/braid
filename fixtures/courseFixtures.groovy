@@ -1,14 +1,22 @@
-import braid.Course
 import braid.Link
 import braid.UserCourse
+import braid.course.Course;
+import braid.course.Option;
+import braid.course.Settings;
 
 load "userFixtures"
 
 fixture{
 	
+		tallerSettings(Settings,
+		options: Option.syllabus.value,
+		bannerColor: '#248348',
+		githubUsername: 'tallerweb')
+
 		taller(Course,
 		name:'Taller Web 1 - Java - otoño 2013',
 		university:'Universidad Nacional de La Matanza',
+		settings: tallerSettings,
 		syllabus:'''## some markdown
 yes
 ### more
@@ -29,7 +37,7 @@ yes, more''',
 			position: 1,
 			course: taller)
 		link2(Link,
-			caption: 'Repo Github',
+			caption: 'Repo GitHub',
 			url: 'https://github.com/tallerweb',
 			position: 2,
 			course: taller)

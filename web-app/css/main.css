@@ -148,3 +148,17 @@ img.profile {
 .dashboard-main-data > .small {
 	font-size: 0.4em;
 }
+
+/***************
+
+    COURSE
+
+ **************/
+ 
+div.course-banner {
+	color: #ded;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height: 40px;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
