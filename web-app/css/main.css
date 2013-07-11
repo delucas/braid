@@ -150,15 +150,24 @@ img.profile {
 }
 
 /***************
-
     COURSE
-
  **************/
  
 div.course-banner {
-	color: #ded;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	line-height: 40px;
-	font-size: 20px;
+	color: #ded;
+	padding: 15px 0 10px 0;
 	margin-bottom: 10px;
+	text-shadow: 1px 1px 1px #000;
+}
+
+div.course-banner div.university {
+	font-weight: light;
+	line-height: 30px;
+	font-size: 15px;
+}
+
+div.course-banner div.course {
+    line-height: 20px;
+    font-size: 20px;
 }

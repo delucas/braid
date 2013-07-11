@@ -16,9 +16,14 @@ class CoursePresenterSpec extends Specification {
 		presenter = new CoursePresenter(course: course)
 	}
 
-	void "gets banner"() {
-		expect: 'banner says course university and name'
-			'UNTreF - Estructura de Datos 1, primavera 2013' == presenter.banner
+	void "gets course name"() {
+		expect: 'the course name'
+			'Estructura de Datos 1, primavera 2013' == presenter.name
+	}
+
+	void "gets university name"() {
+		expect: 'the university name'
+			'UNTreF' == presenter.university
 	}
 	
 	void "gets no options"() {

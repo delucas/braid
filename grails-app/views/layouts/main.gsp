@@ -90,7 +90,17 @@
 	</div>
 
 	<div class="course-banner" style="background-color: ${coursePresenter.bannerColor};">
-		<div class="container">${coursePresenter.banner}</div>
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span2">
+					<%-- logo? --%>
+				</div>
+				<div class="span8">
+					<div class="course">${coursePresenter.name}</div>
+					<div class="university">${coursePresenter.university}</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="container">

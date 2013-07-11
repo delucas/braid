@@ -3,7 +3,6 @@ package braid.presenters
 import braid.Link
 import braid.course.Option
 
-
 class CoursePresenter {
 
 	def course
@@ -22,6 +21,14 @@ class CoursePresenter {
 		options
 	}
 
+	def getName() {
+		course.name
+	}
+
+	def getUniversity() {
+		course.university
+	}
+
 	def getLinks() {
 		Link.findAllByCourse(course, [sort:'position'])
 	}
@@ -29,13 +36,9 @@ class CoursePresenter {
 	def getGithubUsername() {
 		course.settings.githubUsername
 	}
-	
+
 	def getBannerColor() {
 		course.settings.bannerColor
 	}
-	
-	def getBanner() {
-		"${course.university} - ${course.name}"
-	}
-	
+
 }
