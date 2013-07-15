@@ -1,6 +1,6 @@
 Seleccionar el usuario para loguearse
 
-<g:form action="singingUser">
+<g:form action="signinUser">
 
 	<g:select name="id" from="${users}"
 	optionKey="id"

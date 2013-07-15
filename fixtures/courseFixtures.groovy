@@ -80,4 +80,6 @@ fixture{
 	position: 2,
 	course: lenguaje)
 
+	uc10(UserCourse, user: obi, course: lenguaje, approved: true)
+
 }

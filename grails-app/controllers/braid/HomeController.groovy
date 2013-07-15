@@ -13,16 +13,9 @@ class HomeController {
 
 	def index() {
 		if (userService.currentUser.hasRole('ROLE_JEDI')) {
-			redirect(action:'dashboard')
+			redirect(action: 'dashboard')
 		} else {
-			redirect(action:'announcements')
-		}
-	}
-
-	def registration() {
-		User theUser = userService.currentUser
-		if (theUser.name && theUser.dni) {
-			redirect(action:'announcements')
+			redirect(action: 'announcements')
 		}
 	}
 

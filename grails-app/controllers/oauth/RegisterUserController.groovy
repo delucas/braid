@@ -49,6 +49,8 @@ class RegisterUserController {
 			theUser.dni = command.dni
 			theUser.username = command.username
 			theUser.oauthProvider = command.oauthProvider
+
+			theUser.email = profile.email
 			theUser.oauthId = profile.uid
 			theUser.avatarUrl = profile.picture
 			theUser.save(failOnError: true)
@@ -64,11 +66,13 @@ class RegisterUserController {
 			def theCourse = Course.get(command.courseId)
 			
 			UserCourse.create(theUser, theCourse)
-			
-			
+
 			redirect (controller:'home', action:'announcements')
+
 		} else {
+
 			render view:'register', model: [command: command]
+
 		}
 	}
 

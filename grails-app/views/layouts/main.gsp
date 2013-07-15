@@ -67,6 +67,14 @@
 		                          		Solicitudes pendientes
 		                          	</g:link>
 		                          </li>
+		                          <li class="nav-header">Cursos</li>
+		                          <g:each in="${allCourses}" var="course">
+									<li>
+										<g:link controller="course" action="select" id="${course.id}">
+											${course.name}
+										</g:link>
+									</li>
+		                          </g:each>
 	                          </sec:ifAllGranted>
 	                          <sec:ifAllGranted roles="ROLE_YODA">
 		                          <li class="nav-header">Opciones de administrador</li>

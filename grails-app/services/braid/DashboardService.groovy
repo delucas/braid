@@ -29,7 +29,11 @@ class DashboardService {
 			result
 		}
 
-		generateBarChartData(homeworkGraph, homeworkTransformation)
+		try {
+			generateBarChartData(homeworkGraph, homeworkTransformation)
+		} catch (Exception e) {
+			[bars: [], submissions: 0, total: 0, avg: 0]
+		}
 	}
 
 	def assignmentGraph() {
@@ -46,8 +50,11 @@ class DashboardService {
 			}
 			result
 		}
-
-		generateBarChartData(assignmentGraph, assignmentTransformation)
+		try {
+			generateBarChartData(assignmentGraph, assignmentTransformation)
+		} catch (Exception e) {
+			[bars: [], submissions: 0, total: 0, avg: 0]
+		}
 	}
 
 	private def generateBarChartData(def graphData, transformation) {
