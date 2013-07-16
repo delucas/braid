@@ -49,6 +49,13 @@ class CoursePresenterSpec extends Specification {
 			presenter.options.contains(Option.assignment)
 			presenter.options.contains(Option.homework)
 	}
+
+	void "knows if has the option"() {
+		given: 'a course with one option'
+			course << [settings: [ has: { option -> true }]]
+		expect: 'hast the option'
+			presenter.hasOption(Option.assignment)
+	}
 	
 	void "gets banner color"() {
 		given: 'a course with banner color'
