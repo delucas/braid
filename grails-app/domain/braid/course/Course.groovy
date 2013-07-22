@@ -9,6 +9,7 @@ class Course {
 	String syllabus
 
 	Settings settings
+	Boolean active
 
 	static constraints = {
 	}

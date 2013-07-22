@@ -88,7 +88,7 @@
 	                          	</g:link>
 	                          </li>
 	                        </ul>
-	                      </li>
+						</li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

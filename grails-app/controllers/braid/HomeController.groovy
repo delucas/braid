@@ -12,10 +12,16 @@ class HomeController {
 	def dashboardService
 
 	def index() {
-		if (userService.currentUser.hasRole('ROLE_JEDI')) {
-			redirect(action: 'dashboard')
+		def course = courseService.currentCourse
+
+		if (!course) {
+			redirect(controller: 'course', action: 'list')
 		} else {
-			redirect(action: 'announcements')
+			if (userService.currentUser.hasRole('ROLE_JEDI')) {
+				redirect(action: 'dashboard')
+			} else {
+				redirect(action: 'announcements')
+			}
 		}
 	}
 

@@ -104,10 +104,6 @@ class UserController {
 		
 		UserCourse.remove(user, course, true)
 		
-		user.dni = null
-		user.name = null
-		user.save(flush: true)
-		
 		redirect(action:'pending')
 	}
 	

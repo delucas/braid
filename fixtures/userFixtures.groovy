@@ -39,6 +39,13 @@ fixture{
 	password:'luke',
 	enabled: true)
 
+	phantom(User,
+	name:'Phantom Menace',
+	dni:'1000000',
+	username:'phantom',
+	password:'phantom',
+	enabled: true)
+
 	jarjar(User,
 	username:'jarjar',
 	password:'jarjar',
@@ -56,6 +63,7 @@ fixture{
 	ur2b(UserRole, user: quigon, role: rolJedi)
 	ur3a(UserRole, user: anakin, role: rolPadawan)
 	ur3b(UserRole, user: luke, role: rolPadawan)
+	ur3c(UserRole, user: phantom, role: rolPadawan)
 	ur4(UserRole, user: jarjar, role: rolJarJar)
 
 }

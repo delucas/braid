@@ -20,7 +20,8 @@ fixture{
 	university:'Universidad Nacional de La Matanza',
 	settings: tallerSettings,
 	syllabus:'## Syllabus placeholder',
-	honorCode:'## Honor code placeholder')
+	honorCode:'## Honor code placeholder',
+	active: true)
 
 	uc1(UserCourse, user: obi, course: taller, approved: true)
 	uc2(UserCourse, user: anakin, course: taller, approved: true)
@@ -63,7 +64,8 @@ fixture{
 	university:'Universidad Nacional de Tres de Febrero',
 	settings: lenguajeSettings,
 	syllabus:'## Syllabus placeholder',
-	honorCode:'## Honor code placeholder')
+	honorCode:'## Honor code placeholder',
+	active: true)
 
 	uc4(UserCourse, user: quigon, course: lenguaje, approved: true)
 	uc5(UserCourse, user: luke, course: lenguaje, approved: true)
@@ -81,5 +83,22 @@ fixture{
 	course: lenguaje)
 
 	uc10(UserCourse, user: obi, course: lenguaje, approved: true)
+
+	corteSettings(Settings,
+	options: 0,
+	bannerColor: '#006',
+	githubUsername: 'lenguaje')
+
+	corte(Course,
+	name:'Corte y confección 4',
+	university:'Universidad Nacional de La Matanza',
+	settings: corteSettings,
+	syllabus:'## Syllabus placeholder',
+	honorCode:'## Honor code placeholder',
+	active: false)
+
+	uc20(UserCourse, user: luke, course: corte, approved: true)
+	uc21(UserCourse, user: phantom, course: corte, approved: true)
+
 
 }
