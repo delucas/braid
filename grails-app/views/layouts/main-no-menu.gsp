@@ -35,7 +35,7 @@ body {
           </a>
           <a class="brand" href="#">
 				<img class="logo" src="${resource(dir:'images',file:'braid-logo.png')}" alt="braid"/>
-				braid <small>0.2</small>
+				braid <small>0.3</small>
 			</a>
         </div>
       </div>
