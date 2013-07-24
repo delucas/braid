@@ -1,5 +1,7 @@
 package braid
 
+import groovy.time.TimeCategory
+
 class AnnouncementTagLib {
 
 	def dateService
@@ -25,4 +27,25 @@ class AnnouncementTagLib {
 		out << '</div>'
 	}
 	
+	def render = { attrs ->
+		Announcement announcement = attrs.data
+		Date now = new Date()
+
+		out << '<blockquote class="md">'
+
+		use(TimeCategory) {
+			// this condition should go inside a presenter so it become testable
+			if (announcement.dateCreated > now - 3.days) {
+				out << '	<span class="label label-important pull-right">Nuevo</span>'
+			}
+		}
+
+		out << '	' + markdown.renderHtml() { announcement.text }
+		out << '	<small>'
+		out << "		${announcement.announcer.name}"
+		out << '		<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/></span>'
+		out << '	</small>'
+		out << '</blockquote>'
+	}
+
 }

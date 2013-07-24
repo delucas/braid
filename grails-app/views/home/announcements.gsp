@@ -46,13 +46,7 @@
 		</div>
 
 		<g:each in="${announcements}" var="announcement">
-			<blockquote class="md">
-				<markdown:renderHtml>${announcement.text}</markdown:renderHtml>
-				<small>
-					${announcement.announcer.name} 
-					<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/></span>
-				</small>
-			</blockquote>
+			<announcement:render data="${announcement}"/>
 		</g:each>
 
 	</div>
