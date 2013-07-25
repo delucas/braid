@@ -1,6 +1,7 @@
 package braid
 
 import groovy.time.TimeCategory
+import braid.presenters.AnnouncementPresenter
 
 class AnnouncementTagLib {
 
@@ -31,13 +32,12 @@ class AnnouncementTagLib {
 		Announcement announcement = attrs.data
 		Date now = new Date()
 
+		AnnouncementPresenter presenter = new AnnouncementPresenter(announcement: announcement, now: now)
+
 		out << '<blockquote class="md">'
 
-		use(TimeCategory) {
-			// this condition should go inside a presenter so it become testable
-			if (announcement.dateCreated > now - 3.days) {
-				out << '	<span class="label label-important pull-right">Nuevo</span>'
-			}
+		if (presenter.isNew()) {
+			out << '	<span class="label label-important pull-right">Nuevo</span>'
 		}
 
 		out << '	' + markdown.renderHtml() { announcement.text }
