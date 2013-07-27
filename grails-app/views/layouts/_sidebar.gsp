@@ -36,6 +36,13 @@
 						</g:link></li>
 	</g:if>
 
+	<g:if test="${coursePresenter.hasOption(Option.codeReview)}">
+		<li class="${pageProperty(name:'page.codeReview')}"><g:link
+				class="bbnotgood" controller="codeReview" action="list">
+							Revisiones de código
+						</g:link></li>
+	</g:if>
+
 	<g:if test="${coursePresenter.hasOption(Option.exams)}">
 		<li><a
 			href="http://github.com/${coursePresenter.githubUsername}/parciales"

@@ -11,7 +11,8 @@ fixture{
 	tallerSettings(Settings,
 	options:
 		Option.homework.value + Option.assignment.value +
-		Option.questions.value + Option.exams.value,
+		Option.questions.value + Option.exams.value +
+		Option.codeReview.value,
 	bannerColor: '#248348',
 	githubUsername: 'tallerweb')
 
