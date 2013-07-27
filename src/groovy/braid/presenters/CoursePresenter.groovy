@@ -11,16 +11,6 @@ class CoursePresenter {
 		course.settings.has(option)
 	}
 
-	def getOptions() {
-		def options = []
-		Option.values().each { option ->
-			if (option.value & course.options) {
-				options << option
-			}
-		}
-		options
-	}
-
 	def getName() {
 		course.name
 	}

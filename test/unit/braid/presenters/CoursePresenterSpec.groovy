@@ -12,7 +12,7 @@ class CoursePresenterSpec extends Specification {
 	def presenter, course
 
 	def setup() {
-		course = [name: 'Estructura de Datos 1, primavera 2013', university: 'UNTreF']
+		course = [name: 'Estructura de Datos 1, primavera 2013', university: 'UNTreF', settings: [:]]
 		presenter = new CoursePresenter(course: course)
 	}
 
@@ -24,30 +24,6 @@ class CoursePresenterSpec extends Specification {
 	void "gets university name"() {
 		expect: 'the university name'
 			'UNTreF' == presenter.university
-	}
-	
-	void "gets no options"() {
-		given: 'a course with no options'
-			course << [options: 0]
-		expect: 'empty options'
-			0 == presenter.options.size()
-	}
-	
-	void "gets an option"() {
-		given: 'a course with one option'
-			course << [options: 2]
-		expect: 'one option'
-			1 == presenter.options.size()
-			presenter.options.contains(Option.assignment)
-	}
-	
-	void "gets two options"() {
-		given: 'a course with two options'
-			course << [options: 3]
-		expect: 'two option'
-			2 == presenter.options.size()
-			presenter.options.contains(Option.assignment)
-			presenter.options.contains(Option.homework)
 	}
 
 	void "knows if has the option"() {
