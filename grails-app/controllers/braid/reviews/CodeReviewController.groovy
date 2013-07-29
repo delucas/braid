@@ -2,6 +2,8 @@ package braid.reviews
 
 class CodeReviewController {
 
+	def courseService
+
 	static allowedMethods = [
 		list: 'GET',
 		solve: ['GET', 'POST'],
@@ -11,6 +13,9 @@ class CodeReviewController {
 	]
 
 	def list() {
+		[homeworkList:
+			CodeReviewHomework.findAllByCourse(courseService.currentCourse,
+				[sort: 'solutionDueDate', order: 'desc'])]
 	}
 
 	def solve() {
@@ -22,19 +27,10 @@ class CodeReviewController {
 		}
 	}
 
-	def pair() {
-		if (request.method == 'GET') {
-			println params.id
-		} else {
-			flash.message = 'TBD'
-			redirect action:'list'
-		}
-	}
-
-	def self() {
+	def review() {
 		if (request.method == 'GET') {
 			//TODO: reuse pair view, with own solution
-			render view:'pair'
+			println params.id
 		} else {
 			flash.message = 'TBD'
 			redirect action:'list'

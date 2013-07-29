@@ -100,8 +100,8 @@
 								data-toggle="modal">Código de Honor</a>
 							</label>
 
-							<g:submitButton id="submitHomework"
-								class="btn btn-primary pull-right" name="submit"
+							<g:submitButton id="submitSolution"
+								class="btn btn-primary btn-large pull-right" name="submit"
 								value="Remitir solución" />
 						</div>
 

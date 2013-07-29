@@ -171,3 +171,11 @@ div.course-banner div.course {
     line-height: 20px;
     font-size: 20px;
 }
+
+/***************
+   CODE REVIEW
+ ***************/
+
+input#submitSolution {
+	margin-top: 18px;
+}

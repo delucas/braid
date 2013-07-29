@@ -25,66 +25,26 @@
 					<th>Título</th>
 					<th>Entrega</th>
 					<th>Revisión</th>
-					<th>Autocorrección</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
+				<g:each in="${homeworkList}" var="homework">
 				<tr>
-					<td>Contador de ganado</td>
+					<td>${homework.title}</td>
 					<td>
-						<g:formatDate date="${new Date() - 10}"
+						<g:formatDate date="${homework.solutionDueDate}"
 								timeZone="America/Argentina/Buenos_Aires" />
 					</td>
 					<td>
-						<g:formatDate date="${new Date() - 3}"
+						<g:formatDate date="${homework.reviewDueDate}"
 								timeZone="America/Argentina/Buenos_Aires" />
 					</td>
 					<td>
-						<g:formatDate date="${new Date() + 4}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:link action="self" class="btn">Autocorregir</g:link>
+						<codeReview:detailsLink homework="${homework}"/>
 					</td>
 				</tr>
-				<tr>
-					<td>Tanteador de básquet</td>
-					<td>
-						<g:formatDate date="${new Date() - 3}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:formatDate date="${new Date() + 4}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:formatDate date="${new Date() + 11}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:link action="pair" class="btn">Revisar soluciones</g:link>
-					</td>
-				</tr>
-				<tr>
-					<td>La orquesta</td>
-					<td>
-						<g:formatDate date="${new Date() + 4}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:formatDate date="${new Date() + 11}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:formatDate date="${new Date() + 18}"
-								timeZone="America/Argentina/Buenos_Aires" />
-					</td>
-					<td>
-						<g:link action="solve" class="btn">Resolver</g:link>
-					</td>
-				</tr>
-				
+				</g:each>
 			</tbody>
 		</table>
 	</div>

@@ -4,6 +4,7 @@ import braid.Feedback;
 import braid.Homework
 import braid.HomeworkSolution
 import braid.github.Repository
+import braid.reviews.CodeReviewHomework;
 
 load "announcementFixtures"
 
@@ -101,5 +102,26 @@ fixture{
 		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
 		dueDate: new Date() + 56,
 		course: taller)
+
+	crh1(CodeReviewHomework,
+		title: 'La orquesta',
+		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		solutionDueDate: new Date() + 4,
+		reviewDueDate: new Date() + 11,
+		course: taller)
+
+	crh2(CodeReviewHomework,
+		title: 'Contador de ganado',
+		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		solutionDueDate: new Date() - 3,
+		reviewDueDate: new Date() + 4,
+		course: taller)
 	
+	crh3(CodeReviewHomework,
+		title: 'Tanteador de básquet',
+		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		solutionDueDate: new Date() - 10,
+		reviewDueDate: new Date() - 3,
+		course: taller)
+
 }
