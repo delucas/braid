@@ -56,8 +56,8 @@
 
 				<legend>Solución</legend>
 
-				<g:form action="solve" method="post">
-					<g:hiddenField name="codeReviewId" value="1" />
+				<g:form action="solve" id="${codeReview.id}" method="post">
+					<g:hiddenField name="solutionId" value="${previousSolution?.id?:null}"/>
 
 					<div class="row-fluid">
 
@@ -90,19 +90,19 @@
 
 							<div class="input-prepend">
 								<span class="add-on">http://gist.github.com/delucas/</span> <input
-									class="span3" id="prependedInput" type="text"
-									placeholder="5431625">
+									class="span3 ${hasErrors(bean:previousSolution,field:'gist', 'error')}" id="prependedInput" type="text"
+									placeholder="5431625" name="gist" value="${previousSolution?.gist}"/>
 							</div>
 
-							<label class="checkbox" for="honorCode"> <input
+							<label class="checkbox ${hasErrors(bean:previousSolution,field:'honorCode', 'error')}" for="honorCode"> <input
 								id="honorCode" type="checkbox" name="honorCode"> Declaro
 								estar de acuerdo con el <a href="#honorCodeModal"
 								data-toggle="modal">Código de Honor</a>
 							</label>
 
-							<g:submitButton id="submitSolution"
-								class="btn btn-primary btn-large pull-right" name="submit"
-								value="Remitir solución" />
+							<button type="submit" class="btn btn-primary btn-large pull-right">
+								Remitir solución
+							</button>
 						</div>
 
 
