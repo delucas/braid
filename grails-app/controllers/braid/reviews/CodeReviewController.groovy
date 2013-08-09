@@ -1,5 +1,6 @@
 package braid.reviews
 
+import liquibase.statement.core.CommentStatement;
 import braid.UserService;
 import grails.validation.Validateable
 
@@ -9,6 +10,8 @@ class CodeReviewController {
 	def courseService
 
 	def solveCodeReviewService
+	def reviewSolutionService
+	def codeReviewResultsService
 
 	static allowedMethods = [
 		list: 'GET',
@@ -28,38 +31,66 @@ class CodeReviewController {
 
 		def user = userService.currentUser
 		def homework = CodeReviewHomework.get(params.long('id'))
+		// TODO: filter by dates
 
 		if (request.method == 'GET') {
 
 			def solution = CodeReviewSolution.findByUserAndHomework(user, homework)
-			[codeReview: homework, previousSolution: solution]
+			[homework: homework, previousSolution: solution]
 
 		} else {
 
 			if (command.validate()) {
 
-				def solution = solveCodeReviewService.buildSolution(command, homework, user)
-				solution.save()
+				solveCodeReviewService.buildSolution(command, homework, user)
 
 				redirect action:'list'
 			} else {
-				render view:'solve', model: [codeReview: homework, previousSolution: command]
+				render view: 'solve', model: [homework: homework, previousSolution: command]
 			}
 
 		}
 	}
 
-	def review() {
+	def review(CodeReviewCommand command) {
+
+		def user = userService.currentUser
+		def homework = CodeReviewHomework.get(params.long('id'))
+		// TODO: filter by dates
+
 		if (request.method == 'GET') {
-			//TODO: reuse pair view, with own solution
-			println params.id
+			def solution = reviewSolutionService.fetch(homework, user)
+
+			if (!solution) {
+				flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.done')
+				redirect action: 'list'
+			}
+			// TODO: use a presenter to accomodate view
+			[homework: homework, solution: solution, currentUser: user]
 		} else {
-			flash.message = 'TBD'
-			redirect action:'list'
+			def solution = CodeReviewSolution.get(command.solutionId)
+			if (command.validate()) {
+
+				reviewSolutionService.buildReview(command, solution, user)
+
+				redirect action: 'list'
+			} else {
+				render view: 'review', model: [homework: homework, solution: solution, review: command]
+			}
 		}
 	}
 
 	def results() {
+		def user = userService.currentUser
+		def homework = CodeReviewHomework.get(params.long('id'))
+		// TODO: filter by dates
+		def solution = codeReviewResultsService.getOwnSolution(homework, user)
+		def reviews = codeReviewResultsService.findAllReviews(solution)
+
+		if (!homework || !solution || !reviews) redirect action: 'list'
+
+		// TODO: enhance with a presenter, so that my own review is in last place
+		[homework: homework, solution: solution, reviews: reviews]
 	}
 }
 
@@ -85,4 +116,56 @@ class CodeReviewSolutionCommand {
 	Long getId() {
 		solutionId?:null
 	}
+}
+
+class CodeReviewCommand {
+	Long solutionId
+	Boolean honorCode
+
+	Integer clarity
+	Integer conventions
+	Integer correctness
+	Integer tests
+
+	String comments
+	String best
+	String advice
+
+	static constraints = {
+		solutionId validator: { val ->
+			CodeReviewSolution.get(val) != null
+		}
+		honorCode validator: { val -> val==true }
+
+		clarity range: 0..3
+		conventions range: 0..3
+		correctness range: 0..3
+		tests range: 0..3
+
+		comments blank: false
+		best blank: false
+		advice blank: false
+	}
+
+	static mapping = {
+		comments type: 'text'
+		best type: 'text'
+		advice type: 'text'
+	}
+
+	CodeReview toEntity() {
+		def review = new CodeReview()
+
+		review.clarity = clarity
+		review.conventions = conventions
+		review.correctness = correctness
+		review.tests = tests
+
+		review.comments = comments
+		review.best = best
+		review.advice = advice
+
+		review
+	}
+
 }

@@ -77,7 +77,7 @@ div.preview::before {
 
 .error {
 	color: #b94a48 !important;
-	background-color: #f2dede !important;
+/* 	background-color: #f2dede !important; */
 	border-color: #b94a48 !important;
 }
 

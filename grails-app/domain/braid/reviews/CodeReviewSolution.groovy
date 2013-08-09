@@ -13,4 +13,9 @@ class CodeReviewSolution {
 	CodeReviewHomework homework
 	User user
 
+//	static hasMany = [reviews: CodeReview]
+
+	Integer getRevisionsTotal() {
+		CodeReview.countBySolution(this)
+	}
 }

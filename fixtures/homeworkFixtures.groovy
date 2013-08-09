@@ -1,10 +1,11 @@
 import braid.Assignment
 import braid.AssignmentSolution
-import braid.Feedback;
+import braid.Feedback
 import braid.Homework
 import braid.HomeworkSolution
 import braid.github.Repository
-import braid.reviews.CodeReviewHomework;
+import braid.reviews.CodeReviewHomework
+import braid.reviews.CodeReviewSolution
 
 load "announcementFixtures"
 
@@ -115,6 +116,7 @@ fixture{
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
 		solutionDueDate: new Date() - 3,
 		reviewDueDate: new Date() + 4,
+		requiredReviews: 1,
 		course: taller)
 	
 	crh3(CodeReviewHomework,
@@ -124,4 +126,13 @@ fixture{
 		reviewDueDate: new Date() - 3,
 		course: taller)
 
+	crs1(CodeReviewSolution,
+		homework: crh2,
+		user: anakin,
+		gist: 765432)
+
+	crs2(CodeReviewSolution,
+		homework: crh2,
+		user: leia,
+		gist: 765433)
 }

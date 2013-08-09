@@ -32,6 +32,13 @@ fixture{
 	password:'anakin',
 	enabled: true)
 
+	leia(User,
+	name:'Leia Skywalker',
+	dni:'32345677',
+	username:'leia',
+	password:'leia',
+	enabled: true)
+
 	luke(User,
 	name:'Luke Skywalker',
 	dni:'32345678',
@@ -64,6 +71,7 @@ fixture{
 	ur3a(UserRole, user: anakin, role: rolPadawan)
 	ur3b(UserRole, user: luke, role: rolPadawan)
 	ur3c(UserRole, user: phantom, role: rolPadawan)
+	ur3d(UserRole, user: leia, role: rolPadawan)
 	ur4(UserRole, user: jarjar, role: rolJarJar)
 
 }

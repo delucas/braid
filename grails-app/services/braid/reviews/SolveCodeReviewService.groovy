@@ -6,7 +6,7 @@ class SolveCodeReviewService {
 		CodeReviewSolution solution = command.toEntity()
 		solution.user = user
 		solution.homework = homework
-		solution
+		solution.save()
 	}
 	
 }

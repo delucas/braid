@@ -11,6 +11,12 @@
 	<div class="span12">
 		<legend>Revisiones de código</legend>
 
+		<g:if test="${flash.message}">
+			<braid:alertInfo title="¡Muy buen trabajo!">
+				${flash.message}
+			</braid:alertInfo>
+		</g:if>
+
 		<div class="alert alert-info">
 			<strong>Sobre las fechas de entrega</strong>
 			<p>Recordá que las fechas de entrega son estrictas, y no se
@@ -23,8 +29,8 @@
 			<thead>
 				<tr>
 					<th>Título</th>
-					<th>Entrega</th>
-					<th>Revisión</th>
+					<th>Fecha límite de entrega</th>
+					<th>Fecha límite de revisión</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>

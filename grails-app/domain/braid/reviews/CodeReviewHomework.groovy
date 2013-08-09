@@ -8,6 +8,7 @@ class CodeReviewHomework {
 	String wording
 	Date solutionDueDate
 	Date reviewDueDate
+	Integer requiredReviews = 2
 
 	static belongsTo = [course: Course]
 

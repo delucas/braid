@@ -39,7 +39,7 @@
 					<g:hiddenField name="homeworkId" value="${homework.id}"/>
 					<g:hiddenField name="homeworkSolutionId" value="${command?.homeworkSolutionId}"/>
 				
-					<g:textArea rows="7" class="span12 wmd-panel ${hasErrors(bean:command,field:'text', 'error')}" 
+					<g:textArea rows="7" class="span12 wmd-panel ${hasErrors(bean:command, field:'text', 'error')}" 
 						name="text" id="solution">${command?.text}</g:textArea>
 					<small class="pull-right">
 						* Recuerde utilizar 
@@ -49,7 +49,7 @@
 					</small>
 					<div class="row-fluid">
 						<span class="span6">
-							<label class="checkbox ${hasErrors(bean:command,field:'honorCode', 'error')}" for="honorCode">
+							<label class="checkbox ${hasErrors(bean:command, field:'honorCode', 'error')}" for="honorCode">
 						      <input id="honorCode" type="checkbox" name="honorCode"> Declaro estar de acuerdo con el 
 						      <a href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
 						    </label>
