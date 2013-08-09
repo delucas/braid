@@ -34,6 +34,10 @@
 					<dd>
 						${user.dni}
 					</dd>
+					<dt>Correo electrónico</dt>
+					<dd>
+						${user.email}
+					</dd>
 				</dl>
 				<dl class="dl-horizontal">
 					<dt>Cuenta en Github</dt>

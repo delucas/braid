@@ -25,23 +25,6 @@ class HomeController {
 		}
 	}
 
-	def finishRegistration(RegistrationCommand command) {
-		if (command.validate()) {
-			User theUser = userService.currentUser
-			theUser.name = command.name
-			theUser.dni = command.dni
-
-			def theCourse = Course.get(command.courseId)
-
-			UserCourse.create(theUser, theCourse)
-			theUser.save(flush:true)
-
-			redirect(action:'announcements')
-		} else {
-			render view:'registration', model: [command: command]
-		}
-	}
-
 	@Secured([
 		'ROLE_YODA',
 		'ROLE_JEDI',

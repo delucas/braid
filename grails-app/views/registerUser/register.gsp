@@ -54,18 +54,18 @@
 						
 						</div>
 					</div>
-					<div class="control-group ${hasErrors(bean:command,field:'name', 'error')}">
+					<div class="control-group ${hasErrors(bean:command, field:'name', 'error')}">
 						<label class="control-label" for="name"> Nombre completo
 						</label>
 						<div class="controls">
 							<g:textField id="name" name="name"
-								placeholder="Roberto C. Martin" type="text" 
+								placeholder="Juan Perez" type="text" 
 								value="${command?.name}"/>
 						</div>
 						<span class="help-inline"><g:renderErrors bean="${command}" field="name" /></span>
 					</div>
 					
-					<div class="control-group ${hasErrors(bean:command,field:'dni', 'error')}">
+					<div class="control-group ${hasErrors(bean:command, field:'dni', 'error')}">
 						<label class="control-label" for="dni"> DNI </label>
 						<div class="controls">
 							<g:textField id="dni" name="dni" placeholder="35123456"
@@ -73,18 +73,16 @@
 						</div>
 						<span class="help-inline"><g:renderErrors bean="${command}" field="dni" /></span>
 					</div>
-					
-					<div class="control-group ${hasErrors(bean:command,field:'courseId', 'error')}">
-						<label class="control-label" for="curso"> Curso </label>
-						<div class="controls">
-							<g:select id="courseId"
-								name="courseId" value="${command?.courseId}"
-							    noSelection="${['null':'Seleccione un curso']}"
-							    from='${Course.list()}'
-							    optionKey="id" optionValue="name"></g:select>
 
+					<div class="control-group ${hasErrors(bean:command, field:'email', 'error')}">
+						<label class="control-label" for="email"> Correo electrónico
+						</label>
+						<div class="controls">
+							<g:textField id="email" name="email"
+								placeholder="example@computer.com" type="text" 
+								value="${command?.email}"/>
 						</div>
-						<span class="help-inline"><g:renderErrors bean="${command}" field="courseId" /></span>
+						<span class="help-inline"><g:renderErrors bean="${command}" field="email" /></span>
 					</div>
 					
 					<div class="form-actions">
