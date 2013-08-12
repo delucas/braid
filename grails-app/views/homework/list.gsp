@@ -20,11 +20,8 @@
 		</legend>
 
 		<div class="alert alert-info">
-			<strong>Sobre las fechas de entrega</strong>
-			<p>Recordá que las fechas de entrega son estrictas, y no se
-				modifican por ninguna razón. Podrás mirar las consignas durante toda
-				la cursada, pero sólo podrás resolverlas antes de la fecha de
-				entrega.</p>
+			<strong><g:message code="braid.homework.dueDates.title"/></strong>
+			<p><g:message code="braid.homework.dueDates.message"/></p>
 		</div>
 
 		<table class="table table-hover table-striped">

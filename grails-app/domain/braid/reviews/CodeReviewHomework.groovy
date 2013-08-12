@@ -1,8 +1,10 @@
 package braid.reviews
 
-import braid.course.Course;
+import braid.course.Course
 
 class CodeReviewHomework {
+
+	def dateService
 
 	String title
 	String wording
@@ -14,6 +16,14 @@ class CodeReviewHomework {
 
 	static mapping = {
 		wording type: 'text'
+	}
+
+	static transients = ['stage', 'dateService']
+
+	def getStage() {
+		if (dateService.currentTime < solutionDueDate) 'solve'
+		else if (dateService.currentTime < reviewDueDate) 'review'
+		else 'results'
 	}
 
 }

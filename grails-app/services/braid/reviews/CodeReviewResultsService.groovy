@@ -7,7 +7,7 @@ class CodeReviewResultsService {
 	}
 
 	def findAllReviews(solution) {
-		CodeReview.findAllBySolution(solution)
+		solution ? CodeReview.findAllBySolution(solution) : []
 	}
 		
 }

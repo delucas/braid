@@ -1,8 +1,6 @@
 package braid.reviews
 
-import liquibase.statement.core.CommentStatement;
-import braid.UserService;
-import grails.validation.Validateable
+import grails.plugins.springsecurity.Secured
 
 class CodeReviewController {
 
@@ -21,17 +19,24 @@ class CodeReviewController {
 		results: 'GET'
 	]
 
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def list() {
 		[homeworkList:
 			CodeReviewHomework.findAllByCourse(courseService.currentCourse,
 			[sort: 'solutionDueDate', order: 'desc'])]
 	}
 
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
 	def solve(CodeReviewSolutionCommand command) {
 
 		def user = userService.currentUser
 		def homework = CodeReviewHomework.get(params.long('id'))
-		// TODO: filter by dates
+
+		if (homework.stage != 'solve') {
+			flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.notInStage')
+			redirect action: 'list'
+			return
+		}
 
 		if (request.method == 'GET') {
 
@@ -44,7 +49,8 @@ class CodeReviewController {
 
 				solveCodeReviewService.buildSolution(command, homework, user)
 
-				redirect action:'list'
+				flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.solved')
+				redirect action: 'list'
 			} else {
 				render view: 'solve', model: [homework: homework, previousSolution: command]
 			}
@@ -52,11 +58,17 @@ class CodeReviewController {
 		}
 	}
 
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
 	def review(CodeReviewCommand command) {
 
 		def user = userService.currentUser
 		def homework = CodeReviewHomework.get(params.long('id'))
-		// TODO: filter by dates
+
+		if (homework.stage != 'review') {
+			flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.notInStage')
+			redirect action: 'list'
+			return
+		}
 
 		if (request.method == 'GET') {
 			def solution = reviewSolutionService.fetch(homework, user)
@@ -73,6 +85,7 @@ class CodeReviewController {
 
 				reviewSolutionService.buildReview(command, solution, user)
 
+				flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.reviewed')
 				redirect action: 'list'
 			} else {
 				render view: 'review', model: [homework: homework, solution: solution, review: command]
@@ -80,14 +93,24 @@ class CodeReviewController {
 		}
 	}
 
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
 	def results() {
 		def user = userService.currentUser
 		def homework = CodeReviewHomework.get(params.long('id'))
-		// TODO: filter by dates
+
+		if (homework.stage != 'results') {
+			flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.notInStage')
+			redirect action: 'list'
+			return
+		}
+
 		def solution = codeReviewResultsService.getOwnSolution(homework, user)
 		def reviews = codeReviewResultsService.findAllReviews(solution)
 
-		if (!homework || !solution || !reviews) redirect action: 'list'
+		if (!homework || !solution || !reviews) {
+			flash.message = g.message(code: 'braid.reviews.CodeReview.stages.review.noResults')
+			redirect action: 'list'
+		}
 
 		// TODO: enhance with a presenter, so that my own review is in last place
 		[homework: homework, solution: solution, reviews: reviews]

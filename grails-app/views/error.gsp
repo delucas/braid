@@ -24,8 +24,6 @@ body {
 </head>
 <body>
 
-
-
 	<div class="hero-unit center">
 		<h1>
 			¡Oops! <small>algo no resultó como se esperaba</small>
