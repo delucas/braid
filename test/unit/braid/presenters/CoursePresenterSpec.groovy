@@ -1,14 +1,14 @@
 package braid.presenters
 import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
-import groovy.time.TimeCategory
 import spock.lang.Specification
-import braid.AssignmentSolution
-import braid.course.Option;
+import braid.Link
+import braid.course.Option
 
 @TestMixin(GrailsUnitTestMixin)
+@Mock(Link)
 class CoursePresenterSpec extends Specification {
-	
+
 	def presenter, course
 
 	def setup() {
@@ -32,19 +32,33 @@ class CoursePresenterSpec extends Specification {
 		expect: 'hast the option'
 			presenter.hasOption(Option.assignment)
 	}
-	
+
 	void "gets banner color"() {
 		given: 'a course with banner color'
 			course << [settings: [bannerColor: '#036']]
 		expect: 'the color'
 			'#036' == presenter.bannerColor
 	}
-	
+
 	void "gets githubUsername"() {
 		given: 'a course with github username'
 			course << [settings: [githubUsername: 'lenguaje']]
 		expect: 'the github username'
 			'lenguaje' == presenter.githubUsername
 	}
-	
+
+	void "when there is no links it returns no links"() {
+		given: 'a course with no links'
+			Link.metaClass.'static'.findAllByCourse = { course, params -> [] }
+		expect: 'returns no links'
+			presenter.links.isEmpty()
+	}
+
+	void "when there are links it returns the links"() {
+		given: 'a course with no links'
+			Link.metaClass.'static'.findAllByCourse = { course, params -> [new Link()] }
+		expect: 'returns no links'
+			1 == presenter.links.size
+	}
+
 }
