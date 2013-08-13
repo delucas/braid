@@ -3,7 +3,9 @@ import braid.AssignmentSolution
 import braid.Feedback
 import braid.Homework
 import braid.HomeworkSolution
+import braid.User;
 import braid.github.Repository
+import braid.reviews.CodeReview
 import braid.reviews.CodeReviewHomework
 import braid.reviews.CodeReviewSolution
 
@@ -16,11 +18,11 @@ fixture{
 		wording: '''Explicar en dos párrafos el concepto de **Single Responsibility Principle**''',
 		dueDate: new Date() - 10,
 		course: taller)
-	
+
 	fb1(Feedback,
 		text: '''Es una buena visión, pero **no** es correcta.''',
 		score: 1)
-	
+
 	hws1(HomeworkSolution,
 		text: '''Esta es mi solución para la pregunta de SRP: Es lo mejor que me pasó en la vida!''',
 		feedback: fb1,
@@ -28,13 +30,13 @@ fixture{
 		user: anakin,
 		reviewer: obi,
 		homework: hw1)
-	
+
 	hw2(Homework,
 		title: 'Semana 2',
 		wording: '''Explicar en dos párrafos el concepto de **Open Closed**''',
 		dueDate: new Date() - 3,
 		course: taller)
-	
+
 	fb2(Feedback,
 		text: '''Es una buena visión, esta vez ES correcta.''',
 		score: 3)
@@ -46,19 +48,19 @@ fixture{
 		user: anakin,
 		reviewer: obi,
 		homework: hw2)
-	
+
 	hw3(Homework,
 		title: 'Semana 3',
 		wording: '''Explicar en dos párrafos el concepto de **Encapsulamiento**''',
 		dueDate: new Date() + 4,
 		course: taller)
-	
+
 	a1(Assignment,
 		title: 'Piedra, papel, tijera, lagarto, Spock',
 		repo: new Repository(user:'tallerweb', name:'piedra-papel-tijera-lagarto-Spock'),
 		dueDate: new Date() + 7,
 		course: taller)
-	
+
 	as1(AssignmentSolution,
 		assignment: a1,
 		user: anakin,
@@ -91,13 +93,13 @@ fixture{
 		feedback: 'Errores mínimos',
 		commit: 'adfeef3436744dfee232ae'
 		)
-	
+
 	a2(Assignment,
 		title: 'Cuentas bancarias',
 		repo: new Repository(user:'tallerweb', name:'cuentas-bancarias'),
 		dueDate: new Date() + 28,
 		course: taller)
-	
+
 	a3(Assignment,
 		title: 'Ecuaciones',
 		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
@@ -111,6 +113,11 @@ fixture{
 		reviewDueDate: new Date() + 11,
 		course: taller)
 
+	crs1(CodeReviewSolution,
+		homework: crh1,
+		user: leia,
+		gist: 5471002)
+
 	crh2(CodeReviewHomework,
 		title: 'Contador de ganado',
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
@@ -118,7 +125,40 @@ fixture{
 		reviewDueDate: new Date() + 4,
 		requiredReviews: 1,
 		course: taller)
-	
+
+	crs2(CodeReviewSolution,
+		homework: crh2,
+		user: anakin,
+		gist: 765432)
+
+	crs3(CodeReviewSolution,
+		homework: crh2,
+		user: leia,
+		gist: 765433)
+
+	cr1(CodeReview,
+		user: anakin,
+		solution: crs3,
+		clarity: 2,
+		conventions: 2,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es bastante promedio, no está a la altura de un Skywalker',
+		best: 'Lo mejor fue cuando dejó de codear',
+		advice: 'Mejorá tus convenciones, porque otros programadores no podemos entenderte')
+
+	cr2(CodeReview,
+		solution: crs3,
+		user: leia,
+		clarity: 3,
+		conventions: 3,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es muy bueno',
+		best: 'Es muy legible, y eso me enorgullece',
+		advice: 'Quizás podría haber hecho más corto el código para poder tipear menos')
+
+
 	crh3(CodeReviewHomework,
 		title: 'Tanteador de básquet',
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
@@ -126,13 +166,58 @@ fixture{
 		reviewDueDate: new Date() - 3,
 		course: taller)
 
-	crs1(CodeReviewSolution,
-		homework: crh2,
-		user: anakin,
-		gist: 765432)
-
-	crs2(CodeReviewSolution,
-		homework: crh2,
+	crs4(CodeReviewSolution,
+		homework: crh3,
 		user: leia,
-		gist: 765433)
+		gist: 5431625)
+
+	crs5(CodeReviewSolution,
+		homework: crh3,
+		user: anakin,
+		gist: 5471052)
+
+	cr3(CodeReview,
+		user: anakin,
+		solution: crs4,
+		clarity: 2,
+		conventions: 2,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es bastante promedio, no está a la altura de un Skywalker',
+		best: 'Lo mejor fue cuando dejó de codear',
+		advice: 'Mejorá tus convenciones, porque otros programadores no podemos entenderte')
+
+	cr4(CodeReview,
+		user: leia,
+		solution: crs4,
+		clarity: 3,
+		conventions: 3,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es muy bueno',
+		best: 'Es muy legible, y eso me enorgullece',
+		advice: 'Quizás podría haber hecho más corto el código para poder tipear menos')
+
+	cr6(CodeReview,
+		user: leia,
+		solution: crs5,
+		clarity: 2,
+		conventions: 2,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es bastante promedio, no está a la altura de un Skywalker',
+		best: 'Lo mejor fue cuando dejó de codear',
+		advice: 'Mejorá tus convenciones, porque otros programadores no podemos entenderte')
+
+	cr5(CodeReview,
+		user: anakin,
+		solution: crs5,
+		clarity: 3,
+		conventions: 3,
+		correctness: 3,
+		tests: 0,
+		comments: 'Creo que este código es muy bueno',
+		best: 'Es muy legible, y eso me enorgullece',
+		advice: 'Quizás podría haber hecho más corto el código para poder tipear menos')
+
 }

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>revisión de código: ${homework.title}</title>
+<title>revisión de código: ${results.homework.title}</title>
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
@@ -13,7 +13,7 @@
 	<div class="span12">
 
 		<legend>
-			${homework.title}: resultados
+			${results.homework.title}: resultados
 		</legend>
 
 		<g:if test="${flash.message}">
@@ -25,7 +25,7 @@
 		<section class="md">
 
 			<h2>Consigna</h2>
-			<markdown:renderHtml>${homework.wording}</markdown:renderHtml>
+			<markdown:renderHtml>${results.homework.wording}</markdown:renderHtml>
 		</section>
 
 		<section class="revision">
@@ -39,61 +39,66 @@
 							<i class="icon icon-resize-full"></i>
 						</button>
 					</legend>
-					<script src="https://gist.github.com/${solution.gist}.js">
-						
+					<script src="https://gist.github.com/${results.solution.gist}.js">
 					</script>
 				</div>
 
 				<div class="span6">
 					<legend>Resultados de la revisión</legend>
 
-					Comentarios de tus compañeros
-					<g:each var="review" in="${reviews}" status="i">
+					Comentarios
+
+					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
 							<markdown:renderHtml>${review.comments}</markdown:renderHtml>
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
-
-
+					<blockquote>
+						<markdown:renderHtml>${results.ownReview.comments}</markdown:renderHtml>
+						<small>${results.ownReview.user.name}</small>
+					</blockquote>
 
 <%--SACAR A UN TEMPLATE--%>
-
-
 
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th></th>
-								<g:each var="review" in="${reviews}" status="i">
+								<g:each var="review" in="${results.reviews}" status="i">
 									<th>E${i+1}</th>
 								</g:each>
+								<th>Vos</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>¿El código es claro?</td>
-								<g:each var="review" in="${reviews}" status="i">
+								<g:each var="review" in="${results.reviews}" status="i">
 									<th>${review.clarity}</th>
 								</g:each>
+								<th>${results.ownReview.clarity}</th>
 							</tr>
 							<tr>
 								<td>¿El código respeta convenciones?</td>
-								<g:each var="review" in="${reviews}" status="i">
+								<g:each var="review" in="${results.reviews}" status="i">
 									<th>${review.conventions}</th>
 								</g:each>
+								<th>${results.ownReview.conventions}</th>
 							</tr>
 							<tr>
 								<td>¿El comportamiento es correcto?</td>
-								<g:each var="review" in="${reviews}" status="i">
+								<g:each var="review" in="${results.reviews}" status="i">
 									<th>${review.correctness}</th>
 								</g:each>
+								<th>${results.ownReview.correctness}</th>
 							</tr>
 							<tr>
 								<td>¿Las pruebas son buenas?</td>
-								<g:each var="review" in="${reviews}" status="i">
+								<g:each var="review" in="${results.reviews}" status="i">
 									<th>${review.tests}</th>
 								</g:each>
+								<th>${results.ownReview.tests}</th>
 							</tr>
 						</tbody>
 
@@ -103,21 +108,29 @@
 
 					¿Qué es lo mejor de este trabajo?
 
-					<g:each var="review" in="${reviews}" status="i">
+					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
 							<markdown:renderHtml>${review.best}</markdown:renderHtml>
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
+					<blockquote>
+						<markdown:renderHtml>${results.ownReview.best}</markdown:renderHtml>
+						<small>${results.ownReview.user.name}</small>
+					</blockquote>
 
 					¿Cómo lo mejoraría?
 
-					<g:each var="review" in="${reviews}" status="i">
+					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
 							<markdown:renderHtml>${review.advice}</markdown:renderHtml>
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
+					<blockquote>
+						<markdown:renderHtml>${results.ownReview.advice}</markdown:renderHtml>
+						<small>${results.ownReview.user.name}</small>
+					</blockquote>
 
 				</div>
 

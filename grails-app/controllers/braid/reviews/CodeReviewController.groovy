@@ -1,6 +1,7 @@
 package braid.reviews
 
 import grails.plugins.springsecurity.Secured
+import braid.presenters.reviews.CodeReviewResultsPresenter
 
 class CodeReviewController {
 
@@ -112,8 +113,9 @@ class CodeReviewController {
 			redirect action: 'list'
 		}
 
-		// TODO: enhance with a presenter, so that my own review is in last place
-		[homework: homework, solution: solution, reviews: reviews]
+		def presenter = new CodeReviewResultsPresenter(homework: homework, solution: solution,
+			reviews: reviews)
+		[results: presenter]
 	}
 }
 
