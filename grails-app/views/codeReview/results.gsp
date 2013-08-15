@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>revisión de código: ${results.homework.title}</title>
+<title><g:message code="braid.reviews.title.one"/>: ${results.homework.title}</title>
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
@@ -13,7 +13,7 @@
 	<div class="span12">
 
 		<legend>
-			${results.homework.title}: resultados
+			${results.homework.title}: <g:message code="braid.reviews.legend.results"/>
 		</legend>
 
 		<g:if test="${flash.message}">
@@ -34,7 +34,7 @@
 
 				<div class="span6">
 					<legend>
-						Archivos
+						<g:message code="braid.reviews.CodeReview.files"/>
 						<button class="btn pull-right" data-action="resize">
 							<i class="icon icon-resize-full"></i>
 						</button>
@@ -46,7 +46,7 @@
 				<div class="span6">
 					<legend>Resultados de la revisión</legend>
 
-					Comentarios
+					<g:message code="braid.reviews.CodeReview.comments"/>
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
@@ -106,7 +106,7 @@
 
 <%--FIN TEMPLATE--%>
 
-					¿Qué es lo mejor de este trabajo?
+					<g:message code="braid.reviews.CodeReview.best"/>
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
@@ -119,7 +119,7 @@
 						<small>${results.ownReview.user.name}</small>
 					</blockquote>
 
-					¿Cómo lo mejoraría?
+					braid.reviews.CodeReview.advice
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>

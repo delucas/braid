@@ -24,30 +24,38 @@
 			<p><g:message code="braid.homework.dueDates.message"/></p>
 		</div>
 
-		<table class="table table-hover table-striped">
-			<thead>
-				<tr>
-					<th>Título</th>
-					<th>Fecha de entrega</th>
-					<th>&nbsp;</th>
-				</tr>
-			</thead>
-			<tbody>
-				<g:each in="${homeworks}" var="homework">
+		<g:if test="${homeworks}">
+			<table class="table table-hover table-striped">
+				<thead>
 					<tr>
-						<td>
-							${homework.title}
-						</td>
-						<td><g:formatDate date="${homework.dueDate}"
-								timeZone="America/Argentina/Buenos_Aires" /></td>
-						<td><g:link class="btn btn-small" action="show"
-								id="${homework.id}">
-			  				Ver detalles
-			  			</g:link></td>
+						<th>Título</th>
+						<th>Fecha de entrega</th>
+						<th>&nbsp;</th>
 					</tr>
-				</g:each>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<g:each in="${homeworks}" var="homework">
+						<tr>
+							<td>
+								${homework.title}
+							</td>
+							<td><g:formatDate date="${homework.dueDate}"
+									timeZone="America/Argentina/Buenos_Aires" /></td>
+							<td>
+								<g:link class="btn btn-small" action="show" id="${homework.id}">
+									Ver detalles
+								</g:link>
+							</td>
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+		</g:if>
+		<g:else>
+			<div class="alert alert-info">
+				<g:message code="braid.homework.none.message"/>
+			</div>
+		</g:else>
 	</div>
 
 </body>

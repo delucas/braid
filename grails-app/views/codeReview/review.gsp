@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>revisión de código: ${homework.title}</title>
+<title><g:message code="braid.reviews.title.one"/>: ${homework.title}</title>
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
@@ -17,8 +17,8 @@
 		<legend>
 			${homework.title}: revisión cruzada
 			<small class="pull-right">
-			Entrega: <g:formatDate
-					date="${new Date() + 4}" timeZone="America/Argentina/Buenos_Aires" />
+			<g:message code="braid.general.legend.dueDate"/>: <g:formatDate
+					date="${homework.reviewDueDate}" timeZone="America/Argentina/Buenos_Aires" />
 			</small>
 		</legend>
 
@@ -47,7 +47,7 @@
 			<div class="row-fluid">
 
 				<div class="span6">
-					<legend>Archivos
+					<legend><g:message code="braid.reviews.CodeReview.files"/>
 						<button class="btn pull-right" data-action="resize">
 							<i class="icon icon-resize-full"></i>
 						</button>
@@ -67,7 +67,7 @@
 						<div
 							class="control-group ${hasErrors(bean:review, field:'comments', 'error')}">
 
-							<label class="control-label" for="comments">Comentarios
+							<label class="control-label" for="comments"><g:message code="braid.reviews.CodeReview.comments"/>
 								sobre el código</label>
 							<div class="controls">
 
@@ -186,8 +186,8 @@
 						<div
 							class="control-group ${hasErrors(bean:review,field:'best', 'error')}">
 
-							<label class="control-label" for="commentsBest"> ¿Qué es
-								lo mejor de este trabajo? </label>
+							<label class="control-label" for="commentsBest"> 
+							<g:message code="braid.reviews.CodeReview.best"/> </label>
 							<div class="controls">
 
 								<textarea name="best" id="commentsBest" class="span12"
@@ -204,8 +204,8 @@
 						<div
 							class="control-group ${hasErrors(bean:review,field:'advice', 'error')}">
 
-							<label class="control-label" for="commentsAdvice"> ¿Cómo
-								lo mejoraría? </label>
+							<label class="control-label" for="commentsAdvice">
+								braid.reviews.CodeReview.advice </label>
 							<div class="controls">
 
 								<textarea name="advice" id="commentsAdvice" class="span12"

@@ -57,7 +57,8 @@ fixture{
 
 
 	lenguajeSettings(Settings,
-	options: 0,
+	options:
+		Option.homework.value + Option.codeReview.value,
 	bannerColor: '#006',
 	githubUsername: 'lenguaje')
 

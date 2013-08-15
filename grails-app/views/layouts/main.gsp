@@ -41,7 +41,7 @@
 				</a> 
 				<a class="brand" href="#">
 					<img class="logo" src="${resource(dir:'images',file:'braid-logo.png')}" alt="braid"/>
-					braid <small>0.3</small>
+					braid <small><g:meta name="app.version"/></small>
 				</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">

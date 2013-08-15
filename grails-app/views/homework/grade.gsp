@@ -14,7 +14,7 @@
 		<legend>
 			${homework.title} 
 			<small class="pull-right">
-				Entrega:
+				<g:message code="braid.general.legend.dueDate"/>:
 				<g:formatDate date="${homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>

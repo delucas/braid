@@ -1,23 +1,25 @@
 <html>
 <head>
-	<title>cursos</title>
+	<title><g:message code="braid.courses.title"/></title>
 	<meta name="layout" content="main-no-menu">
 </head>
 
 <body>
 
-	<div class="span12"><legend> Cursos activos</legend>
+	<div class="span12">
+		<legend>
+			<g:message code="braid.courses.legend.list"/>
+		</legend>
 
 		<div class="alert alert-info">
-			<p>Actualmente no te encontrás inscripto a ningún curso. Por
-				favor, seleccioná uno del listado</p>
+			<p><g:message code="braid.course.none.message"/></p>
 		</div>
 
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Universidad</th>
-					<th>Curso</th>
+					<th><g:message code="braid.course.course.university/></th>
+					<th><g:message code="braid.course.course.title"/></th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -32,7 +34,7 @@
 						</td>
 						<td><g:link class="btn btn-small" action="join"
 							id="${course.id}">
-			  				Inscribirse
+							Inscribirme
 			  			</g:link></td>
 					</tr>
 				</g:each>

@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>revisiones de código</title>
+<title><g:message code="braid.reviews.title"/></title>
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
@@ -9,7 +9,9 @@
 <body>
 
 	<div class="span12">
-		<legend>Revisiones de código</legend>
+		<legend>
+			<g:message code="braid.reviews.legend.list"/>
+		</legend>
 
 		<g:if test="${flash.message}">
 			<braid:alertInfo title="Info">

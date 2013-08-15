@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>revisión de código: ${homework.title}</title>
+<title><g:message code="braid.reviews.title.one"/>: ${homework.title}</title>
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
 
-<r:require modules="bootstrap-modal" />
+<r:require modules="bootstrap-modal"/>
 </head>
 
 <body>
@@ -13,8 +13,8 @@
 	<div class="span12">
 
 		<legend>
-			${homework.title} <small class="pull-right"> Entrega: <g:formatDate
-					date="${new Date() + 4}" timeZone="America/Argentina/Buenos_Aires" />
+			${homework.title} <small class="pull-right"> <g:message code="braid.general.legend.dueDate"/>: <g:formatDate
+					date="${homework.solutionDueDate}" timeZone="America/Argentina/Buenos_Aires" />
 			</small>
 		</legend>
 
@@ -74,9 +74,9 @@
 							</div>
 
 							<label class="checkbox ${hasErrors(bean:previousSolution, field:'honorCode', 'error')}" for="honorCode"> <input
-								id="honorCode" type="checkbox" name="honorCode"> Declaro
-								estar de acuerdo con el <a href="#honorCodeModal"
-								data-toggle="modal">Código de Honor</a>
+								id="honorCode" type="checkbox" name="honorCode">
+								Declaro estar de acuerdo con el
+								<a href="#honorCodeModal" data-toggle="modal">Código de Honor</a>
 							</label>
 
 							<button type="submit" class="btn btn-primary btn-large pull-right">
