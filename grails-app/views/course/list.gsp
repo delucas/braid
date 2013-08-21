@@ -18,7 +18,7 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th><g:message code="braid.course.course.university/></th>
+					<th><g:message code="braid.course.course.university"/></th>
 					<th><g:message code="braid.course.course.title"/></th>
 					<th>&nbsp;</th>
 				</tr>
