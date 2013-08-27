@@ -55,6 +55,16 @@ class PadawanHomeworkPresenterTests {
 		assert !presenter.shouldAlertForAlreadySolved()
 	}
 	
-	
+	void testWhenPadawanIsNotJarJar() {
+		def presenter = new PadawanHomeworkPresenter(padawan: true)
+
+		assert !presenter.isJarJar()
+	}
+
+	void testWhenNotPadawanisJarJar() {
+		def presenter = new PadawanHomeworkPresenter(padawan: false)
+
+		assert presenter.isJarJar()
+	}
 
 }

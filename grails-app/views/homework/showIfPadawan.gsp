@@ -77,6 +77,11 @@
 						
 					</div>
 				</g:if>
+				<g:if test="${presenter.isJarJar()}">
+					<div class="alert alert-info">
+						<g:message code="braid.jarjar.onHold"/>
+					</div>
+				</g:if>
 			</div>
 		</div>
 		

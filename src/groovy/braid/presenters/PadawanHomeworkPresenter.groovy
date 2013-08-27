@@ -18,5 +18,9 @@ class PadawanHomeworkPresenter {
 	boolean canSolve() {
 		!homework.outOfDate && padawan
 	}
+
+	boolean isJarJar() {
+		!padawan
+	}
 	
 }
