@@ -43,7 +43,7 @@ class AnnouncementTagLib {
 		out << '	' + markdown.renderHtml() { announcement.text }
 		out << '	<small>'
 		out << "		${announcement.announcer.name}"
-		out << '		<span class="pull-right"><g:formatDate date="${announcement.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/></span>'
+		out << "		<span class='pull-right'>${g.formatDate(date:announcement.dateCreated, timeZone:'America/Argentina/Buenos_Aires')}</span>"
 		out << '	</small>'
 		out << '</blockquote>'
 	}
