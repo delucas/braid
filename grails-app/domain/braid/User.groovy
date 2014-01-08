@@ -6,15 +6,15 @@ class User {
 
 	String name
 	String dni
-	
+
 	String username
 	String password
-	
+
 	boolean enabled
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-	
+
 	String email
 	String oauthId
 	String oauthProvider
@@ -35,9 +35,24 @@ class User {
 		password column: '`password`'
 		table 'braid_user'
 	}
-	
+
 	boolean hasRole(String authority) {
 		authorities.contains(Role.findByAuthority(authority))
+	}
+
+	def getCourses() {
+		UserCourse.executeQuery(
+				'select uc.course from UserCourse as uc where uc.user = :user and uc.course.active = true',
+				[user: this])
+	}
+
+	boolean isStudentOf(User jedi) {
+		def jedis = []
+
+		courses.each { course ->
+			jedis << course.jedis
+		}
+		jedis.flatten().contains(jedi)
 	}
 
 	Set<Role> getAuthorities() {
