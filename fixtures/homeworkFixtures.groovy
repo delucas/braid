@@ -16,6 +16,7 @@ fixture{
 	hw1(Homework,
 		title: 'Semana 1',
 		wording: '''Explicar en dos párrafos el concepto de **Single Responsibility Principle**''',
+		startDate: new Date() - 15,
 		dueDate: new Date() - 10,
 		course: taller)
 
@@ -34,6 +35,7 @@ fixture{
 	hw2(Homework,
 		title: 'Semana 2',
 		wording: '''Explicar en dos párrafos el concepto de **Open Closed**''',
+		startDate: new Date() - 8,
 		dueDate: new Date() - 3,
 		course: taller)
 
@@ -52,7 +54,15 @@ fixture{
 	hw3(Homework,
 		title: 'Semana 3',
 		wording: '''Explicar en dos párrafos el concepto de **Encapsulamiento**''',
+		startDate: new Date() - 1,
 		dueDate: new Date() + 4,
+		course: taller)
+
+	hw4(Homework,
+		title: 'Semana 4',
+		wording: '''Explicar en dos párrafos el concepto de **Polimorfismo**''',
+		startDate: new Date() + 3,
+		dueDate: new Date() + 13,
 		course: taller)
 
 	a1(Assignment,

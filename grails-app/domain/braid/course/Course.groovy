@@ -13,9 +13,6 @@ class Course {
 	Settings settings
 	Boolean active
 
-	static constraints = {
-	}
-
 	static mapping = {
 		honorCode type: 'text'
 		syllabus type: 'text'
