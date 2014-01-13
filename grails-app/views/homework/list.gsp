@@ -24,7 +24,7 @@
 			<p><g:message code="braid.homework.dueDates.message"/></p>
 		</div>
 
-		<g:if test="${homeworkList}">
+		<g:if test="${presenter.homeworkList}">
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
@@ -34,7 +34,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<g:each in="${homeworkList}" var="homework">
+					<g:each in="${presenter.homeworkList}" var="homework">
 						<tr>
 							<td>
 								${homework.title}

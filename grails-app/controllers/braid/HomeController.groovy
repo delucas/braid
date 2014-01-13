@@ -34,10 +34,11 @@ class HomeController {
 	def announcements() {
 
 		def course = courseService.currentCourse
+		def currentTime = dateService.currentTime
 		def announcements = Announcement.findAllByCourse(course,
 				[sort: "dateCreated", order: "desc"])
 
-		def homeworks = Homework.alreadyPublished.byCourse(course).findAllByDueDateGreaterThan(dateService.currentTime)
+		def homeworks = Homework.alreadyPublished(currentTime).byCourse(course).findAllByDueDateGreaterThan(dateService.currentTime)
 		def assignments = Assignment.findAllByCourseAndDueDateGreaterThan(course, dateService.currentTime)
 
 		def upcomingDates = []

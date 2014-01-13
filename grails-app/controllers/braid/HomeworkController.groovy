@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
 import braid.presenters.JediHomeworkPresenter
 import braid.presenters.PadawanHomeworkPresenter
+import braid.presenters.homework.HomeworkListPresenter
 
 
 class HomeworkController {
@@ -16,17 +17,12 @@ class HomeworkController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 
-		def currentCourse = courseService.currentCourse
-		def homeworkList
+		def presenter = new HomeworkListPresenter(
+			currentCourse: courseService.currentCourse,
+			currentUser: userService.currentUser,
+			currentTime: dateService.currentTime)
 
-		// TODO: use a presenter, which decides whether or not show unpublished homework
-		if (userService.currentUser.hasRole('ROLE_JEDI')) {
-			homeworkList = Homework.byCourse(currentCourse).list([sort: 'dueDate'])
-		} else {
-			homeworkList = Homework.alreadyPublished.byCourse(currentCourse).list([sort: 'dueDate'])
-		}
-
-		model: [homeworkList: homeworkList]
+		model: [presenter: presenter]
 	}
 
 	@Secured(['ROLE_JEDI'])

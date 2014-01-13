@@ -1,6 +1,6 @@
 package braid
 
-import braid.course.Course;
+import braid.course.Course
 
 class Homework {
 
@@ -15,6 +15,7 @@ class Homework {
 
 	static mapping = {
 		wording type: 'text'
+		sort 'dueDate'
 	}
 
 	static transients = ['outOfDate', 'published', 'dateService']
@@ -28,8 +29,8 @@ class Homework {
 	}
 
 	static namedQueries = {
-		alreadyPublished {
-			le 'startDate', new Date()
+		alreadyPublished { Date currentTime ->
+			le 'startDate', currentTime
 		}
 
 		byCourse { course ->
