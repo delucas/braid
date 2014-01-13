@@ -25,12 +25,10 @@ class AssignmentController {
 			currentTime: dateService.currentTime)
 
 		model: [presenter: presenter]
-
 	}
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-
 	}
 
 	@Secured(['ROLE_JEDI'])

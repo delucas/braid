@@ -1,9 +1,12 @@
 package braid.reviews
 
 import grails.plugins.springsecurity.Secured
+import braid.presenters.reviews.CodeReviewHomeworkListPresenter
 import braid.presenters.reviews.CodeReviewResultsPresenter
 
 class CodeReviewController {
+
+	def dateService
 
 	def userService
 	def courseService
@@ -22,9 +25,21 @@ class CodeReviewController {
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def list() {
-		[homeworkList:
-			CodeReviewHomework.findAllByCourse(courseService.currentCourse,
-			[sort: 'solutionDueDate', order: 'desc'])]
+		def currentCourse = courseService.currentCourse
+		def currentTime = dateService.currentTime
+
+		def presenter = new CodeReviewHomeworkListPresenter(
+			currentCourse: courseService.currentCourse,
+			currentUser: userService.currentUser,
+			currentTime: dateService.currentTime)
+
+		model: [presenter: presenter]
+	}
+
+	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	def show() {
+		def homework = CodeReviewHomework.get(params.id)
+		redirect action: homework.stage, id: params.id
 	}
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])

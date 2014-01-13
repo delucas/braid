@@ -129,6 +129,7 @@ fixture{
 	crh1(CodeReviewHomework,
 		title: 'La orquesta',
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		startDate: new Date() - 3,
 		solutionDueDate: new Date() + 4,
 		reviewDueDate: new Date() + 11,
 		course: taller)
@@ -141,6 +142,7 @@ fixture{
 	crh2(CodeReviewHomework,
 		title: 'Contador de ganado',
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		startDate: new Date() - 7,
 		solutionDueDate: new Date() - 3,
 		reviewDueDate: new Date() + 4,
 		requiredReviews: 1,
@@ -182,6 +184,7 @@ fixture{
 	crh3(CodeReviewHomework,
 		title: 'Tanteador de básquet',
 		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		startDate: new Date() - 14,
 		solutionDueDate: new Date() - 10,
 		reviewDueDate: new Date() - 3,
 		course: taller)
@@ -239,5 +242,13 @@ fixture{
 		comments: 'Creo que este código es muy bueno',
 		best: 'Es muy legible, y eso me enorgullece',
 		advice: 'Quizás podría haber hecho más corto el código para poder tipear menos')
+
+	crh4(CodeReviewHomework,
+		title: 'Filarmónica inédita',
+		wording: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet nulla quis ante malesuada vehicula. Vestibulum fermentum adipiscing odio at pharetra. In ac arcu nisi. Sed dignissim hendrerit ipsum, molestie vestibulum dolor faucibus sed. Aenean porta at neque non dictum. Suspendisse a sapien nisl. Donec vehicula felis tortor. Vestibulum imperdiet est tempus purus accumsan, a lobortis lacus posuere. Maecenas vel vulputate nisl. In id magna et ipsum vehicula condimentum. Nam ultrices faucibus risus, euismod scelerisque quam euismod in. Phasellus venenatis mollis risus vitae porta.',
+		startDate: new Date() + 2,
+		solutionDueDate: new Date() + 9,
+		reviewDueDate: new Date() + 13,
+		course: taller)
 
 }

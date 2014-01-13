@@ -33,12 +33,16 @@ class Assignment {
 	}
 
 	static namedQueries = {
-		alreadyPublished { Date currentTime ->
+		alreadyPublished { currentTime ->
 			le 'startDate', currentTime
 		}
 
 		byCourse { course ->
 			eq 'course', course
+		}
+
+		unfinished { currentTime ->
+			ge 'dueDate', currentTime
 		}
 	}
 

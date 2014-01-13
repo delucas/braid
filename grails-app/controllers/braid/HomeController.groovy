@@ -1,6 +1,7 @@
 package braid
 
 import braid.course.Course;
+import braid.reviews.CodeReviewHomework;
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 
@@ -38,8 +39,9 @@ class HomeController {
 		def announcements = Announcement.findAllByCourse(course,
 				[sort: "dateCreated", order: "desc"])
 
-		def homeworks = Homework.alreadyPublished(currentTime).byCourse(course).list()
-		def assignments = Assignment.alreadyPublished(currentTime).byCourse(course).list()
+		def homeworks = Homework.alreadyPublished(currentTime).unfinished(currentTime).byCourse(course).list()
+		def assignments = Assignment.alreadyPublished(currentTime).unfinished(currentTime).byCourse(course).list()
+		def reviews = CodeReviewHomework.alreadyPublished(currentTime).unfinished(currentTime).byCourse(course).list()
 
 		def upcomingDates = []
 		upcomingDates.addAll(homeworks.collect { it ->
@@ -47,6 +49,9 @@ class HomeController {
 		})
 		upcomingDates.addAll(assignments.collect { it ->
 			[id: it.id, type: 'assignment', title: it.title, dueDate: it.dueDate]
+		})
+		upcomingDates.addAll(reviews.collect { it ->
+			[id: it.id, type: 'codeReview', title: it.title, dueDate: it.nextDueDate]
 		})
 
 		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
