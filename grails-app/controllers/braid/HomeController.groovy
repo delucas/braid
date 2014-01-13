@@ -1,6 +1,8 @@
 package braid
 
+import braid.assignment.Assignment;
 import braid.course.Course;
+import braid.homework.Homework;
 import braid.reviews.CodeReviewHomework;
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured

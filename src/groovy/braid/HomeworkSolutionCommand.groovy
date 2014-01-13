@@ -1,5 +1,6 @@
 package braid
 
+import braid.homework.HomeworkSolution;
 import grails.validation.Validateable;
 
 @Validateable

@@ -5,8 +5,8 @@ import grails.test.mixin.support.*
 
 import org.junit.*
 
-import braid.Feedback
 import braid.Question
+import braid.homework.Feedback;
 
 @TestFor(Question)
 class QuestionTests {

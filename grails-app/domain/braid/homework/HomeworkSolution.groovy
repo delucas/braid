@@ -1,4 +1,6 @@
-package braid
+package braid.homework
+
+import braid.User;
 
 class HomeworkSolution {
 

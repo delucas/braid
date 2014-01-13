@@ -1,4 +1,6 @@
-package braid
+package braid.assignment
+
+import braid.User;
 
 class AssignmentSolution {
 

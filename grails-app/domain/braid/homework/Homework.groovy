@@ -1,16 +1,13 @@
-package braid
+package braid.homework
 
-import java.util.Date;
+import braid.course.Course
 
-import braid.course.Course;
-import braid.github.Repository;
-
-class Assignment {
+class Homework {
 
 	def dateService
 
 	String title
-	Repository repo
+	String wording
 
 	Date startDate
 	Date dueDate
@@ -18,18 +15,18 @@ class Assignment {
 	static belongsTo = [course: Course]
 
 	static mapping = {
+		wording type: 'text'
 		sort 'dueDate'
 	}
 
-	static transients = ['outOfDate', 'dateService', 'wording']
-	static embedded = ['repo']
+	static transients = ['outOfDate', 'published', 'dateService']
 
 	boolean getOutOfDate() {
 		dueDate < dateService.currentTime
 	}
 
-	def getWording() {
-		new URL(repo.readmeUrl).getText('UTF-8')
+	boolean isPublished() {
+		startDate < dateService.currentTime
 	}
 
 	static namedQueries = {

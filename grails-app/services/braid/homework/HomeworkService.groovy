@@ -1,4 +1,7 @@
-package braid
+package braid.homework
+
+import braid.homework.Homework;
+import braid.homework.HomeworkSolution;
 
 class HomeworkService {
 

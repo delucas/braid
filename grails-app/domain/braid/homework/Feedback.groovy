@@ -1,4 +1,4 @@
-package braid
+package braid.homework
 
 class Feedback {
 
@@ -10,7 +10,7 @@ class Feedback {
 	}
 	
 	static constraints = {
-		score range:1..3
+		score range: 1..3
 	}
 
 }

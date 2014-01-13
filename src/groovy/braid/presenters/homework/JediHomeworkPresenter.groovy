@@ -1,6 +1,6 @@
-package braid.presenters
+package braid.presenters.homework
 
-import braid.Homework
+import braid.homework.Homework;
 
 class JediHomeworkPresenter {
 

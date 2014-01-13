@@ -1,8 +1,8 @@
-import braid.Assignment
-import braid.AssignmentSolution
-import braid.Feedback
-import braid.Homework
-import braid.HomeworkSolution
+import braid.assignment.Assignment
+import braid.assignment.AssignmentSolution
+import braid.homework.Feedback
+import braid.homework.Homework
+import braid.homework.HomeworkSolution
 import braid.User;
 import braid.github.Repository
 import braid.reviews.CodeReview

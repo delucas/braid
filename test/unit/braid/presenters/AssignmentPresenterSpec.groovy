@@ -3,7 +3,8 @@ import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
 import groovy.time.TimeCategory
 import spock.lang.Specification
-import braid.AssignmentSolution
+import braid.assignment.AssignmentSolution;
+import braid.presenters.assignment.AssignmentPresenter;
 
 @TestMixin(GrailsUnitTestMixin)
 class AssignmentPresenterSpec extends Specification {

@@ -1,5 +1,7 @@
 package braid
 
+import braid.assignment.AssignmentSolution;
+import braid.homework.HomeworkSolution;
 import grails.plugins.springsecurity.Secured
 
 

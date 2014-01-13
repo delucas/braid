@@ -1,6 +1,6 @@
 package braid.presenters.assignment
 
-import braid.Assignment
+import braid.assignment.Assignment;
 
 class AssignmentListPresenter {
 

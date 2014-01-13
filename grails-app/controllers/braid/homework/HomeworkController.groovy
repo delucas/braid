@@ -1,10 +1,11 @@
-package braid
+package braid.homework
 
 import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
-import braid.presenters.JediHomeworkPresenter
-import braid.presenters.PadawanHomeworkPresenter
+import braid.HomeworkSolutionCommand
 import braid.presenters.homework.HomeworkListPresenter
+import braid.presenters.homework.JediHomeworkPresenter;
+import braid.presenters.homework.PadawanHomeworkPresenter;
 
 
 class HomeworkController {

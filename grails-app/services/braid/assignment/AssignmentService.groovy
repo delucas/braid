@@ -1,5 +1,6 @@
-package braid
+package braid.assignment
 
+import braid.assignment.AssignmentSolution;
 import grails.converters.JSON
 
 class AssignmentService {

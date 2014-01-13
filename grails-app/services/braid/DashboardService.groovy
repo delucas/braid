@@ -1,5 +1,8 @@
 package braid
 
+import braid.assignment.AssignmentSolution;
+import braid.homework.Homework;
+
 class DashboardService {
 
 	def courseService

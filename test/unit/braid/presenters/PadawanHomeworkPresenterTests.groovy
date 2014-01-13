@@ -2,7 +2,8 @@ package braid.presenters
 
 import grails.test.mixin.*
 import grails.test.mixin.support.*
-import braid.Homework
+import braid.homework.Homework;
+import braid.presenters.homework.PadawanHomeworkPresenter;
 
 @TestMixin(GrailsUnitTestMixin)
 class PadawanHomeworkPresenterTests {

@@ -1,11 +1,12 @@
-package braid
+package braid.assignment
 
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
+import braid.AssignmentSolutionCommand
 import braid.github.Repository
-import braid.presenters.AssignmentPresenter
 import braid.presenters.assignment.AssignmentListPresenter
+import braid.presenters.assignment.AssignmentPresenter;
 
 class AssignmentController {
 
