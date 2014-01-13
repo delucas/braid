@@ -8,6 +8,7 @@ class Homework {
 
 	String title
 	String wording
+
 	Date startDate
 	Date dueDate
 

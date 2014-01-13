@@ -33,7 +33,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<g:each in="${assignments}" var="assignment">
+				<g:each in="${presenter.assignmentList}" var="assignment">
 					<tr>
 						<td>
 							${assignment.title}

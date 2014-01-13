@@ -3,9 +3,9 @@ package braid
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
-import groovy.json.JsonSlurper
 import braid.github.Repository
 import braid.presenters.AssignmentPresenter
+import braid.presenters.assignment.AssignmentListPresenter
 
 class AssignmentController {
 
@@ -19,10 +19,13 @@ class AssignmentController {
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 
-		def currentCourse = courseService.currentCourse
-		def assignments = Assignment.findAllByCourse(currentCourse,[sort: 'dueDate'])
+		def presenter = new AssignmentListPresenter(
+			currentCourse: courseService.currentCourse,
+			currentUser: userService.currentUser,
+			currentTime: dateService.currentTime)
 
-		model: [assignments: assignments]
+		model: [presenter: presenter]
+
 	}
 
 	@Secured(['ROLE_JEDI'])

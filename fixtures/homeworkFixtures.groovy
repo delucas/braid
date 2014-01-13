@@ -68,6 +68,7 @@ fixture{
 	a1(Assignment,
 		title: 'Piedra, papel, tijera, lagarto, Spock',
 		repo: new Repository(user:'tallerweb', name:'piedra-papel-tijera-lagarto-Spock'),
+		startDate: new Date() - 49,
 		dueDate: new Date() + 7,
 		course: taller)
 
@@ -107,13 +108,22 @@ fixture{
 	a2(Assignment,
 		title: 'Cuentas bancarias',
 		repo: new Repository(user:'tallerweb', name:'cuentas-bancarias'),
+		startDate: new Date() - 28,
 		dueDate: new Date() + 28,
 		course: taller)
 
 	a3(Assignment,
 		title: 'Ecuaciones',
 		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		startDate: new Date() - 1,
 		dueDate: new Date() + 56,
+		course: taller)
+
+	a4(Assignment,
+		title: 'Fractales',
+		repo: new Repository(user:'tallerweb', name:'fractales'),
+		startDate: new Date() + 7,
+		dueDate: new Date() + 70,
 		course: taller)
 
 	crh1(CodeReviewHomework,
