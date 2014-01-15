@@ -1,11 +1,10 @@
 <html>
 <head>
-<title>trabajo práctico: ${assignment.title}</title>
-<meta name="layout" content="main">
-<parameter name="assignments" value="active" />
+	<title>trabajo práctico: ${assignment.title}</title>
+	<meta name="layout" content="main">
+	<parameter name="assignments" value="active" />
 
-<r:require modules="bootstrap-modal" />
-<r:require module="markdown" />
+	<r:require modules="bootstrap-modal" />
 </head>
 
 <body>
@@ -17,7 +16,7 @@
 		</legend>
 
 		<div id="assignment_div" style="width: 900px; height: 500px;"></div>
-		
+
 	</div>
 
 	<script src="http://code.highcharts.com/highcharts.js"></script>
@@ -33,7 +32,7 @@
 			w[0] = p
 		})
 		})
-    
+
     $(function () {
         $('#assignment_div').highcharts({
             chart: {
@@ -64,12 +63,12 @@
                         Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y;
                 }
             },
-            
+
             series: graph
         });
     });
-    
-    	
+
+
     </script>
 
 </body>

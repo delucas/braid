@@ -4,7 +4,7 @@
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
 
-	<r:require module="markdown"/>
+	<r:require module="textEditor"/>
 </head>
 <body>
 
@@ -48,24 +48,11 @@
 					</div>
 				</div>
 
-				<g:textArea rows="7" class="span12 wmd-panel ${hasErrors(bean:command,field:'wording', 'error')}" name="wording" id="homework">${command?.wording}</g:textArea>
-				<small class="pull-right">
-					* Recuerde utilizar
-					<a href="http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf" target="_blank">
-						formato markdown
-					</a>
-				</small>
+				<g:textArea rows="7" class="textarea span12 ${hasErrors(bean:command,field:'wording', 'error')}" name="wording" id="homework">${command?.wording}</g:textArea>
 
 			</g:form>
 		</div>
 
-		<div class="well span8 preview">
-			<div class="md" id="previewArea">
-				<p>
-					...
-				</p>
-			</div>
-		</div>
 		<div class="span8">
 			<button id="submitHomework" class="btn btn-small btn-primary pull-right">
 				Crear tarea
@@ -75,39 +62,13 @@
 	</div>
 
 	<script>
-
-		function toggleSubmit(enable) {
-			if (enable) {
-				$("#submitHomework").removeAttr('disabled');
-			} else {
-				$("#submitHomework").attr('disabled','disabled');
-			}
-		}
-
 		$(function() {
-		  // When using more than one `textarea` on your page, change the following line to match the one you’re after
-		  var $textarea = $('textarea'),
-		      $preview = $('#previewArea'),
-		      convert = new Markdown.getSanitizingConverter().makeHtml;
-
-		  // instead of `keyup`, consider using `input` using this plugin: http://mathiasbynens.be/notes/oninput#comment-1
-		  $textarea.keyup(function() {
-			  if ($textarea.val()) {
-				  toggleSubmit(true);
-			    $preview.html(convert($textarea.val()));
-			  } else {
-				  toggleSubmit(false);
-			}
-		  }).trigger('keyup');
-		});
-
-		$(function(){
+			$('.textarea').wysihtml5({ image: false });
 
 			$("#submitHomework").on('click',function(){
 				$('form[name="homeworkForm"]').submit()
 			});
 		});
-
 	</script>
 
 </body>

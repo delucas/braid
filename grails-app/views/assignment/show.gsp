@@ -5,7 +5,6 @@
 <parameter name="assignments" value="active" />
 
 <r:require modules="bootstrap-modal" />
-<r:require module="markdown" />
 </head>
 
 <body>

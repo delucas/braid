@@ -40,7 +40,7 @@ class AnnouncementTagLib {
 			out << '	<span class="label label-important pull-right">Nuevo</span>'
 		}
 
-		out << '	' + markdown.renderHtml() { announcement.text }
+		out << '	' + announcement.text
 		out << '	<small>'
 		out << "		${announcement.announcer.name}"
 		out << "		<span class='pull-right'>${g.formatDate(date:announcement.dateCreated, timeZone:'America/Argentina/Buenos_Aires')}</span>"

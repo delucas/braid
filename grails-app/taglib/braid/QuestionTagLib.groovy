@@ -37,7 +37,7 @@ class QuestionTagLib {
 		
 		
 		out << '<div class="md">'
-		out << markdown.renderHtml(){ question.wording }
+		out << question.wording
 		out << '</div>'
 		
 //		TODO: habilitar cuando se defina política de edición de preguntas

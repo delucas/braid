@@ -3,8 +3,6 @@
 	<title>trabajos prácticos</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
-	
-	<r:require module="markdown"/>
 </head>
 <body>
 

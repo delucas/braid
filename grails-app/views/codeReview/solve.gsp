@@ -27,7 +27,7 @@
 		<section class="md">
 
 			<h2>Consigna</h2>
-			<markdown:renderHtml>${homework.wording}</markdown:renderHtml>
+			${homework.wording}
 		</section>
 
 		<section class="solve">

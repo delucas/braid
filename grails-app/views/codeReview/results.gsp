@@ -25,7 +25,7 @@
 		<section class="md">
 
 			<h2>Consigna</h2>
-			<markdown:renderHtml>${results.homework.wording}</markdown:renderHtml>
+			${results.homework.wording}
 		</section>
 
 		<section class="revision">
@@ -50,12 +50,12 @@
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
-							<markdown:renderHtml>${review.comments}</markdown:renderHtml>
+							${review.comments}
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
 					<blockquote>
-						<markdown:renderHtml>${results.ownReview.comments}</markdown:renderHtml>
+						${results.ownReview.comments}
 						<small>${results.ownReview.user.name}</small>
 					</blockquote>
 
@@ -110,12 +110,12 @@
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
-							<markdown:renderHtml>${review.best}</markdown:renderHtml>
+							${review.best}
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
 					<blockquote>
-						<markdown:renderHtml>${results.ownReview.best}</markdown:renderHtml>
+						${results.ownReview.best}
 						<small>${results.ownReview.user.name}</small>
 					</blockquote>
 
@@ -123,12 +123,12 @@
 
 					<g:each var="review" in="${results.reviews}" status="i">
 						<blockquote>
-							<markdown:renderHtml>${review.advice}</markdown:renderHtml>
+							${review.advice}
 							<small>Estudiante ${i+1}</small>
 						</blockquote>
 					</g:each>
 					<blockquote>
-						<markdown:renderHtml>${results.ownReview.advice}</markdown:renderHtml>
+						${results.ownReview.advice}
 						<small>${results.ownReview.user.name}</small>
 					</blockquote>
 

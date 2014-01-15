@@ -49,7 +49,9 @@ class HomeworkController {
 			redirect(action:'list')
 
 		} else {
-			render view:'create', model: [command: command]
+			render view:'create', model: [
+				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR)
+			]
 		}
 
 	}

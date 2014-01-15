@@ -39,14 +39,10 @@ fixture{
 		dueDate: new Date() - 3,
 		course: taller)
 
-	fb2(Feedback,
-		text: '''Es una buena visión, esta vez ES correcta.''',
-		score: 3)
-
 	hws2(HomeworkSolution,
 		text: '''Esta es mi solución para la **segunda** pregunta: Blah!''',
 		dateCreated: new Date() - 4,
-		feedback: fb2,
+		feedback: null,
 		user: anakin,
 		reviewer: obi,
 		homework: hw2)

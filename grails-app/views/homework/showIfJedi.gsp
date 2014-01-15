@@ -5,7 +5,6 @@
 	<parameter name="homeworks" value="active" />
 	
 	<r:require modules="bootstrap-modal" />
-	<r:require module="markdown"/>
 </head>
 <body>
 
@@ -52,13 +51,13 @@
 							<td>
 								<div class="well">
 									<legend>Solución</legend>
-									<markdown:renderHtml>${solution.text}</markdown:renderHtml>
+										${solution.text}
 								</div>
 							</td>
 							<td>
 								<div class="well">
 									<legend>Feedback <span class="badge">${solution.feedback?.score}</span></legend>
-									<markdown:renderHtml>${solution.feedback?.text}</markdown:renderHtml>
+										${solution.feedback?.text}
 								</div>
 							</td>
 						</tr>

@@ -3,8 +3,8 @@
 	<title>preguntas teóricas</title>
 	<meta name="layout" content="main">
 	<parameter name="questions" value="active" />
-	
-	<r:require module="markdown"/>
+
+	<r:require module="textEditor"/>
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 		<legend>
 			Nueva pregunta
 		</legend>
-		
+
 		<div class="span8">
 			<ul class="nav nav-pills">
 				<li class="${(actionName=='list')?'active':''}"><g:link
@@ -30,7 +30,7 @@
 
 		<div class="well span8">
 			<g:form action="save" name="questionForm">
-		
+
 				<div class="row-fluid">
 					<select id="starsInput" name="level" class="input-small ${hasErrors(bean:command,field:'level', 'error')}">
 						<option value="1" ${(command?.level == 1)?'selected="selected"':''}>&#9733;&#9734;&#9734;</option>
@@ -40,36 +40,12 @@
 					<input type="text" id="tagsInput" name="tags" class="input-xlarge pull-right ${hasErrors(bean:command,field:'tags', 'error')}"
 					placeholder="tags, separados, por, comas" value="${command?.tags}"/>
 				</div>
-			
-				<g:textArea rows="7" class="span12 wmd-panel ${hasErrors(bean:command,field:'wording', 'error')}" name="wording" id="question">${command?.wording}</g:textArea>
-				<small class="pull-right">
-					* Recuerde utilizar 
-					<a href="http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf" target="_blank">
-						formato markdown
-					</a>
-				</small>
-				
+
+				<g:textArea rows="7" class="textarea span12 wmd-panel ${hasErrors(bean:command,field:'wording', 'error')}" name="wording" id="question">${command?.wording}</g:textArea>
+
 			</g:form>
 		</div>
 
-		<div class="well span8 preview">
-			<div class="row-fluid">
-				<div class="span3">
-					#${nextQuestionNumber} - 
-					<span id="stars"><i class="icon-star"></i><i class="icon-star-empty"></i><i
-						class="icon-star-empty"></i></span>
-				</div>
-				<div class="span9">
-					<span id="tags" class="pull-right">
-					</span>
-				</div>
-			</div>
-			<div class="md" id="previewArea">
-				<p>
-					...
-				</p>
-			</div>
-		</div>
 		<div class="span8">
 			<button id="submitQuestion" class="btn btn-small btn-primary pull-right">
 				Crear pregunta
@@ -77,13 +53,13 @@
 		</div>
 
 	</div>
-	
+
 	<script>
 
 		function makeStars(black) {
 			var white = 3 - black
 			var result = ''
-			
+
 			for (var i=1;i<=black;i++) { 
 				result += '<i class="icon-star"></i>'
 			}
@@ -108,38 +84,15 @@
 
 			var tags = $("#tagsInput").val().replace(/( )+/g,' ').replace(/,( )+/g,',').split(',')
 			$("#tags").html(makeTags(tags))
-			
-		}
 
-		function toggleSubmit(enable) {
-			if (enable) {
-				$("#submitQuestion").removeAttr('disabled');
-			} else {
-				$("#submitQuestion").attr('disabled','disabled');
-			}
 		}
-		
-		$(function() {
-		  // When using more than one `textarea` on your page, change the following line to match the one you’re after
-		  var $textarea = $('textarea'),
-		      $preview = $('#previewArea'),
-		      convert = new Markdown.getSanitizingConverter().makeHtml;
-
-		  // instead of `keyup`, consider using `input` using this plugin: http://mathiasbynens.be/notes/oninput#comment-1
-		  $textarea.keyup(function() {
-			  if ($textarea.val()) {
-				  toggleSubmit(true);
-			    $preview.html(convert($textarea.val()));
-			  } else {
-				  toggleSubmit(false);
-			}
-		  }).trigger('keyup');
-		});
 
 		$(function(){
 
+			$('.textarea').wysihtml5({ image: false });
+
 			firstTime();
-			
+
 			$("#starsInput").on('change',function(){
 				$("#stars").html(makeStars($(this).val()))
 			});
@@ -151,7 +104,7 @@
 				$('form[name="questionForm"]').submit()
 			});
 		});
-		
+
 	</script>
 
 </body>

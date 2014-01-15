@@ -13,7 +13,7 @@ class HomeworkTagLib {
 		out << '<div class="well">'
 		out << '	<legend>Consigna</legend>'
 		out << '	<div class="well md">'
-		out << markdown.renderHtml(){ homework.wording }
+		out << homework.wording
 		out << '	</div>'
 		out << '</div>'
 	}
@@ -25,7 +25,7 @@ class HomeworkTagLib {
 		out << '<div class="well">'
 		out << "	<legend>Respuesta de ${solution.user.name}</legend>"
 		out << '	<div class="well md">'
-		out << markdown.renderHtml(){ solution.text }
+		out << solution.text
 		out << '	</div>'
 		out << '</div>'
 		
@@ -39,7 +39,7 @@ class HomeworkTagLib {
 			out << '<div class="well">'
 			out << "	<legend>Feedback <small>(${solution.feedback.score}/3)</small></legend>"
 			out << '	<div class="well md">'
-			out << markdown.renderHtml(){ solution.feedback.text }
+			out << solution.feedback.text
 			out << "		<small class='pull-right'>revisado por ${solution.reviewer.name}</small>"
 			out << '	</div>'
 			out << '</div>'

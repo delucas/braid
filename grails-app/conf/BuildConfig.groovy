@@ -36,7 +36,7 @@ grails.project.dependency.resolution = {
 
 		compile 'org.scribe:scribe:1.3.3'
 		runtime 'postgresql:postgresql:9.1-901.jdbc4'
-		
+
     }
 
     plugins {
@@ -53,17 +53,17 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.1"
 
         compile ':cache:1.0.0'
-		
+
 		compile ':spring-security-core:1.2.7.3'
 
 		compile ':fixtures:1.1'
-		compile ":markdown:1.0.0.RC1"
 
 		compile ":rabbitmq:1.0.0"
-				
+
 		runtime ":resources:1.2.RC2"
         runtime ":twitter-bootstrap:2.2.2"
-		
+		compile ":markdown:1.0.0.RC1"
+
 		test ":code-coverage:1.2.5"
 		test ":spock:0.7"
     }
