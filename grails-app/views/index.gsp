@@ -10,15 +10,13 @@
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 	rel="stylesheet">
-<link
-	href="${resource(dir:'css',file:'landing.css')}"
-	rel="stylesheet">
+<link href="${resource(dir:'css',file:'landing.css')}" rel="stylesheet">
 
 <r:require modules="bootstrap" />
+<r:require modules="bootstrap-modal" />
 <r:layoutResources />
 
 <style>
-
 </style>
 
 <title>braid · aprendiendo diferente</title>
@@ -61,6 +59,7 @@
 							<strong>trenza.</strong> Conjunto de tres o más ramales que se
 							entretejen, cruzándolos alternativamente.
 						</p>
+
 						<p>
 							Asegurate de tener una cuenta en <a href="http://www.github.com">
 								Github</a> para poder ingresar.
@@ -76,8 +75,10 @@
 						</p>
 
 						<p>
-							<a href="http://www.twitter.com/luke_ar" class="btn btn-primary">
-								<i class="icon-twitter"></i> @luke_ar
+							<a class="btn" href="#promoModal" data-toggle="modal">¿Cómo
+								surge braid?</a> <a href="http://www.twitter.com/luke_ar"
+								class="btn btn-primary"> <i class="icon-twitter"></i>
+								@luke_ar
 							</a>
 						</p>
 
@@ -88,31 +89,38 @@
 		</div>
 	</section>
 
-	<hr/>
+	<hr />
 
 	<section class="container">
 
 		<div class="row">
 			<div class="span4">
 				<h2>Seguimiento</h2>
-				<p><strong>Braid</strong> permite hacer un seguimiento tan regular
-				como quieras: se pueden asignar tareas y ver progresos durante toda
-				la cursada. La corrección será tan simple como hacer dos clicks por
-				alumno o tan compleja como redactar una devolución personalizada.</p>
+				<p>
+					<strong>Braid</strong> permite hacer un seguimiento tan regular
+					como quieras: se pueden asignar tareas y ver progresos durante toda
+					la cursada. La corrección será tan simple como hacer dos clicks por
+					alumno o tan compleja como redactar una devolución personalizada.
+				</p>
 			</div>
 			<div class="span4">
 				<h2>Automatización</h2>
-				<p>Gracias al módulo <strong>grader</strong>, la herramienta permite la
-				liberación de tareas de programación que pueden ser corregidas en forma
-				automática por un servidor. Correctitud, estilo, buenas prácticas,
-				desempeño&hellip; el límite lo ponés vos.</p>
+				<p>
+					Gracias al módulo <strong>grader</strong>, la herramienta permite
+					la liberación de tareas de programación que pueden ser corregidas
+					en forma automática por un servidor. Correctitud, estilo, buenas
+					prácticas, desempeño&hellip; el límite lo ponés vos.
+				</p>
 			</div>
 			<div class="span4">
 				<h2>Intercambio</h2>
-				<p>No puede escribirse buen código sin leer mucho código. Es por ello que
-				uno de los modos de tarea es el de <strong>revisiones cruzadas</strong>, la
-				que le da el nombre a la plataforma y permite que los estudiantes revisen
-				el código de otros estudiantes, haciendo sugerencias y mejoras.</p>
+				<p>
+					No puede escribirse buen código sin leer mucho código. Es por ello
+					que uno de los modos de tarea es el de <strong>revisiones
+						cruzadas</strong>, la que le da el nombre a la plataforma y permite que los
+					estudiantes revisen el código de otros estudiantes, haciendo
+					sugerencias y mejoras.
+				</p>
 			</div>
 		</div>
 
@@ -123,14 +131,19 @@
 
 			<div class="row">
 				<div class="span4" id="gratis">
-					<p>* Esta herramienta tiene licencia MIT, por lo que podrás instalarla en
-					tus servidores sin problemas y sin incurrir en costos.</p>
+					<p>* Esta herramienta tiene licencia MIT, por lo que podrás
+						instalarla en tus servidores sin problemas y sin incurrir en
+						costos.</p>
 				</div>
 				<div class="span4">
-					<p>Sin embargo, como todo lo gratis vale lo que pagaste por ello, sí
-					tendrás un cargo moral por el uso: <em>deberás ayudar a hacer crecer
-					la plataforma</em>.</p>
-					<p>Si aún así no te espanté, contactame <i class="icon-smile"></i></p>
+					<p>
+						Sin embargo, como todo lo gratis vale lo que pagaste por ello, sí
+						tendrás un cargo moral por el uso: <em>deberás ayudar a hacer
+							crecer la plataforma</em>.
+					</p>
+					<p>
+						Si aún así no te espanté, contactame <i class="icon-smile"></i>
+					</p>
 				</div>
 				<div class="span4">
 					<ul>
@@ -145,5 +158,25 @@
 		</div>
 	</footer>
 
+	<div id="promoModal" class="modal hide fade" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3>braid @ StarTechConf 2013</h3>
+		</div>
+		<div class="modal-body">
+			<iframe
+				src="//player.vimeo.com/video/80576449?title=0&amp;byline=0&amp;portrait=0"
+				width="526" height="300" frameborder="0" webkitallowfullscreen
+				mozallowfullscreen allowfullscreen></iframe>
+			<p>
+				<strong>Protip:</strong> Recomendamos verlo en modo pantalla completa. 
+			</p>
+		</div>
+	</div>
+
+	<g:javascript library="application" />
+	<r:layoutResources />
 </body>
 </html>
