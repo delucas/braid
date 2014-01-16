@@ -1,9 +1,6 @@
 package braid.domain
 
-import grails.test.mixin.*
 import grails.test.mixin.support.*
-
-import org.junit.*
 
 import braid.homework.Feedback;
 

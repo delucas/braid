@@ -1,6 +1,5 @@
 package braid.services.reviews
 
-import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
 import braid.User

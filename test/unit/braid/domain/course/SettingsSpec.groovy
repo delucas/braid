@@ -19,7 +19,7 @@ class SettingsSpec extends Specification {
 		expect:
 			settings.has(Option.homework)
 			settings.has(Option.assignment)
-			!settings.has(Option.exams)
+			!settings.has(Option.codeReview)
 	}
 
 }

@@ -1,10 +1,7 @@
 package braid.domain
 
 import static org.junit.Assert.*
-import grails.test.mixin.*
 import grails.test.mixin.support.*
-
-import org.junit.*
 
 import braid.Announcement
 import braid.User

@@ -32,6 +32,7 @@ class GithubAuthService extends GrailsOAuthService {
         authService.signRequest(accessToken, request)
         def response = request.send()
 
+		// TODO: deep.JSON is deprecated. Use JSON instead -> http://grails.org/Converters+Reference
         def user = JSON.parse(response.body)
         new OAuthProfile(username: user.login, uid: user.id, email: user.email,picture:user.avatar_url)
     }
