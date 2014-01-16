@@ -6,6 +6,7 @@ import security.SpringSecuritySigninService
 import braid.Role
 import braid.User
 import braid.UserRole
+import braid.helpers.StringConverter
 
 class RegisterUserController {
 
@@ -32,7 +33,6 @@ class RegisterUserController {
 
 		if (command.validate()) {
 
-
 			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
 
 			if (!profile || !session["${params.oauthProvider}_authToken"]) {
@@ -43,7 +43,7 @@ class RegisterUserController {
 			def theUser = new User()
 			theUser.password = new Date().time.toString()
 			theUser.username = command.username
-			theUser.name = command.name
+			theUser.name = StringConverter.capitalizeWords(command.name)
 			theUser.dni = command.dni
 			theUser.email = command.email
 			theUser.oauthProvider = command.oauthProvider
@@ -64,9 +64,7 @@ class RegisterUserController {
 			redirect(controller: 'course', action: 'list')
 
 		} else {
-
 			render view:'register', model: [command: command]
-
 		}
 	}
 
