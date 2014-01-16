@@ -10,8 +10,9 @@ fixture{
 
 	tallerSettings(Settings,
 	options:
-		Option.homework.value + Option.assignment.value +
-		Option.questions.value + Option.codeReview.value,
+		Option.homework.value +
+		Option.assignment.value +
+		Option.codeReview.value,
 	bannerColor: '#248348',
 	githubUsername: 'tallerweb')
 
@@ -57,7 +58,8 @@ fixture{
 
 	lenguajeSettings(Settings,
 	options:
-		Option.homework.value + Option.codeReview.value,
+		Option.homework.value +
+		Option.codeReview.value,
 	bannerColor: '#006',
 	githubUsername: 'lenguaje')
 

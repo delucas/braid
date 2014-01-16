@@ -3,7 +3,7 @@ import java.util.Date;
 import braid.Announcement
 import braid.User;
 
-load "questionFixtures"
+load "courseFixtures"
 
 fixture{
 

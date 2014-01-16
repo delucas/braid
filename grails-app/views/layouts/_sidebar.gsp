@@ -16,12 +16,7 @@
 			class="bbnotgood" controller="home" action="syllabus">
 							Plan de estudios
 						</g:link></li>
-	<g:if test="${coursePresenter.hasOption(Option.questions)}">
-		<li class="${pageProperty(name:'page.questions')}"><g:link
-				class="bbnotgood" controller="question" action="list">
-							Preguntas teóricas
-						</g:link></li>
-	</g:if>
+
 	<g:if test="${coursePresenter.hasOption(Option.homework)}">
 		<li class="${pageProperty(name:'page.homeworks')}"><g:link
 				class="bbnotgood" controller="homework" action="list">
@@ -49,6 +44,7 @@
 								Estudiantes
 							</g:link></li>
 	</sec:ifAnyGranted>
+
 	<li class="${pageProperty(name:'page.honorCode')}"><g:link
 			class="bbnotgood" controller="home" action="honorCode">
 			<strong>Código de Honor</strong>
