@@ -43,12 +43,6 @@
 						</g:link></li>
 	</g:if>
 
-	<g:if test="${coursePresenter.hasOption(Option.exams)}">
-		<li><a
-			href="http://github.com/${coursePresenter.githubUsername}/parciales"
-			class="bbnotgood"> Evaluaciones </a></li>
-	</g:if>
-
 	<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
 		<li class="${pageProperty(name:'page.students')}"><g:link
 				class="bbnotgood" controller="user" action="list">

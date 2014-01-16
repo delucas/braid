@@ -14,7 +14,7 @@ class Settings {
 enum Option {
 
 	homework(0x1), assignment(0x2),
-	questions(0x4), exams(0x8),
+	questions(0x4),
 	codeReview(0x10)
 	
 	Integer value
