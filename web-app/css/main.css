@@ -59,6 +59,10 @@ div.preview::before {
 	border-radius: 0 4px 0 4px;
 }
 
+section.md {
+	padding: 0 10px 10px;
+}
+
 .md h1,.md h2,.md h3 {
 	line-height: 20px !important;
 }

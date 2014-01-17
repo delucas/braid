@@ -1,10 +1,9 @@
 import braid.assignment.Assignment
 import braid.assignment.AssignmentSolution
+import braid.github.Repository
 import braid.homework.Feedback
 import braid.homework.Homework
 import braid.homework.HomeworkSolution
-import braid.User;
-import braid.github.Repository
 import braid.reviews.CodeReview
 import braid.reviews.CodeReviewHomework
 import braid.reviews.CodeReviewSolution
@@ -15,13 +14,13 @@ fixture{
 
 	hw1(Homework,
 		title: 'Semana 1',
-		wording: '''Explicar en dos párrafos el concepto de **Single Responsibility Principle**''',
+		wording: '''Explicar en dos párrafos el concepto de <strong>Single Responsibility Principle</strong>''',
 		startDate: new Date() - 15,
 		dueDate: new Date() - 10,
 		course: taller)
 
 	fb1(Feedback,
-		text: '''Es una buena visión, pero **no** es correcta.''',
+		text: '''Es una buena visión, pero <strong>no</strong> es correcta.''',
 		score: 1)
 
 	hws1(HomeworkSolution,
@@ -34,13 +33,13 @@ fixture{
 
 	hw2(Homework,
 		title: 'Semana 2',
-		wording: '''Explicar en dos párrafos el concepto de **Open Closed**''',
+		wording: '''Explicar en dos párrafos el concepto de <strong>Open Closed</strong>''',
 		startDate: new Date() - 8,
 		dueDate: new Date() - 3,
 		course: taller)
 
 	hws2(HomeworkSolution,
-		text: '''Esta es mi solución para la **segunda** pregunta: Blah!''',
+		text: '''Esta es mi solución para la <strong>segunda</strong> pregunta: Blah!''',
 		dateCreated: new Date() - 4,
 		feedback: null,
 		user: anakin,
@@ -49,14 +48,14 @@ fixture{
 
 	hw3(Homework,
 		title: 'Semana 3',
-		wording: '''Explicar en dos párrafos el concepto de **Encapsulamiento**''',
+		wording: '''Explicar en dos párrafos el concepto de <strong>Encapsulamiento</strong>''',
 		startDate: new Date() - 1,
 		dueDate: new Date() + 4,
 		course: taller)
 
 	hw4(Homework,
 		title: 'Semana 4',
-		wording: '''Explicar en dos párrafos el concepto de **Polimorfismo**''',
+		wording: '''Explicar en dos párrafos el concepto de <strong>Polimorfismo</strong>''',
 		startDate: new Date() + 3,
 		dueDate: new Date() + 13,
 		course: taller)

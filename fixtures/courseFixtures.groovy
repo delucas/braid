@@ -1,8 +1,8 @@
 import braid.Link
 import braid.UserCourse
-import braid.course.Course;
-import braid.course.Option;
-import braid.course.Settings;
+import braid.course.Course
+import braid.course.Option
+import braid.course.Settings
 
 load "userFixtures"
 
@@ -20,8 +20,8 @@ fixture{
 	name:'Taller Web 1 - Java - otoño 2013',
 	university:'Universidad Nacional de La Matanza',
 	settings: tallerSettings,
-	syllabus:'## Syllabus placeholder',
-	honorCode:'## Honor code placeholder',
+	syllabus:'<h2>Syllabus placeholder</h2><p>Some text</p>',
+	honorCode:'<h2>Honor code placeholder</h2><p>Some text</p>',
 	active: true)
 
 	uc1(UserCourse, user: obi, course: taller, approved: true)
@@ -67,8 +67,8 @@ fixture{
 	name:'Lenguaje de Programación 1 - primavera 2013',
 	university:'Universidad Nacional de Tres de Febrero',
 	settings: lenguajeSettings,
-	syllabus:'## Syllabus placeholder',
-	honorCode:'## Honor code placeholder',
+	syllabus:'<h2>Syllabus placeholder</h2><p>Some text</p>',
+	honorCode:'<h2>Honor code placeholder</h2><p>Some text</p>',
 	active: true)
 
 	uc4(UserCourse, user: quigon, course: lenguaje, approved: true)
@@ -97,8 +97,8 @@ fixture{
 	name:'Corte y confección 4',
 	university:'Universidad Nacional de La Matanza',
 	settings: corteSettings,
-	syllabus:'## Syllabus placeholder',
-	honorCode:'## Honor code placeholder',
+	syllabus:'<h2>Syllabus placeholder</h2><p>Some text</p>',
+	honorCode:'<h2>Honor code placeholder</h2><p>Some text</p>',
 	active: false)
 
 	uc20(UserCourse, user: luke, course: corte, approved: true)
