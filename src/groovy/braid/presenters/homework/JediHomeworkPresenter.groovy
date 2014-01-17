@@ -17,4 +17,8 @@ class JediHomeworkPresenter {
 		homework.outOfDate && totalToGrade == 0
 	}
 	
+	boolean isPublished() {
+		homework.published
+	}
+
 }

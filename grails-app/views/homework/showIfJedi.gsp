@@ -3,19 +3,26 @@
 	<title>tarea: ${presenter.homework.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
-	
+
 	<r:require modules="bootstrap-modal" />
 </head>
 <body>
 
 	<div class="span12">
-		
+
 		<g:if test="${presenter.finishedGrading()}">
 			<braid:alertInfo title="¡Buen trabajo!">
 				Ya se han corregido todas las tareas. Es momento de descansar...
 			</braid:alertInfo>
 		</g:if>
-		
+
+		<g:if test="${!presenter.published}">
+			<braid:alertInfo title="¡Es un secreto!">
+				Aún no se ha dado a conocer esta tarea. Está planificado que se publique el
+				<g:formatDate date="${presenter.homework.startDate}" timeZone="America/Argentina/Buenos_Aires"/>
+			</braid:alertInfo>
+		</g:if>
+
 		<legend>
 			${presenter.homework.title}
 			<small class="pull-right">
@@ -23,15 +30,15 @@
 				<g:formatDate date="${presenter.homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
-		
+
 		<homework:wording homework="${presenter.homework}"/>
-		
+
 		<g:if test="${presenter.hasToGrade()}">
 			<g:link action="grade" params="[homeworkId: presenter.homework.id]" class="btn btn-large btn-block btn-primary">
 				Corregir tareas de alumnos
 			</g:link>
 		</g:if>
-		
+
 		<g:if test="${presenter.finishedGrading()}">
 			<table id="scores" class="table table-striped table-hover">
 				<thead>
@@ -39,7 +46,7 @@
 					<th>Estudiante</th>
 				</thead>
 				<tbody>
-				
+
 					<g:each in="${presenter.solutionsUpToDate}" var="solution">
 						<tr class="score">
 							<td width="50%">
@@ -62,11 +69,11 @@
 							</td>
 						</tr>
 					</g:each>
-				
+
 				</tbody>
 			</table>
 		</g:if>
-		
+
 	</div>
 
 	<script type="text/javascript">
@@ -77,7 +84,7 @@
 				$(this).parent().children().removeClass('hidden')
 			});
 		});
-	
+
 	</script>
 
 </body>

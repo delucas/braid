@@ -29,6 +29,7 @@
 				<thead>
 					<tr>
 						<th>Título</th>
+						<th>Estado</th>
 						<th>Fecha de entrega</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -38,6 +39,9 @@
 						<tr>
 							<td>
 								${homework.title}
+							</td>
+							<td>
+								<braid:homeworkStage homework="${homework}"/>
 							</td>
 							<td><g:formatDate date="${homework.dueDate}"
 									timeZone="America/Argentina/Buenos_Aires" /></td>
