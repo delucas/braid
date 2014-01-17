@@ -24,8 +24,12 @@ class Assignment {
 	static transients = ['outOfDate', 'dateService', 'wording']
 	static embedded = ['repo']
 
-	boolean getOutOfDate() {
+	boolean isOutOfDate() {
 		dueDate < dateService.currentTime
+	}
+
+	boolean isPublished() {
+		startDate < dateService.currentTime
 	}
 
 	def getWording() {

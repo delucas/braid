@@ -29,6 +29,7 @@
 				<thead>
 					<tr>
 						<th>Título</th>
+						<th>Estado</th>
 						<th>Fecha límite de entrega</th>
 						<th>Fecha límite de revisión</th>
 						<th>&nbsp;</th>
@@ -38,6 +39,9 @@
 					<g:each in="${presenter.homeworkList}" var="homework">
 					<tr>
 						<td>${homework.title}</td>
+						<td>
+							<braid:homeworkStage homework="${homework}"/>
+						</td>
 						<td>
 							<g:formatDate date="${homework.solutionDueDate}"
 									timeZone="America/Argentina/Buenos_Aires" />

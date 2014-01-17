@@ -16,6 +16,10 @@ class AssignmentPresenter {
 		solutions.max { it.score }
 	}
 
+	boolean isPublished() {
+		assignment.published
+	}
+
 	boolean canSubmit() {
 
 		def result = true

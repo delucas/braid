@@ -11,6 +11,13 @@
 
 	<div class="span12">
 
+		<g:if test="${!presenter.published}">
+			<braid:alertInfo title="¡Es un secreto!">
+				Aún no se ha dado a conocer este trabajo práctico. Está planificado que se publique el
+				<g:formatDate date="${presenter.assignment.startDate}" timeZone="America/Argentina/Buenos_Aires"/>
+			</braid:alertInfo>
+		</g:if>
+
 		<legend>
 			${presenter.assignment.title}
 			<small class="pull-right"> <g:message code="braid.general.legend.dueDate"/>: <g:formatDate

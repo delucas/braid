@@ -21,7 +21,7 @@ class Homework {
 
 	static transients = ['outOfDate', 'published', 'dateService']
 
-	boolean getOutOfDate() {
+	boolean isOutOfDate() {
 		dueDate < dateService.currentTime
 	}
 

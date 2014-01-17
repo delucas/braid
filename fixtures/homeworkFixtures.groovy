@@ -110,14 +110,14 @@ fixture{
 
 	a3(Assignment,
 		title: 'Ecuaciones',
-		repo: new Repository(user:'tallerweb', name:'ecuaciones'),
+		repo: new Repository(user:'tallerweb', name:'piedra-papel-tijera-lagarto-Spock'),
 		startDate: new Date() - 1,
 		dueDate: new Date() + 56,
 		course: taller)
 
 	a4(Assignment,
 		title: 'Fractales',
-		repo: new Repository(user:'tallerweb', name:'fractales'),
+		repo: new Repository(user:'tallerweb', name:'cuentas-bancarias'),
 		startDate: new Date() + 7,
 		dueDate: new Date() + 70,
 		course: taller)

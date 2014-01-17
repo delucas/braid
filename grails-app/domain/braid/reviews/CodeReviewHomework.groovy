@@ -39,6 +39,14 @@ class CodeReviewHomework {
 		}
 	}
 
+	boolean isPublished() {
+		startDate < dateService.currentTime
+	}
+
+	boolean isOutOfDate() {
+		reviewDueDate < dateService.currentTime
+	}
+
 	def getNextDueDate() {
 		if (dateService.currentTime < solutionDueDate) solutionDueDate
 		else reviewDueDate

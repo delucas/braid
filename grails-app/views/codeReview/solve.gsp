@@ -12,6 +12,13 @@
 
 	<div class="span12">
 
+		<g:if test="${!homework.published}">
+			<braid:alertInfo title="¡Es un secreto!">
+				Aún no se ha dado a conocer esta tarea. Está planificado que se publique el
+				<g:formatDate date="${homework.startDate}" timeZone="America/Argentina/Buenos_Aires"/>
+			</braid:alertInfo>
+		</g:if>
+
 		<legend>
 			${homework.title} <small class="pull-right"> <g:message code="braid.general.legend.dueDate"/>: <g:formatDate
 					date="${homework.solutionDueDate}" timeZone="America/Argentina/Buenos_Aires" />
