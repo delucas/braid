@@ -1,4 +1,4 @@
-package braid.domain
+package braid.domain.assignment
 
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
