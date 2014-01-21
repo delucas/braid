@@ -1,5 +1,4 @@
 package braid.presenters
-import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
 import braid.Link
@@ -49,16 +48,16 @@ class CoursePresenterSpec extends Specification {
 
 	void "when there is no links it returns no links"() {
 		given: 'a course with no links'
-			Link.metaClass.'static'.findAllByCourse = { course, params -> [] }
+			Link.metaClass.'static'.byCourse = { course -> [list: { [] }] }
 		expect: 'returns no links'
-			presenter.links.isEmpty()
+			!presenter.links
 	}
 
 	void "when there are links it returns the links"() {
 		given: 'a course with no links'
-			Link.metaClass.'static'.findAllByCourse = { course, params -> [new Link()] }
+			Link.metaClass.'static'.byCourse = { course -> [list: { [new Link()] }] }
 		expect: 'returns no links'
-			1 == presenter.links.size
+			presenter.links
 	}
 
 }

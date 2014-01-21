@@ -45,6 +45,14 @@
 							</g:link></li>
 	</sec:ifAnyGranted>
 
+	<sec:ifAnyGranted roles="ROLE_JEDI">
+		<li class="${pageProperty(name:'page.links')}">
+			<g:link class="bbnotgood" controller="links" action="list">
+				Enlaces
+			</g:link>
+		</li>
+	</sec:ifAnyGranted>
+
 	<li class="${pageProperty(name:'page.honorCode')}"><g:link
 			class="bbnotgood" controller="home" action="honorCode">
 			<strong>Código de Honor</strong>

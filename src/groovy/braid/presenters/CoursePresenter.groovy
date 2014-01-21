@@ -20,7 +20,7 @@ class CoursePresenter {
 	}
 
 	def getLinks() {
-		Link.findAllByCourse(course, [sort:'position'])
+		Link.byCourse(course).list([sort: 'position'])
 	}
 
 	def getGithubUsername() {
