@@ -52,7 +52,6 @@ class LinksController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-
 	}
 
 	@Secured(['ROLE_JEDI'])
@@ -80,11 +79,37 @@ class LinksController {
 
 		} else {
 			render view:'create', model: [
-				command: command
+				link: command
 			]
 		}
 
 	}
+
+	@Secured(['ROLE_JEDI'])
+	def edit(Long id) {
+		[link: Link.get(id)]
+	}
+
+	@Secured(['ROLE_JEDI'])
+	def update(LinkCommand command) {
+
+		if (command.validate()) {
+
+			def link = Link.get(params.id)
+			link.properties = command.properties
+			link.save(flush: true)
+
+			flash.message = 'Se ha creado correctamente el enlace'
+			redirect(action:'list')
+
+		} else {
+			render view:'create', model: [
+				link: command
+			]
+		}
+
+	}
+
 }
 
 @Validateable

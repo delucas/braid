@@ -8,18 +8,19 @@
 
 	<div class="span12">
 		<legend>
-			Nuevo enlace
+			Editar enlace
 		</legend>
 
 		<div class="well span8">
-			<g:form action="save" name="linkForm">
+			<g:form action="update" name="linkForm">
 
+					<g:hiddenField name="id" value="${link.id}"/>
 					<g:render template="form" model="[link: link]"></g:render>
 
 					<div class="control-group">
 						<div class="controls">
 							<button class="btn btn-small btn-primary">
-								Crear enlace
+								Actualizar enlace
 							</button>
 						</div>
 					</div>
