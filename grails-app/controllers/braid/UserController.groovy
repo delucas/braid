@@ -1,9 +1,8 @@
 package braid
 
-import braid.assignment.AssignmentSolution;
-import braid.homework.HomeworkSolution;
 import grails.plugins.springsecurity.Secured
-
+import braid.assignment.AssignmentSolution
+import braid.homework.HomeworkSolution
 
 class UserController {
 
@@ -14,8 +13,8 @@ class UserController {
 	def profile(Long userId) {
 		def user = userService.currentUser
 
-		if(user.hasRole('ROLE_JEDI') || user.hasRole('ROLE_YODA')) {
-			user = User.get(userId)?:user
+		if (user.hasRole('ROLE_JEDI') || user.hasRole('ROLE_YODA')) {
+			user = User.get(userId) ?: user
 		}
 
 		def activity = []
@@ -39,11 +38,11 @@ class UserController {
 	def edit() {
 		def user = User.get(params.id)
 
-		if (!user.isStudentOf(userService.currentUser)) {
+		if (user.isStudentOf(userService.currentUser)) {
+			model: [user: user]
+		} else {
 			flash.message = 'No tienes permisos para editar a este estudiante'
 			redirect(action: 'list')
-		} else {
-			model: [user: user]
 		}
 	}
 
@@ -51,16 +50,16 @@ class UserController {
 	def save() {
 		def user = User.get(params.id)
 
-		if (!user.isStudentOf(userService.currentUser)) {
-			flash.message = 'No tienes permisos para editar a este estudiante'
-			redirect(action: 'list')
-		} else {
+		if (user.isStudentOf(userService.currentUser)) {
 			user.properties = params
-
+			
 			// Should add some validations?
 			user.save()
-
+			
 			redirect(action: 'profile', params: [userId: user.id])
+		} else {
+			flash.message = 'No tienes permisos para editar a este estudiante'
+			redirect(action: 'list')
 		}
 	}
 
@@ -72,11 +71,11 @@ class UserController {
 
 		def users = findStudentsApprovedByCourse(course)
 
-		if(me.hasRole('ROLE_YODA')) {
+		if (me.hasRole('ROLE_YODA')) {
 			users = User.list()
 		}
 
-		model: [users: users.sort {a,b -> a.name <=> b.name}]
+		model: [users: users.sort { a, b -> a.name <=> b.name} ]
 	}
 
 	private findStudentsApprovedByCourse(def course) {
@@ -88,9 +87,9 @@ class UserController {
 	}
 
 	private findStudentsByCourseAndApproved(def course, def approved) {
-		UserCourse.executeQuery("select uc.user from UserCourse uc, User u, UserRole ur, Role r " +
-			"where uc.user = u and ur.user = u and ur.role = r " +
-			"and r.authority in(:roles) and uc.course = :course and uc.approved = :approved",
+		UserCourse.executeQuery('select uc.user from UserCourse uc, User u, UserRole ur, Role r ' +
+			'where uc.user = u and ur.user = u and ur.role = r ' +
+			'and r.authority in(:roles) and uc.course = :course and uc.approved = :approved',
 			[roles: ['ROLE_PADAWAN', 'ROLE_JAR_JAR'], course: course, approved: approved])
 	}
 
@@ -100,12 +99,12 @@ class UserController {
 		def course = courseService.currentCourse
 
 		def users = findStudentsNotApprovedByCourse(course)
-		if(users.size() == 0) {
+		if (users.size() == 0) {
 			flash.message = 'No hay solicitudes de alumno pendientes de aceptación. Se mostrará el listado completo.'
 			redirect(action:'list')
 		}
 
-		render view: 'list', model: [users: users.sort {a,b -> a.name <=> b.name}]
+		render view: 'list', model: [users: users.sort { a, b -> a.name <=> b.name } ]
 	}
 
 	@Secured(['ROLE_JEDI'])

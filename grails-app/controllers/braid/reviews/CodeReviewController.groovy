@@ -25,8 +25,6 @@ class CodeReviewController {
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def list() {
-		def currentCourse = courseService.currentCourse
-		def currentTime = dateService.currentTime
 
 		def presenter = new CodeReviewHomeworkListPresenter(
 			currentCourse: courseService.currentCourse,
@@ -140,7 +138,7 @@ class CodeReviewSolutionCommand {
 	Integer gist
 
 	static constraints = {
-		honorCode validator: { val -> val==true }
+		honorCode validator: { val -> val == true }
 		gist blank: false
 		solutionId nullable: true, validator: { val ->
 			val == null || CodeReviewSolution.get(val) != null
@@ -175,7 +173,7 @@ class CodeReviewCommand {
 		solutionId validator: { val ->
 			CodeReviewSolution.get(val) != null
 		}
-		honorCode validator: { val -> val==true }
+		honorCode validator: { val -> val == true }
 
 		clarity range: 0..3
 		conventions range: 0..3
@@ -194,18 +192,19 @@ class CodeReviewCommand {
 	}
 
 	CodeReview toEntity() {
-		def review = new CodeReview()
 
-		review.clarity = clarity
-		review.conventions = conventions
-		review.correctness = correctness
-		review.tests = tests
+		new CodeReview().with {
+			clarity = clarity
+			conventions = conventions
+			correctness = correctness
+			tests = tests
 
-		review.comments = comments
-		review.best = best
-		review.advice = advice
+			comments = comments
+			best = best
+			advice = advice
 
-		review
+			return it
+		}
 	}
 
 }

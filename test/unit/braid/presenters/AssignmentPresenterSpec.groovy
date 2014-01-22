@@ -1,5 +1,5 @@
 package braid.presenters
-import grails.test.mixin.TestMixin
+
 import grails.test.mixin.support.GrailsUnitTestMixin
 import groovy.time.TimeCategory
 import spock.lang.Specification
@@ -109,11 +109,11 @@ class AssignmentPresenterSpec extends Specification {
 	}
 }
 
-public class AssignmentSolutionStub {
+class AssignmentSolutionStub {
 	def graded
 	def dateCreated
 }
 
-public class AssignmentStub {
+class AssignmentStub {
 	def published
 }

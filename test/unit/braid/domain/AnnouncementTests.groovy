@@ -1,11 +1,9 @@
 package braid.domain
 
-import static org.junit.Assert.*
 import grails.test.mixin.support.*
-
 import braid.Announcement
 import braid.User
-import braid.course.Course;
+import braid.course.Course
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions

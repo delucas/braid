@@ -171,7 +171,7 @@
 				width="526" height="300" frameborder="0" webkitallowfullscreen
 				mozallowfullscreen allowfullscreen></iframe>
 			<p>
-				<strong>Protip:</strong> Recomendamos verlo en modo pantalla completa. 
+				<strong>Protip:</strong> Recomendamos verlo en modo pantalla completa.
 			</p>
 		</div>
 	</div>

@@ -4,9 +4,8 @@ import grails.plugins.springsecurity.Secured
 import grails.validation.Validateable
 import braid.HomeworkSolutionCommand
 import braid.presenters.homework.HomeworkListPresenter
-import braid.presenters.homework.JediHomeworkPresenter;
-import braid.presenters.homework.PadawanHomeworkPresenter;
-
+import braid.presenters.homework.JediHomeworkPresenter
+import braid.presenters.homework.PadawanHomeworkPresenter
 
 class HomeworkController {
 
@@ -36,12 +35,15 @@ class HomeworkController {
 
 		if (command.validate()) {
 
-			def homework = new Homework()
-			homework.title = command.title
-			homework.wording = command.wording
-			homework.startDate = convertToUTC(command.startDate, userService.currentTimeZone)
-			homework.dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
-			homework.course = courseService.currentCourse
+			def homework = new Homework().with {
+				title = command.title
+				wording = command.wording
+				startDate = convertToUTC(command.startDate, userService.currentTimeZone)
+				dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+				course = courseService.currentCourse
+
+				return it
+			}
 
 			homework.save(flush: true)
 
@@ -128,7 +130,8 @@ class HomeworkController {
 
 				solution.save(flush: true)
 
-				flash.message = 'Tu respuesta se ha guardado correctamente. Recordá que podés corregirla dentro del período de vigencia'
+				flash.message = 'Tu respuesta se ha guardado correctamente. ' +
+					'Recordá que podés corregirla dentro del período de vigencia'
 				redirect action: 'show', params: [id: homeworkId]
 
 			} else {

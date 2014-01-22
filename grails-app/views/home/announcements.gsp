@@ -2,7 +2,7 @@
 
 <head>
 	<title>anuncios</title>
-	
+
 	<meta name="layout" content="main">
 	<parameter name="announcements" value="active"/>
 
@@ -13,14 +13,14 @@
 
 	<div class="span8">
 		<legend> Anuncios </legend>
-		
+
 		<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
 			<div class="well">
 				<g:form controller="announcement" action="post">
 					<div class="row-fluid">
 						<g:textArea rows="7" class="textarea span12 wmd-panel" name="text" id="announcement"></g:textArea>
 					</div>
-					
+
 					<div class="row-fluid">
 						<g:submitButton id="submitAnnouncement" class="btn btn-small btn-primary pull-right" name="submit" value="Publicar anuncio"/>
 					</div>
@@ -33,7 +33,7 @@
 				<div id="previewArea">
 				</div>
 				<small>
-					${sec.loggedInUserInfo(field:"username")} 
+					${sec.loggedInUserInfo(field:"username")}
 					<span class="pull-right"><g:formatDate date="${new Date()}" timeZone="America/Argentina/Buenos_Aires"/></span>
 				</small>
 			</blockquote>

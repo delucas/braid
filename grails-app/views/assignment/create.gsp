@@ -15,28 +15,28 @@
 
 		<div class="well span8">
 			<g:form action="save" name="assignmentForm">
-		
+
 				<div class="row-fluid">
 					<div class="control-group">
 						<label class="control-label" for="inputTitle">Título</label>
 						<div class="controls">
 							<input type="text" id="inputTitle" name="title" value="${command?.title}"
-							class="input-xlarge ${hasErrors(bean:command,field:'title', 'error')}" 
+							class="input-xlarge ${hasErrors(bean:command,field:'title', 'error')}"
 							placeholder="Escriba un título para el trabajo práctico">
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row-fluid">
 					<div class="control-group ${hasErrors(bean:command,field:'dueDate', 'error')}">
 						<label class="control-label" for="inputDueDate">Fecha de finalización</label>
 						<div class="controls datepicker">
-							<g:datePicker name="dueDate" precision="hour" years="[2013]" 
+							<g:datePicker name="dueDate" precision="hour" years="[2013]"
 							default="${command ? command.dueDate : new Date().plus(7) }"/>
 						</div>
 					</div>
 				</div>
-			
+
 				<div class="row-fluid">
 					<div class="control-group">
 						<label class="control-label" for="inputRepoName">Nombre del repositorio de Github</label>
@@ -46,7 +46,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</g:form>
 		</div>
 
@@ -57,7 +57,7 @@
 		</div>
 
 	</div>
-	
+
 	<script>
 
 		$(function(){
@@ -66,7 +66,7 @@
 				$('form[name="assignmentForm"]').submit()
 			});
 		});
-		
+
 	</script>
 
 </body>

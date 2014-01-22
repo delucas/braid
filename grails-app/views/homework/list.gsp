@@ -9,14 +9,14 @@
 <body>
 
 	<div class="span12">
-		<legend> Tareas 
-		
+		<legend> Tareas
+
 			<sec:ifAllGranted roles="ROLE_JEDI">
 				<g:link controller="homework" action="create" class="btn btn-success pull-right">
 					Nueva tarea
 				</g:link>
 			</sec:ifAllGranted>
-		
+
 		</legend>
 
 		<div class="alert alert-info">

@@ -8,20 +8,20 @@
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 	<meta http-equiv="pragma" content="no-cache" />
-	
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
-	
+
 	<link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
 	<link rel="stylesheet"
 		href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-	
+
 	<r:require module="common"/>
 	<r:require modules="bootstrap" />
 	<g:layoutHead />
 	<r:layoutResources />
-	
+
 	<style>
 	body {
 		padding-top: 46px;
@@ -38,7 +38,7 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> 
+				</a>
 				<a class="brand" href="#">
 					<img class="logo" src="${resource(dir:'images',file:'braid-logo.png')}" alt="braid"/>
 					braid <small><g:meta name="app.version"/></small>
@@ -50,8 +50,8 @@
 						</li>
 						<g:render template="/layouts/links" model="[links: coursePresenter.links]"/>
 					</ul>
-					
-					<ul class="nav pull-right">	
+
+					<ul class="nav pull-right">
 						<li class="dropdown pull-right">
 	                        <a href="#" class="dropdown-toggle bbnotgood" data-toggle="dropdown">Hola, @${sec.loggedInUserInfo(field:"username")} <b class="caret"></b></a>
 	                        <ul class="dropdown-menu">

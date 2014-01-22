@@ -45,13 +45,13 @@
 				action="finishRegistration">
 				<div class="control-group"></div>
 				<div>
-				
+
 					<div class="control-group ${hasErrors(bean:command,field:'name', 'error')}">
 						<g:hiddenField name="username"  value="${user?.username?:command.username}"/>
 						<g:hiddenField name="oauthProvider"  value="${provider?:command.oauthProvider}"/>
-						
+
 						<div class="controls">
-						
+
 						</div>
 					</div>
 					<div class="control-group ${hasErrors(bean:command, field:'name', 'error')}">
@@ -59,12 +59,12 @@
 						</label>
 						<div class="controls">
 							<g:textField id="name" name="name"
-								placeholder="Juan Perez" type="text" 
+								placeholder="Juan Perez" type="text"
 								value="${command?.name}"/>
 						</div>
 						<span class="help-inline"><g:renderErrors bean="${command}" field="name" /></span>
 					</div>
-					
+
 					<div class="control-group ${hasErrors(bean:command, field:'dni', 'error')}">
 						<label class="control-label" for="dni"> DNI </label>
 						<div class="controls">
@@ -79,16 +79,16 @@
 						</label>
 						<div class="controls">
 							<g:textField id="email" name="email"
-								placeholder="example@computer.com" type="text" 
+								placeholder="example@computer.com" type="text"
 								value="${command?.email}"/>
 						</div>
 						<span class="help-inline"><g:renderErrors bean="${command}" field="email" /></span>
 					</div>
-					
+
 					<div class="form-actions">
 						<g:submitButton class="btn btn-primary" value="¡Listo!" name="submit"/>
 					</div>
-					
+
 				</div>
 			</g:form>
 		</div>

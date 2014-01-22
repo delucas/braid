@@ -1,8 +1,6 @@
 package braid
 
-import braid.course.Course;
-import grails.converters.JSON
-import grails.plugins.springsecurity.Secured
+import braid.course.Course
 
 class CourseController {
 

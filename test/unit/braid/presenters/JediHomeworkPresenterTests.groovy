@@ -61,7 +61,7 @@ class JediHomeworkPresenterTests {
 	}
 }
 
-public class HomeworkStub {
+class HomeworkStub {
 	def outOfDate
 	def published
 }

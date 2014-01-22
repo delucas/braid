@@ -27,7 +27,7 @@ class CoursePresenterSpec extends Specification {
 
 	void "knows if has the option"() {
 		given: 'a course with one option'
-			course << [settings: [ has: { option -> true }]]
+			course << [settings: [ has: { option -> true } ]]
 		expect: 'hast the option'
 			presenter.hasOption(Option.assignment)
 	}
@@ -48,14 +48,14 @@ class CoursePresenterSpec extends Specification {
 
 	void "when there is no links it returns no links"() {
 		given: 'a course with no links'
-			Link.metaClass.'static'.byCourse = { course -> [list: { [] }] }
+			Link.metaClass.'static'.byCourse = { course -> [list: { [] } ] }
 		expect: 'returns no links'
 			!presenter.links
 	}
 
 	void "when there are links it returns the links"() {
 		given: 'a course with no links'
-			Link.metaClass.'static'.byCourse = { course -> [list: { [new Link()] }] }
+			Link.metaClass.'static'.byCourse = { course -> [list: { [new Link()] } ] }
 		expect: 'returns no links'
 			presenter.links
 	}

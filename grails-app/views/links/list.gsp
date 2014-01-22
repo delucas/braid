@@ -9,7 +9,7 @@
 <body>
 
 	<div class="span12">
-		<legend> Enlaces 
+		<legend> Enlaces
 			<g:link controller="links" action="create" class="btn btn-success pull-right">
 				Nuevo enlace
 			</g:link>

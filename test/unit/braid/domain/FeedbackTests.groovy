@@ -1,8 +1,7 @@
 package braid.domain
 
 import grails.test.mixin.support.*
-
-import braid.homework.Feedback;
+import braid.homework.Feedback
 
 @TestFor(Feedback)
 class FeedbackTests {

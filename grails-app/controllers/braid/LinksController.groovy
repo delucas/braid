@@ -1,9 +1,7 @@
 package braid
 
-import java.util.Date;
-
 import grails.plugins.springsecurity.Secured
-import grails.validation.Validateable;
+import grails.validation.Validateable
 import braid.helpers.ListSorter
 
 class LinksController {
@@ -18,14 +16,14 @@ class LinksController {
 	@Secured(['ROLE_JEDI'])
 	def moveUp(Long id) {
 
-		moveElement(id, { links, position -> ListSorter.shiftUp(links, position)})
+		moveElement(id) { links, position -> ListSorter.shiftUp(links, position) }
 		redirect action: 'list'
 	}
 
 	@Secured(['ROLE_JEDI'])
 	def moveDown(Long id) {
 
-		moveElement(id, { links, position -> ListSorter.shiftDown(links, position)})
+		moveElement(id) { links, position -> ListSorter.shiftDown(links, position) }
 		redirect action: 'list'
 	}
 

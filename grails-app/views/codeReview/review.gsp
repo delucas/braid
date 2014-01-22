@@ -27,7 +27,7 @@
 				${flash.message}
 			</braid:alertInfo>
 		</g:if>
-		
+
 		<g:if test="${solution.user == currentUser}">
 			<braid:alertInfo title="¡Buen trabajo! Sólo queda una revisión">
 				Ya revisaste el código de otras personas. Con el aprendizaje que eso
@@ -53,7 +53,7 @@
 						</button>
 					</legend>
 					<script src="https://gist.github.com/${solution.gist}.js">
-						
+
 					</script>
 				</div>
 
@@ -186,7 +186,7 @@
 						<div
 							class="control-group ${hasErrors(bean:review,field:'best', 'error')}">
 
-							<label class="control-label" for="commentsBest"> 
+							<label class="control-label" for="commentsBest">
 							<g:message code="braid.reviews.CodeReview.best"/> </label>
 							<div class="controls">
 
@@ -254,7 +254,7 @@
 				icon.toggleClass('icon-resize-small')
 			})
 		})
-	
+
 	</script>
 
 </body>

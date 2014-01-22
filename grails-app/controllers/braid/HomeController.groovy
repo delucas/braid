@@ -1,11 +1,9 @@
 package braid
 
-import braid.assignment.Assignment;
-import braid.course.Course;
-import braid.homework.Homework;
-import braid.reviews.CodeReviewHomework;
-import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
+import braid.assignment.Assignment
+import braid.homework.Homework
+import braid.reviews.CodeReviewHomework
 
 class HomeController {
 
@@ -17,14 +15,14 @@ class HomeController {
 	def index() {
 		def course = courseService.currentCourse
 
-		if (!course) {
-			redirect(controller: 'course', action: 'list')
-		} else {
+		if (course) {
 			if (userService.currentUser.hasRole('ROLE_JEDI')) {
 				redirect(action: 'dashboard')
 			} else {
 				redirect(action: 'announcements')
 			}
+		} else {
+			redirect(controller: 'course', action: 'list')
 		}
 	}
 
@@ -39,7 +37,7 @@ class HomeController {
 		def course = courseService.currentCourse
 		def currentTime = dateService.currentTime
 		def announcements = Announcement.findAllByCourse(course,
-				[sort: "dateCreated", order: "desc"])
+				[sort: 'dateCreated', order: 'desc'])
 
 		def homeworks = Homework.alreadyPublished(currentTime).unfinished(currentTime).byCourse(course).list()
 		def assignments = Assignment.alreadyPublished(currentTime).unfinished(currentTime).byCourse(course).list()
@@ -56,7 +54,7 @@ class HomeController {
 			[id: it.id, type: 'codeReview', title: it.title, dueDate: it.nextDueDate]
 		})
 
-		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate }]
+		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate } ]
 	}
 
 	@Secured([

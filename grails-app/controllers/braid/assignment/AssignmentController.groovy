@@ -6,7 +6,7 @@ import grails.validation.Validateable
 import braid.AssignmentSolutionCommand
 import braid.github.Repository
 import braid.presenters.assignment.AssignmentListPresenter
-import braid.presenters.assignment.AssignmentPresenter;
+import braid.presenters.assignment.AssignmentPresenter
 
 class AssignmentController {
 
@@ -77,7 +77,7 @@ class AssignmentController {
 		originalData.each {
 			if (it[0] == title) {
 				if (!student || student == it[1]) {
-					data << [(int)(it[2].time/10), it[3]]
+					data << [(int)(it[2].time / 10), it[3]]
 					student = it[1]
 				} else {
 					result << ['name': student, 'data': data]
@@ -86,10 +86,11 @@ class AssignmentController {
 				}
 			}
 		}
-		if(student) result << ['name': student, 'data': data]
+		if (student) {
+			result << ['name': student, 'data': data]
+		}
 
-		return result
-
+		result
 	}
 
 	@Secured(['ROLE_YODA', 'ROLE_JEDI'])
@@ -98,7 +99,8 @@ class AssignmentController {
 		def assignment = Assignment.get(id)
 
 		// TODO: please refactor
-		def assignmentSolutions = AssignmentSolution.executeQuery('select s.assignment.title as title, s.user.name, s.dateCreated, s.score ' +
+		def assignmentSolutions = AssignmentSolution.executeQuery(
+			'select s.assignment.title as title, s.user.name, s.dateCreated, s.score ' +
 			'from AssignmentSolution s where s.score > 0 order by s.assignment.title, s.user.name, s.dateCreated asc')
 		def graph = convertData(assignmentSolutions, assignment.title)
 
@@ -117,7 +119,7 @@ class AssignmentController {
 
 	}
 
-	private def buildPresenter(def assignment) {
+	private buildPresenter(def assignment) {
 
 		def solutions = AssignmentSolution.findAllByUserAndAssignment(
 			userService.currentUser,
@@ -152,7 +154,8 @@ class AssignmentController {
 
 				graderService.send(solution)
 
-				flash.message = 'Tu respuesta se ha guardado correctamente. Recordá que podés reentregar tantas veces como quieras dentro del período de vigencia.'
+				flash.message = 'Tu respuesta se ha guardado correctamente. ' +
+					'Recordá que podés reentregar tantas veces como quieras dentro del período de vigencia.'
 				redirect action: 'show', params: [id: assignmentId]
 
 			} else {

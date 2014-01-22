@@ -3,36 +3,36 @@
 	<title>tarea: ${homework.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
-	
+
 	<r:require modules="bootstrap-modal" />
 	<r:require module="textEditor"/>
 </head>
 <body>
 
 	<div class="span12">
-		
+
 		<legend>
-			${homework.title} 
+			${homework.title}
 			<small class="pull-right">
 				<g:message code="braid.general.legend.dueDate"/>:
 				<g:formatDate date="${homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
 			</small>
 		</legend>
-		
+
 		<homework:wording homework="${homework}"/>
-		
+
 		<div class="row-fluid">
 			<div class="span12">
 				<homework:solution solution="${homeworkSolution}"/>
 			</div>
 		</div>
-		
+
 		<div class="well">
 			<g:form elementId="gradeForm" action="gradeDo">
-			
+
 				<g:hiddenField name="homeworkSolutionId" value="${homeworkSolution.id}"/>
-			
-				<g:textArea rows="7" class="textarea span12 wmd-panel ${hasErrors(bean:command,field:'text', 'error')}" 
+
+				<g:textArea rows="7" class="textarea span12 wmd-panel ${hasErrors(bean:command,field:'text', 'error')}"
 					name="feedback" id="feedback">${command?.text}</g:textArea>
 
 				<div class="row-fluid">
@@ -73,13 +73,13 @@
 
 					</div>
 				</div>
-				
+
 			</g:form>
-			
+
 		</div>
-		
+
 	</div>
-	
+
 	<script type="text/javascript">
 		$(function() {
 		  $(".submitter").click(function(){

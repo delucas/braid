@@ -9,14 +9,14 @@
 <body>
 
 	<div class="span12">
-	
+
 		<g:if test="${flash.message}">
 			<div class="alert alert-info">
 				<button type="button" class="close" data-dismiss="alert">×</button>
 				${flash.message}
 			</div>
 		</g:if>
-	
+
 		<legend> Estudiantes para este curso </legend>
 
 		<table class="table table-hover table-striped">

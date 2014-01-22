@@ -40,18 +40,21 @@ class RegisterUserController {
 				throw new BadCredentialsException("No profile or authToken found")
 			}
 
-			def theUser = new User()
-			theUser.password = new Date().time.toString()
-			theUser.username = command.username
-			theUser.name = StringConverter.capitalizeWords(command.name)
-			theUser.dni = command.dni
-			theUser.email = command.email
-			theUser.oauthProvider = command.oauthProvider
-
-			theUser.oauthId = profile.uid
-			theUser.avatarUrl = profile.picture
+			def theUser = new User().with {
+				password = new Date().time.toString()
+				username = command.username
+				name = StringConverter.capitalizeWords(command.name)
+				dni = command.dni
+				email = command.email
+				oauthProvider = command.oauthProvider
+						
+				oauthId = profile.uid
+				avatarUrl = profile.picture
+						
+				return it
+			}
+			
 			theUser.save(failOnError: true)
-
 
 			def jarjar = Role.findByAuthority('ROLE_JAR_JAR')
 
