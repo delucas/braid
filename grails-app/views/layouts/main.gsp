@@ -63,6 +63,12 @@
 	                          <sec:ifAllGranted roles="ROLE_JEDI">
 		                          <li class="nav-header">Opciones de profesor</li>
 		                          <li>
+									<g:link controller="course" action="config">
+										<i class="icon icon-cog"></i>
+										Configurar curso
+									</g:link>
+		                          </li>
+		                          <li>
 		                          	<g:link controller="user" action="pending">
 		                          		Solicitudes pendientes
 		                          	</g:link>
