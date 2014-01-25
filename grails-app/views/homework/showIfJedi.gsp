@@ -35,7 +35,7 @@
 
 		<g:if test="${presenter.hasToGrade()}">
 			<g:link action="grade" params="[homeworkId: presenter.homework.id]" class="btn btn-large btn-block btn-primary">
-				Corregir tareas de alumnos
+				Corregir tareas de estudiantes
 			</g:link>
 		</g:if>
 

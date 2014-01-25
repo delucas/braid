@@ -30,6 +30,7 @@ class AssignmentController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
+		[currentYear: dateService.currentTime.getAt(Calendar.YEAR)]
 	}
 
 	@Secured(['ROLE_JEDI'])
@@ -37,29 +38,34 @@ class AssignmentController {
 
 		if (command.validate()) {
 
-			def assignment = new Assignment()
-			assignment.title = command.title
-			assignment.repo = createRepository(command.repoName)
-			assignment.dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
-			assignment.course = courseService.currentCourse
+			def assignment = new Assignment().with {
+				title = command.title
+				repo = createRepository(command.repoName)
+				startDate = convertToUTC(command.startDate, userService.currentTimeZone)
+				dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+				course = courseService.currentCourse
+
+				return it
+			}
 
 			assignment.save(flush: true)
 
-			flash.message = 'Se ha creado correctamente el trabajo práctico'
+			flash.message = g.message(code: 'braid.assignment.Assignment.create.success')
 			redirect(action:'list')
 
 		} else {
-			render view:'create', model: [command: command]
+			render view:'create', model: [
+				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR)
+			]
 		}
-
 	}
 
-	private def createRepository(String repoName) {
+	private createRepository(String repoName) {
 		def user = courseService.currentCourse.settings.githubUsername
 		new Repository(user: user, name: repoName)
 	}
 
-	private Date convertToUTC(Date dateInZone, TimeZone tz) {
+	private convertToUTC(Date dateInZone, TimeZone tz) {
 		// TODO: es esto REALMENTE necesario?
 		def cal = dateInZone.toCalendar()
 		cal.timeZone = tz
@@ -154,8 +160,7 @@ class AssignmentController {
 
 				graderService.send(solution)
 
-				flash.message = 'Tu respuesta se ha guardado correctamente. ' +
-					'Recordá que podés reentregar tantas veces como quieras dentro del período de vigencia.'
+				flash.message = g.message(code: 'braid.assignment.Assignment.solve.success')
 				redirect action: 'show', params: [id: assignmentId]
 
 			} else {
@@ -164,7 +169,7 @@ class AssignmentController {
 				render view:'show', model: [presenter: presenter]
 			}
 		} else {
-			flash.message = 'No se puede responder fuera de fecha'
+			flash.message = g.message(code: 'braid.assignment.Assignment.solve.outOfDate')
 			redirect action: 'show', params: [id: assignmentId]
 		}
 	}
@@ -174,7 +179,6 @@ class AssignmentController {
 		def solution = AssignmentSolution.get(params.id)
 		[solution: solution]
 	}
-
 }
 
 @Validateable
@@ -184,6 +188,7 @@ class AssignmentCommand {
 
 	String title
 	String repoName
+	Date startDate
 	Date dueDate
 
 	static constraints = {

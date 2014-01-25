@@ -47,7 +47,7 @@ class HomeworkController {
 
 			homework.save(flush: true)
 
-			flash.message = 'Se ha creado correctamente la tarea'
+			flash.message = g.message(code: 'braid.homework.Homework.create.success')
 			redirect(action:'list')
 
 		} else {
@@ -130,8 +130,7 @@ class HomeworkController {
 
 				solution.save(flush: true)
 
-				flash.message = 'Tu respuesta se ha guardado correctamente. ' +
-					'Recordá que podés corregirla dentro del período de vigencia'
+				flash.message = g.message(code: 'braid.homework.Homework.solve.success')
 				redirect action: 'show', params: [id: homeworkId]
 
 			} else {
@@ -146,7 +145,7 @@ class HomeworkController {
 				render view:'showIfPadawan', model: [presenter: presenter]
 			}
 		} else {
-			flash.message = 'No se puede responder fuera de fecha'
+			flash.message = g.message(code: 'braid.homework.Homework.solve.outOfDate')
 			redirect action: 'show', params: [id: homeworkId]
 		}
 	}

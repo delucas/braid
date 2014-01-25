@@ -72,7 +72,7 @@ class LinksController {
 
 			link.save(flush: true)
 
-			flash.message = 'Se ha creado correctamente el enlace'
+			flash.message = g.message(code: 'braid.Link.create.success')
 			redirect(action:'list')
 
 		} else {
@@ -80,7 +80,6 @@ class LinksController {
 				link: command
 			]
 		}
-
 	}
 
 	@Secured(['ROLE_JEDI'])
@@ -97,7 +96,7 @@ class LinksController {
 			link.properties = command.properties
 			link.save(flush: true)
 
-			flash.message = 'Se ha creado correctamente el enlace'
+			flash.message = g.message(code: 'braid.Link.edit.success')
 			redirect(action:'list')
 
 		} else {
@@ -105,9 +104,7 @@ class LinksController {
 				link: command
 			]
 		}
-
 	}
-
 }
 
 @Validateable

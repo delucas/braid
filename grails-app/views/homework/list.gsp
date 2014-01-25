@@ -19,6 +19,12 @@
 
 		</legend>
 
+		<g:if test="${flash.message}">
+			<div class="alert alert-success">
+				${flash.message}
+			</div>
+		</g:if>
+
 		<div class="alert alert-info">
 			<strong><g:message code="braid.homework.dueDates.title"/></strong>
 			<p><g:message code="braid.homework.dueDates.message"/></p>

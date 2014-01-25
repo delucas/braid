@@ -15,6 +15,12 @@
 			</g:link>
 		</legend>
 
+		<g:if test="${flash.message}">
+			<div class="alert alert-success">
+				${flash.message}
+			</div>
+		</g:if>
+
 		<g:if test="${presenter.linksList}">
 			<table class="table table-hover table-striped">
 				<thead>

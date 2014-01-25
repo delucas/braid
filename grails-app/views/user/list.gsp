@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>alumnos</title>
+<title>estudiantes</title>
 <meta name="layout" content="main">
 
 <parameter name="students" value="active" />

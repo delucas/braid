@@ -16,9 +16,9 @@ class AssignmentListPresenter {
 
 	private gatherAssignmentList() {
 		if (currentUser.hasRole('ROLE_JEDI')) {
-			Assignment.byCourse(currentCourse).list()
+			Assignment.byCourse(currentCourse).list([sort: 'dueDate'])
 		} else {
-			Assignment.alreadyPublished(currentTime).byCourse(currentCourse).list()
+			Assignment.alreadyPublished(currentTime).byCourse(currentCourse).list([sort: 'dueDate'])
 		}
 	}
 }

@@ -90,9 +90,8 @@ class HomeController {
 		def currentCourse = courseService.currentCourse
 
 		currentCourse.syllabus = syllabus
-		currentCourse.save(flush: true)
 
-		flash.msg = 'Se ha modificado el Plan de Estudios'
+		flash.msg = g.message(code: 'braid.Course.syllabus.edit.success')
 
 		redirect(action: 'syllabus')
 	}
@@ -116,9 +115,8 @@ class HomeController {
 		def currentCourse = courseService.currentCourse
 
 		currentCourse.honorCode = honorCode
-		currentCourse.save(flush: true)
 
-		flash.msg = 'Se ha modificado el Código de Honor'
+		flash.msg = g.message(code: 'braid.Course.honorCode.edit.success')
 
 		redirect(action: 'honorCode')
 	}

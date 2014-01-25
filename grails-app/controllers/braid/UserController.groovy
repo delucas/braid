@@ -41,7 +41,7 @@ class UserController {
 		if (user.isStudentOf(userService.currentUser)) {
 			model: [user: user]
 		} else {
-			flash.message = 'No tienes permisos para editar a este estudiante'
+			flash.message = g.message(code: 'braid.User.edit.notAllowed')
 			redirect(action: 'list')
 		}
 	}
@@ -58,7 +58,7 @@ class UserController {
 			
 			redirect(action: 'profile', params: [userId: user.id])
 		} else {
-			flash.message = 'No tienes permisos para editar a este estudiante'
+			flash.message = g.message(code: 'braid.User.edit.notAllowed')
 			redirect(action: 'list')
 		}
 	}
@@ -100,7 +100,7 @@ class UserController {
 
 		def users = findStudentsNotApprovedByCourse(course)
 		if (users.size() == 0) {
-			flash.message = 'No hay solicitudes de alumno pendientes de aceptación. Se mostrará el listado completo.'
+			flash.message = g.message(code: 'braid.User.requests.none')
 			redirect(action:'list')
 		}
 

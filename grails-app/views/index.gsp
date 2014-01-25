@@ -100,7 +100,7 @@
 					<strong>Braid</strong> permite hacer un seguimiento tan regular
 					como quieras: se pueden asignar tareas y ver progresos durante toda
 					la cursada. La corrección será tan simple como hacer dos clicks por
-					alumno o tan compleja como redactar una devolución personalizada.
+					estudiante o tan compleja como redactar una devolución personalizada.
 				</p>
 			</div>
 			<div class="span4">

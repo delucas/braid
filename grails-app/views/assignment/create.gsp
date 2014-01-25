@@ -28,10 +28,20 @@
 				</div>
 
 				<div class="row-fluid">
+					<div class="control-group ${hasErrors(bean:command,field:'startDate', 'error')}">
+						<label class="control-label" for="inputStartDate">Fecha de inicio</label>
+						<div class="controls datepicker">
+							<g:datePicker name="startDate" precision="hour" years="[currentYear]"
+							default="${command ? command.startDate : new Date() }"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
 					<div class="control-group ${hasErrors(bean:command,field:'dueDate', 'error')}">
 						<label class="control-label" for="inputDueDate">Fecha de finalización</label>
 						<div class="controls datepicker">
-							<g:datePicker name="dueDate" precision="hour" years="[2013]"
+							<g:datePicker name="dueDate" precision="hour" years="[currentYear]"
 							default="${command ? command.dueDate : new Date().plus(7) }"/>
 						</div>
 					</div>
