@@ -51,12 +51,13 @@ class CourseController {
 
 			if (command.validate()) {
 				// TODO: migrate to a service
-				course.name = params.name
-				course.university = params.university
+				course.name = command.name
+				course.university = command.university
 
 				def options = 0
 				params.list('elements').each { options += it as Integer }
 				course.settings.options = options
+				course.settings.bannerColor = command.bannerColor
 
 				redirect(controller: 'home', action: 'dashboard')
 			} else {
@@ -72,9 +73,16 @@ class CourseSettingsCommand {
 
 	String name
 	String university
+	String bannerColor
 
 	static constraints = {
 		name blank: false
 		university blank: false
+		bannerColor blank: false
+	}
+
+	// To conform Course interface
+	def getSettings() {
+		this
 	}
 }

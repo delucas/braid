@@ -4,6 +4,7 @@
 <head>
 <title>curso</title>
 <meta name="layout" content="main">
+<r:require module="colorPicker"/>
 </head>
 <body>
 
@@ -36,6 +37,16 @@
 			</div>
 
 			<div class="control-group">
+				<label class="control-label" for="bannerColor">Color</label>
+				<div class="controls">
+					<input type="text" id="bannerColor" name="bannerColor"
+						value="${command?.settings.bannerColor}"
+						class="span6 minicolors"
+						placeholder="#000000">
+				</div>
+			</div>
+
+			<div class="control-group">
 				<label class="control-label">Elementos en la plataforma</label>
 				<div class="controls">
 					<label for="homework">
@@ -60,5 +71,10 @@
 			</div>
 		</g:form>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.minicolors').minicolors();
+		});
+	</script>
 </body>
 </html>

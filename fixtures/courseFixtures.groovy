@@ -17,7 +17,7 @@ fixture{
 	githubUsername: 'tallerweb')
 
 	taller(Course,
-	name:'Taller Web 1 - Java - otoño 2013',
+	name:'Taller Web 1 - Java',
 	university:'Universidad Nacional de La Matanza',
 	settings: tallerSettings,
 	syllabus:'<h2>Syllabus placeholder</h2><p>Some text</p>',
@@ -56,42 +56,42 @@ fixture{
 	course: taller)
 
 
-	lenguajeSettings(Settings,
+	aypSettings(Settings,
 	options:
 		Option.homework.value +
 		Option.codeReview.value,
 	bannerColor: '#006',
-	githubUsername: 'lenguaje')
+	githubUsername: 'ayp')
 
-	lenguaje(Course,
-	name:'Lenguaje de Programación 1 - primavera 2013',
+	ayp(Course,
+	name:'Algoritmos y Programación 1',
 	university:'Universidad Nacional de Tres de Febrero',
-	settings: lenguajeSettings,
+	settings: aypSettings,
 	syllabus:'<h2>Syllabus placeholder</h2><p>Some text</p>',
 	honorCode:'<h2>Honor code placeholder</h2><p>Some text</p>',
 	active: true)
 
-	uc4(UserCourse, user: quigon, course: lenguaje, approved: true)
-	uc5(UserCourse, user: luke, course: lenguaje, approved: true)
-	//	uc6(UserCourse, user: jarjar, course: lenguaje)
+	uc4(UserCourse, user: quigon, course: ayp, approved: true)
+	uc5(UserCourse, user: luke, course: ayp, approved: true)
+	//	uc6(UserCourse, user: jarjar, course: ayp)
 
 	link11(Link,
 	caption: 'Grupo',
 	url: 'https://groups.google.com/forum/?fromgroups#!forum/lp1-untref',
 	position: 1,
-	course: lenguaje)
+	course: ayp)
 	link12(Link,
 	caption: 'Repo GitHub',
-	url: 'https://github.com/lenguaje',
+	url: 'https://github.com/ayp',
 	position: 2,
-	course: lenguaje)
+	course: ayp)
 
-	uc10(UserCourse, user: obi, course: lenguaje, approved: true)
+	uc10(UserCourse, user: obi, course: ayp, approved: true)
 
 	corteSettings(Settings,
 	options: 0,
 	bannerColor: '#006',
-	githubUsername: 'lenguaje')
+	githubUsername: 'ayp')
 
 	corte(Course,
 	name:'Corte y confección 4',
