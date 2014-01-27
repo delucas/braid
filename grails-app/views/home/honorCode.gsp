@@ -17,7 +17,7 @@
 			</div>
 		</g:if>
 
-		<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
+		<sec:ifAnyGranted roles="ROLE_JEDI">
 			<div class="well">
 				<g:form controller="home" action="saveHonorCode">
 					<div class="row-fluid">

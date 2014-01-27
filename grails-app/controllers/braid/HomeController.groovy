@@ -27,7 +27,6 @@ class HomeController {
 	}
 
 	@Secured([
-		'ROLE_YODA',
 		'ROLE_JEDI',
 		'ROLE_PADAWAN',
 		'ROLE_JAR_JAR'
@@ -58,7 +57,6 @@ class HomeController {
 	}
 
 	@Secured([
-		'ROLE_YODA',
 		'ROLE_JEDI',
 		'ROLE_PADAWAN',
 		'ROLE_JAR_JAR'
@@ -72,7 +70,6 @@ class HomeController {
 	}
 
 	@Secured([
-		'ROLE_YODA',
 		'ROLE_JEDI',
 		'ROLE_PADAWAN',
 		'ROLE_JAR_JAR'
@@ -97,7 +94,6 @@ class HomeController {
 	}
 
 	@Secured([
-		'ROLE_YODA',
 		'ROLE_JEDI',
 		'ROLE_PADAWAN',
 		'ROLE_JAR_JAR'

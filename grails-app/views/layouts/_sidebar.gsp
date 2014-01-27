@@ -39,7 +39,7 @@
 						</g:link></li>
 	</g:if>
 
-	<sec:ifAnyGranted roles="ROLE_YODA, ROLE_JEDI">
+	<sec:ifAnyGranted roles="ROLE_JEDI">
 		<li class="${pageProperty(name:'page.students')}"><g:link
 				class="bbnotgood" controller="user" action="list">
 								Estudiantes

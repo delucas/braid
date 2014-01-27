@@ -77,5 +77,4 @@ class CourseSettingsCommand {
 		name blank: false
 		university blank: false
 	}
-
 }

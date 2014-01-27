@@ -23,7 +23,7 @@ class CodeReviewController {
 		results: 'GET'
 	]
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def list() {
 
 		def presenter = new CodeReviewHomeworkListPresenter(
@@ -34,13 +34,13 @@ class CodeReviewController {
 		model: [presenter: presenter]
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show() {
 		def homework = CodeReviewHomework.get(params.id)
 		redirect action: homework.stage, id: params.id
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN'])
 	def solve(CodeReviewSolutionCommand command) {
 
 		def user = userService.currentUser
@@ -72,7 +72,7 @@ class CodeReviewController {
 		}
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN'])
 	def review(CodeReviewCommand command) {
 
 		def user = userService.currentUser
@@ -107,7 +107,7 @@ class CodeReviewController {
 		}
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN'])
 	def results() {
 		def user = userService.currentUser
 		def homework = CodeReviewHomework.get(params.long('id'))
@@ -206,5 +206,4 @@ class CodeReviewCommand {
 			return it
 		}
 	}
-
 }

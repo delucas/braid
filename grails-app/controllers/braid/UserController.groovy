@@ -9,11 +9,11 @@ class UserController {
 	def userService
 	def courseService
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def profile(Long userId) {
 		def user = userService.currentUser
 
-		if (user.hasRole('ROLE_JEDI') || user.hasRole('ROLE_YODA')) {
+		if (user.hasRole('ROLE_JEDI')) {
 			user = User.get(userId) ?: user
 		}
 
@@ -63,17 +63,13 @@ class UserController {
 		}
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI'])
+	@Secured(['ROLE_JEDI'])
     def list() {
 
     	def me = userService.currentUser
 		def course = courseService.currentCourse
 
 		def users = findStudentsApprovedByCourse(course)
-
-		if (me.hasRole('ROLE_YODA')) {
-			users = User.list()
-		}
 
 		model: [users: users.sort { a, b -> a.name <=> b.name} ]
 	}
@@ -136,5 +132,4 @@ class UserController {
 
 		redirect(action:'pending')
 	}
-
 }

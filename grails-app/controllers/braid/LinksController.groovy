@@ -117,5 +117,4 @@ class LinkCommand {
 		caption blank: false
 		url url: true
 	}
-
 }

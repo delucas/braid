@@ -17,7 +17,7 @@ class AssignmentController {
 
 	def graderService
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 
 		def presenter = new AssignmentListPresenter(
@@ -99,7 +99,7 @@ class AssignmentController {
 		result
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI'])
+	@Secured(['ROLE_JEDI'])
 	def statistics(Long id) {
 
 		def assignment = Assignment.get(id)
@@ -114,7 +114,7 @@ class AssignmentController {
 
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show(Long id) {
 
 		def assignment = Assignment.get(id)
@@ -200,4 +200,3 @@ class AssignmentCommand {
 		}
 	}
 }
-

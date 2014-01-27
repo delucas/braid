@@ -14,7 +14,7 @@ class HomeworkController {
 	def homeworkService
 	def dateService
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
 
 		def presenter = new HomeworkListPresenter(
@@ -65,7 +65,7 @@ class HomeworkController {
 		cal.time
 	}
 
-	@Secured(['ROLE_YODA', 'ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
+	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show(Long id) {
 
 		def user = userService.currentUser
@@ -211,5 +211,4 @@ class HomeworkCommand {
 			val.after(new Date())
 		}
 	}
-
 }
