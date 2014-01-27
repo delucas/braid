@@ -1,6 +1,7 @@
 <%@page import="braid.course.Option"%>
 
 <ul class="nav nav-tabs span2">
+
 	<sec:ifAllGranted roles="ROLE_JEDI">
 		<li class="${pageProperty(name:'page.dashboard')}"><g:link
 				class="bbnotgood" controller="home" action="dashboard">

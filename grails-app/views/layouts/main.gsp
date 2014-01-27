@@ -45,8 +45,10 @@
 				</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active">
-							<g:link controller="home" action="announcements">Principal</g:link>
+						<li>
+							<g:link class="course-banner" controller="home" action="announcements" style="background-color: ${coursePresenter.bannerColor}">
+								${coursePresenter.name}
+							</g:link>
 						</li>
 						<g:render template="/layouts/links" model="[links: coursePresenter.links]"/>
 					</ul>
@@ -103,19 +105,7 @@
 		</div>
 	</div>
 
-	<div class="course-banner" style="background-color: ${coursePresenter.bannerColor};">
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span2">
-					<%-- logo? --%>
-				</div>
-				<div class="span8">
-					<div class="course">${coursePresenter.name}</div>
-					<div class="university">${coursePresenter.university}</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="course-line" style="background-color: ${coursePresenter.bannerColor};"></div>
 
 	<div class="container">
 		<div class="row-fluid">

@@ -156,24 +156,24 @@ img.profile {
 /***************
     COURSE
  **************/
- 
-div.course-banner {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: #ded;
-	padding: 15px 0 10px 0;
-	margin-bottom: 10px;
-	text-shadow: 1px 1px 1px #000;
+
+div.course-line {
+	height: 7px;
+	margin-top: -1px;
 }
 
-div.course-banner div.university {
-	font-weight: light;
-	line-height: 30px;
-	font-size: 15px;
+.navbar-inner {
+	border: 0px !important;
+	box-shadow: none !important;
 }
 
-div.course-banner div.course {
-    line-height: 20px;
-    font-size: 20px;
+.course-banner {
+	border-radius: 0.5em 0.5em 0 0;
+	margin-top: 1px;
+	padding-bottom: 14px !important;
+	color: white !important;
+	text-shadow: 1px 1px 1px #333 !important;
+	text-align: center;
 }
 
 /***************
