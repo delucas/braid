@@ -11,6 +11,7 @@ import braid.helpers.StringConverter
 class RegisterUserController {
 
     SpringSecuritySigninService springSecuritySigninService
+	def notificationService
 
     def register = {
         def user = new User()
@@ -47,13 +48,13 @@ class RegisterUserController {
 				dni = command.dni
 				email = command.email
 				oauthProvider = command.oauthProvider
-						
+
 				oauthId = profile.uid
 				avatarUrl = profile.picture
-						
+
 				return it
 			}
-			
+
 			theUser.save(failOnError: true)
 
 			def jarjar = Role.findByAuthority('ROLE_JAR_JAR')
@@ -63,6 +64,8 @@ class RegisterUserController {
 
 			theUser.save(flush:true)
 			log.error(theUser.errors)
+
+			notificationService.welcome(theUser)
 
 			redirect(controller: 'course', action: 'list')
 

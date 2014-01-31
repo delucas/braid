@@ -118,3 +118,16 @@ rabbitmq {
 		graderQueue()
 	}
 }
+
+grails {
+	mail {
+		host = "smtp.gmail.com"
+		port = 465
+		username = System.env.MAIL_USERNAME
+		password = System.env.MAIL_PASSWORD
+		props = ["mail.smtp.auth":"true",
+			"mail.smtp.socketFactory.port":"465",
+			"mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			"mail.smtp.socketFactory.fallback":"false"]
+	}
+}
