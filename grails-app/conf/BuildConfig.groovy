@@ -62,8 +62,10 @@ grails.project.dependency.resolution = {
 		compile ":rabbitmq:1.0.0"
 
 		runtime ":resources:1.2.RC2"
-        runtime ":twitter-bootstrap:2.2.2"
 		compile ":markdown:1.0.0.RC1"
+
+        compile ":twitter-bootstrap:2.2.2"
+		compile ":font-awesome-resources:4.0.3.0"
 
 		test ":code-coverage:1.2.5"
 		test ":spock:0.7"

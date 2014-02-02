@@ -1,3 +1,7 @@
+ul.navigation-menu i {
+	margin-right: 0.5em;
+}
+
 img.logo {
 	width: 25px;
 	height: 25px;
@@ -158,8 +162,9 @@ img.profile {
  **************/
 
 div.course-line {
-	height: 7px;
-	margin-top: -1px;
+	height: 0.5em;
+	margin-top: -0.1em;
+	margin-bottom: 0.5em;
 }
 
 .navbar-inner {

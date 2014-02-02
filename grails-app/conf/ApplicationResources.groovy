@@ -1,5 +1,6 @@
 modules = {
 	common {
+		dependsOn 'font-awesome'
 		resource url: 'css/main.css', disposition: 'head'
 	}
     application {
