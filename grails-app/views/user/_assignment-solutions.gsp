@@ -19,10 +19,10 @@
 					</g:link>
 				</td>
 				<td>
-					<g:formatDate date="${solution.assignment.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
+					<braid:dateInZone date="${solution.assignment.dueDate}"/>
 				</td>
 				<td>
-					<g:formatDate date="${solution.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/>
+					<braid:dateInZone date="${solution.dateCreated}"/>
 				</td>
 				<td>
 					${(solution.score)?"${solution.score}/10.0":'n/a'}

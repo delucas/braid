@@ -15,7 +15,7 @@ class ActivityTagLib {
 		out << "Resolviste ${phrase(type)}<br><strong>${name}</strong>" 
 		out << '	</div>'
 		out << '	<div>'
-		out << '		<small>' + g.formatDate(date: when, timeZone: "America/Argentina/Buenos_Aires") + '</small>'
+		out << '		<small>' + braid.dateInZone(date: when) + '</small>'
 		out << '	</div>'
 		out << '</div>'
 		

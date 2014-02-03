@@ -17,8 +17,8 @@
 		<legend>
 			${homework.title}: revisión cruzada
 			<small class="pull-right">
-			<g:message code="braid.general.legend.dueDate"/>: <g:formatDate
-					date="${homework.reviewDueDate}" timeZone="America/Argentina/Buenos_Aires" />
+			<g:message code="braid.general.legend.dueDate"/>:
+			<braid:dateInZone date="${homework.reviewDueDate}"/>
 			</small>
 		</legend>
 

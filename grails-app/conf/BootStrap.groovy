@@ -8,6 +8,8 @@ class BootStrap {
 
 		if (GrailsUtil.environment == 'development') {
 
+			TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
+
 //			fixtureLoader.include('userFixtures')
 //			fixtureLoader.include('courseFixtures')
 //			fixtureLoader.load('announcementFixtures')

@@ -28,17 +28,6 @@
 			</div>
 		</sec:ifAnyGranted>
 
-		<div class="md hidden">
-			<blockquote class="preview">
-				<div id="previewArea">
-				</div>
-				<small>
-					${sec.loggedInUserInfo(field:"username")}
-					<span class="pull-right"><g:formatDate date="${new Date()}" timeZone="America/Argentina/Buenos_Aires"/></span>
-				</small>
-			</blockquote>
-		</div>
-
 		<g:each in="${announcements}" var="announcement">
 			<announcement:render data="${announcement}"/>
 		</g:each>

@@ -31,7 +31,7 @@ class LabelTagLib {
 		} else if (homework.published) {
 			out << '<span class="label label-success">Vigente</span>'
 		} else {
-			def startDate = g.formatDate(date: homework.startDate, timeZone: 'America/Argentina/Buenos_Aires')
+			def startDate = braid.dateInZone(date: homework.startDate)
 			out << "<span class='label' title='Se publicará el ${startDate}'><i class='icon-white icon-info-sign'></i> Aún no publicada</span>"
 		}
 	}

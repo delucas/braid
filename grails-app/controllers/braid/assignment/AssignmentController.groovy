@@ -30,7 +30,8 @@ class AssignmentController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-		[currentYear: dateService.currentTime.getAt(Calendar.YEAR)]
+		[currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+			currentTime: dateService.currentTimeInZone]
 	}
 
 	@Secured(['ROLE_JEDI'])
@@ -41,8 +42,8 @@ class AssignmentController {
 			def assignment = new Assignment().with {
 				title = command.title
 				repo = createRepository(command.repoName)
-				startDate = convertToUTC(command.startDate, userService.currentTimeZone)
-				dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+				startDate = dateService.toUTC(command.startDate, userService.currentTimeZone)
+				dueDate = dateService.toUTC(command.dueDate, userService.currentTimeZone)
 				course = courseService.currentCourse
 
 				return it
@@ -55,7 +56,8 @@ class AssignmentController {
 
 		} else {
 			render view:'create', model: [
-				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR)
+				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+				currentTime: dateService.currentTimeInZone
 			]
 		}
 	}
@@ -63,13 +65,6 @@ class AssignmentController {
 	private createRepository(String repoName) {
 		def user = courseService.currentCourse.settings.githubUsername
 		new Repository(user: user, name: repoName)
-	}
-
-	private convertToUTC(Date dateInZone, TimeZone tz) {
-		// TODO: es esto REALMENTE necesario?
-		def cal = dateInZone.toCalendar()
-		cal.timeZone = tz
-		cal.time
 	}
 
 	// TODO: please refactor

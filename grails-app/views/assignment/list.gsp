@@ -49,8 +49,7 @@
 							<td>
 								<braid:homeworkStage homework="${assignment}"/>
 							</td>
-							<td><g:formatDate date="${assignment.dueDate}"
-									timeZone="America/Argentina/Buenos_Aires" /></td>
+							<td><braid:dateInZone date="${assignment.dueDate}"/></td>
 							<td>
 								<g:link class="btn btn-small" action="show" id="${assignment.id}">
 									Ver detalles

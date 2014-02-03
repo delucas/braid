@@ -14,15 +14,14 @@
 		<g:if test="${!presenter.published}">
 			<braid:alertInfo title="¡Es un secreto!">
 				Aún no se ha dado a conocer este trabajo práctico. Está planificado que se publique el
-				<g:formatDate date="${presenter.assignment.startDate}" timeZone="America/Argentina/Buenos_Aires"/>
+				<braid:dateInZone date="${presenter.assignment.startDate}"/>
 			</braid:alertInfo>
 		</g:if>
 
 		<legend>
 			${presenter.assignment.title}
-			<small class="pull-right"> <g:message code="braid.general.legend.dueDate"/>: <g:formatDate
-					date="${presenter.assignment.dueDate}"
-					timeZone="America/Argentina/Buenos_Aires" />
+			<small class="pull-right"> <g:message code="braid.general.legend.dueDate"/>: 
+			<braid:dateInZone date="${presenter.assignment.dueDate}"/>
 			</small>
 		</legend>
 
@@ -128,8 +127,9 @@ ${sec.loggedInUserInfo(field:"username")}@computadora:~/workspace/${presenter.as
 						<g:if test="${presenter.solutions}">
 							<g:each in="${presenter.solutions}" var="solution">
 								<tr>
-									<td><g:formatDate date="${solution.dateCreated}"
-											timeZone="America/Argentina/Buenos_Aires" /></td>
+									<td>
+										<braid:dateInZone date="${solution.dateCreated}"/>
+									</td>
 									<td>
 										<g:if test="${solution.graded}">
 											${solution.score}/10.00

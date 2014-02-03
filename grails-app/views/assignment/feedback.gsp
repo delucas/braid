@@ -18,8 +18,7 @@
 		<dl>
 
 			<dt>Fecha de la solución</dt>
-			<dd><g:formatDate date="${solution.dateCreated}"
-				timeZone="America/Argentina/Buenos_Aires"/></dd>
+			<dd><braid:dateInZone date="${solution.dateCreated}"/></dd>
 
 			<dt>Calificación</dt>
 			<dd>${solution.score}/10.00</dd>

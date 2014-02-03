@@ -43,12 +43,10 @@
 							<braid:homeworkStage homework="${homework}"/>
 						</td>
 						<td>
-							<g:formatDate date="${homework.solutionDueDate}"
-									timeZone="America/Argentina/Buenos_Aires" />
+							<braid:dateInZone date="${homework.solutionDueDate}"/>
 						</td>
 						<td>
-							<g:formatDate date="${homework.reviewDueDate}"
-									timeZone="America/Argentina/Buenos_Aires" />
+							<braid:dateInZone date="${homework.reviewDueDate}"/>
 						</td>
 						<td>
 							<codeReview:detailsLink homework="${homework}"/>

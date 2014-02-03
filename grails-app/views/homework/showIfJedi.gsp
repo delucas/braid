@@ -19,7 +19,7 @@
 		<g:if test="${!presenter.published}">
 			<braid:alertInfo title="¡Es un secreto!">
 				Aún no se ha dado a conocer esta tarea. Está planificado que se publique el
-				<g:formatDate date="${presenter.homework.startDate}" timeZone="America/Argentina/Buenos_Aires"/>
+				<braid:dateInZone date="${presenter.homework.startDate}"/>
 			</braid:alertInfo>
 		</g:if>
 
@@ -27,7 +27,7 @@
 			${presenter.homework.title}
 			<small class="pull-right">
 				Fecha límite de entrega:
-				<g:formatDate date="${presenter.homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
+				<braid:dateInZone date="${presenter.homework.dueDate}"/>
 			</small>
 		</legend>
 
@@ -50,7 +50,7 @@
 					<g:each in="${presenter.solutionsUpToDate}" var="solution">
 						<tr class="score">
 							<td width="50%">
-								<g:formatDate date="${solution.dateCreated}" timeZone="America/Argentina/Buenos_Aires"/>
+								<braid:dateInZone date="${solution.dateCreated}"/>
 							</td>
 							<td>${solution.user.name}</td>
 						</tr>

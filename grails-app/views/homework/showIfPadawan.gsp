@@ -18,7 +18,7 @@
 
 			<small class="pull-right">
 				Fecha límite de entrega:
-				<g:formatDate date="${presenter.homework.dueDate}" timeZone="America/Argentina/Buenos_Aires"/>
+				<braid:dateInZone date="${presenter.homework.dueDate}"/>
 			</small>
 		</legend>
 

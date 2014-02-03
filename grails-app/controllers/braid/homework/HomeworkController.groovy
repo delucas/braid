@@ -27,7 +27,8 @@ class HomeworkController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-		[currentYear: dateService.currentTime.getAt(Calendar.YEAR)]
+		[currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+			currentTime: dateService.currentTimeInZone]
 	}
 
 	@Secured(['ROLE_JEDI'])
@@ -38,8 +39,8 @@ class HomeworkController {
 			def homework = new Homework().with {
 				title = command.title
 				wording = command.wording
-				startDate = convertToUTC(command.startDate, userService.currentTimeZone)
-				dueDate = convertToUTC(command.dueDate, userService.currentTimeZone)
+				startDate = dateService.toUTC(command.startDate, userService.currentTimeZone)
+				dueDate = dateService.toUTC(command.dueDate, userService.currentTimeZone)
 				course = courseService.currentCourse
 
 				return it
@@ -52,17 +53,11 @@ class HomeworkController {
 
 		} else {
 			render view:'create', model: [
-				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR)
+				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+				currentTime: dateService.currentTimeInZone
 			]
 		}
 
-	}
-
-	private Date convertToUTC(Date dateInZone, TimeZone tz) {
-		// TODO: es esto REALMENTE necesario?
-		def cal = dateInZone.toCalendar()
-		cal.timeZone = tz
-		cal.time
 	}
 
 	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])

@@ -20,7 +20,7 @@ class AnnouncementTagLib {
 		out << '		</strong>'
 		out << '	</div>'
 		out << '	<div>'
-		out << '		<time>' + g.formatDate(date: event.dueDate, timeZone: "America/Argentina/Buenos_Aires") + '</time>'
+		out << '		<time>' + braid.dateInZone(date: event.dueDate) + '</time>'
 		out << '	</div>'
 		out << '	<div>'
 		out << '		<small>(' + g.message(code: "dates.timeTo.${dateService.timeTo(event.dueDate)}") + ')</small>'
@@ -30,7 +30,7 @@ class AnnouncementTagLib {
 	
 	def render = { attrs ->
 		Announcement announcement = attrs.data
-		Date now = new Date()
+		Date now = dateService.currentTime
 
 		AnnouncementPresenter presenter = new AnnouncementPresenter(announcement: announcement, now: now)
 
@@ -43,7 +43,7 @@ class AnnouncementTagLib {
 		out << '	' + announcement.text
 		out << '	<small>'
 		out << "		${announcement.announcer.name}"
-		out << "		<span class='pull-right'>${g.formatDate(date:announcement.dateCreated, timeZone:'America/Argentina/Buenos_Aires')}</span>"
+		out << "		<span class='pull-right'>${braid.dateInZone(date:announcement.dateCreated)}</span>"
 		out << '	</small>'
 		out << '</blockquote>'
 	}

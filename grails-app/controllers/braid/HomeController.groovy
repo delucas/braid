@@ -53,7 +53,8 @@ class HomeController {
 			[id: it.id, type: 'codeReview', title: it.title, dueDate: it.nextDueDate]
 		})
 
-		model: [announcements: announcements, upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate } ]
+		model: [ announcements: announcements,
+			upcomingDates: upcomingDates.sort { a, b -> a.dueDate <=> b.dueDate } ]
 	}
 
 	@Secured([

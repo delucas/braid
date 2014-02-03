@@ -32,7 +32,7 @@
 						<label class="control-label" for="inputStartDate">Fecha de inicio</label>
 						<div class="controls datepicker">
 							<g:datePicker name="startDate" precision="hour" years="[currentYear]"
-							default="${command ? command.startDate : new Date() }"/>
+							default="${command ? command.startDate : currentTime }"/>
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 						<label class="control-label" for="inputDueDate">Fecha de finalización</label>
 						<div class="controls datepicker">
 							<g:datePicker name="dueDate" precision="hour" years="[currentYear]"
-							default="${command ? command.dueDate : new Date().plus(7) }"/>
+							default="${command ? command.dueDate : currentTime.plus(7) }"/>
 						</div>
 					</div>
 				</div>
