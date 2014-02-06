@@ -1,4 +1,4 @@
-package braid.presenters
+package braid.presenters.course
 
 import braid.Link
 import braid.course.Option

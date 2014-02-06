@@ -10,8 +10,8 @@ class BootStrap {
 
 			TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
 
-//			fixtureLoader.include('userFixtures')
-//			fixtureLoader.include('courseFixtures')
+//			fixtureLoader.load('userFixtures')
+//			fixtureLoader.load('courseFixtures')
 //			fixtureLoader.load('announcementFixtures')
 			fixtureLoader.load('homeworkFixtures')
 		}

@@ -5,14 +5,13 @@
 <title>braid · <g:layoutTitle default="aprendiendo diferente" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="${resource(dir:'images',file:'braid-logo.png')}" type="image/x-icon" />
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"
-	type="text/css">
 <link rel="stylesheet"
 	href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 
+<r:require module="common" />
 <r:require modules="bootstrap" />
 <g:layoutHead />
-<r:layoutResources />
+<r:layoutResources/>
 
 <style>
 body {
@@ -47,7 +46,6 @@ body {
 
 	</div>
 
-	<g:javascript library="application" />
 	<r:layoutResources />
 
 </body>

@@ -1,0 +1,23 @@
+package braid.presenters.course
+
+import braid.Link
+import braid.course.Option
+
+class CourseListPresenter {
+
+	def courses
+	def user
+	
+	boolean canCreate() {
+		user.hasRole('ROLE_YODA')
+	}
+	
+	boolean canAdmin() {
+		user.hasRole('ROLE_YODA')
+	}
+	
+	boolean canJoin() {
+		!user.hasRole('ROLE_YODA')
+	}
+
+}

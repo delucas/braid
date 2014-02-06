@@ -1,7 +1,7 @@
 package braid.filters
 
 import braid.course.Course
-import braid.presenters.CoursePresenter
+import braid.presenters.course.CoursePresenter;
 
 class CourseFilters {
 

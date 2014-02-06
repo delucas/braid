@@ -6,12 +6,12 @@ class Course {
 
 	String name
 	String university
-	String honorCode
 
-	String syllabus
+	String honorCode = 'TBD'
+	String syllabus = 'TBD'
 
 	Settings settings
-	Boolean active
+	Boolean active = true
 
 	static mapping = {
 		honorCode type: 'text'

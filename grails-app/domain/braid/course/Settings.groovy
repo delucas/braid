@@ -2,7 +2,7 @@ package braid.course
 
 class Settings {
 	
-	Integer options
+	Integer options = 0
 	String bannerColor
 	String githubUsername
 	

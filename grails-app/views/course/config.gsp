@@ -36,6 +36,16 @@
 				</div>
 			</div>
 
+			<div
+				class="control-group ${hasErrors(bean: command, field: 'githubUsername', 'error')}">
+				<label class="control-label" for="githubUsername">Usuario en Github</label>
+				<div class="controls">
+					<input type="text" id="githubUsername" name="githubUsername"
+						value="${command?.settings.githubUsername}" class="span6"
+						placeholder="e.g. ayp1">
+				</div>
+			</div>
+
 			<div class="control-group">
 				<label class="control-label" for="bannerColor">Color</label>
 				<div class="controls">

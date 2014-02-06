@@ -1,4 +1,4 @@
-package braid.presenters
+package braid.presenters.course
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
 import braid.Link
