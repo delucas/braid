@@ -49,7 +49,7 @@
 										Inscribirme
 									</g:link>
 								</g:if> <g:if test="${presenter.canAdmin()}">
-									<g:link class="btn btn-small" action="students">
+									<g:link class="btn btn-small" action="students" id="${course.id}">
 										Administrar
 									</g:link>
 								</g:if></td>

@@ -4,7 +4,6 @@
 <title>Oops!</title>
 
 <r:require modules="bootstrap" />
-<r:layoutResources />
 
 <style>
 body {

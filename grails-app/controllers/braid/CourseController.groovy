@@ -12,6 +12,7 @@ class CourseController {
 	def courseService
 
 	def joinCourseService
+	def promoteUserService
 
 	@Secured([
 		'ROLE_YODA',
@@ -77,6 +78,39 @@ class CourseController {
 				[command: command]
 			}
 		}
+	}
+
+	@Secured(['ROLE_YODA'])
+	def students(Long id) {
+		def course = Course.get(id)
+		def members = course.members.sort { a, b -> b.hasRole('ROLE_JEDI') <=> a.hasRole('ROLE_JEDI')}
+		def jedis = course.jedis
+
+		[presenter: [course: course, students: members, jedis: jedis]]
+	}
+
+	@Secured(['ROLE_YODA'])
+	def promote(Long userId, Long courseId) {
+
+		changeDegree(userId, courseId) { user, course ->
+			promoteUserService.promote(user, course)
+		}
+	}
+
+	@Secured(['ROLE_YODA'])
+	def demote(Long userId, Long courseId) {
+
+		changeDegree(userId, courseId) { user, course ->
+			promoteUserService.demote(user, course)
+		}
+	}
+
+	private changeDegree(userId, courseId, executeChange) {
+		def user = User.get(userId)
+		def course = Course.get(courseId)
+
+		executeChange(user, course)
+		redirect(action: 'students', id: courseId)
 	}
 
 	@Secured(['ROLE_JEDI'])
