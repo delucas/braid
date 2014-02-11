@@ -1,8 +1,5 @@
 package braid.homework
 
-import braid.homework.Homework;
-import braid.homework.HomeworkSolution;
-
 class HomeworkService {
 
 
@@ -10,7 +7,7 @@ class HomeworkService {
 		
 		def criteria = HomeworkSolution.createCriteria()
 		
-		criteria.count() {
+		criteria.count {
 			eq('homework', homework)
 			isNull('feedback')
 		}

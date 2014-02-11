@@ -1,7 +1,7 @@
 package braid
 
-import braid.assignment.AssignmentSolution;
-import braid.homework.Homework;
+import braid.assignment.AssignmentSolution
+import braid.homework.Homework
 
 class DashboardService {
 
@@ -43,7 +43,8 @@ class DashboardService {
 		def course = courseService.currentCourse
 
 		def assignmentGraph = AssignmentSolution.executeQuery('select sol.assignment.title, count(sol.id) as resueltas ' +
-				"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} group by sol.assignment.title, sol.assignment.dueDate order by sol.assignment.dueDate")
+				"from AssignmentSolution sol where sol.score is not null and sol.assignment.course.id = ${course.id} " +
+				'group by sol.assignment.title, sol.assignment.dueDate order by sol.assignment.dueDate')
 
 		def assignmentTransformation = { list ->
 			def result = [[], []]
@@ -60,10 +61,10 @@ class DashboardService {
 		}
 	}
 
-	private def generateBarChartData(def graphData, transformation) {
+	private generateBarChartData(def graphData, transformation) {
 		def bars = transformation(graphData)
 		def submissions = bars[1].sum()
 		def total = bars[0].size()
-		[bars: bars, submissions: submissions, total: total, avg: (submissions/total as Double).round(2)]
+		[bars: bars, submissions: submissions, total: total, avg: (submissions / total as Double).round(2)]
 	}
 }

@@ -24,7 +24,7 @@ class CourseListPresenterSpec extends Specification {
 	
 	void "admin role can admin courses"() {
 		given: 'a presenter for an admin'
-			def presenter = new CourseListPresenter(user: [hasRole: { true }])
+			def presenter = new CourseListPresenter(user: [hasRole: { true } ])
 		expect: 'admin can admin courses'
 			presenter.canAdmin()
 			presenter.canCreate()
@@ -32,7 +32,7 @@ class CourseListPresenterSpec extends Specification {
 	
 	void "other roles cannot admin courses"() {
 		given: 'a presenter for no admin role'
-			def presenter = new CourseListPresenter(user: [hasRole: { false }])
+			def presenter = new CourseListPresenter(user: [hasRole: { false } ])
 		expect: 'no admin cannot admin courses'
 			!presenter.canAdmin()
 			!presenter.canCreate()
@@ -40,14 +40,14 @@ class CourseListPresenterSpec extends Specification {
 	
 	void "admin role cannot join course"() {
 		given: 'a presenter for an admin'
-			def presenter = new CourseListPresenter(user: [hasRole: { true }])
+			def presenter = new CourseListPresenter(user: [hasRole: { true } ])
 		expect: 'admin cannot join courses'
 			!presenter.canJoin()
 	}
 
 	void "other roles can join course"() {
 		given: 'a presenter for no admin role'
-			def presenter = new CourseListPresenter(user: [hasRole: { false }])
+			def presenter = new CourseListPresenter(user: [hasRole: { false } ])
 		expect: 'no admin can join courses'
 			presenter.canJoin()
 	}

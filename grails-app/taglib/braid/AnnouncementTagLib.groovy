@@ -1,6 +1,5 @@
 package braid
 
-import groovy.time.TimeCategory
 import braid.presenters.AnnouncementPresenter
 
 class AnnouncementTagLib {

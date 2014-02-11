@@ -1,7 +1,5 @@
 package braid.presenters.homework
 
-import braid.homework.Homework;
-
 class JediHomeworkPresenter {
 
 	def homework

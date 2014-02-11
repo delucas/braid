@@ -1,11 +1,10 @@
 package braid.assignment
 
-import braid.assignment.AssignmentSolution;
 import grails.converters.JSON
 
 class GraderService {
 
-	def send(AssignmentSolution solution){
+	def send(AssignmentSolution solution) {
 
 		def map = [:]
 		map << ['solutionId': solution.id]

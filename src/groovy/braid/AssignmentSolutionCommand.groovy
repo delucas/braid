@@ -1,6 +1,6 @@
 package braid
 
-import grails.validation.Validateable;
+import grails.validation.Validateable
 
 @Validateable
 class AssignmentSolutionCommand {
@@ -8,7 +8,7 @@ class AssignmentSolutionCommand {
 	Boolean honorCode
 	
 	static constraints = {
-		honorCode validator: { val -> val==true }
+		honorCode validator: { val -> val == true }
 	}
 	
 }

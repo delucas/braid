@@ -7,7 +7,7 @@ class ReviewSolutionService {
 	CodeReviewSolution fetch(CodeReviewHomework homework, currentUser) {
 		// TODO: fetch solutions with less revisions not by currentUser (HQL)
 
-		def reviewsMade = CodeReview.createCriteria().count() {
+		def reviewsMade = CodeReview.createCriteria().count {
 			createAlias('solution', 'solution')
 			eq('solution.homework', homework)
 			eq('user', currentUser)
@@ -34,7 +34,7 @@ class ReviewSolutionService {
 	}
 
 	private ownSolution(CodeReviewHomework homework, User currentUser) {
-		def ownSolutionReviews = CodeReview.createCriteria().count() {
+		def ownSolutionReviews = CodeReview.createCriteria().count {
 			createAlias('solution', 'solution')
 			eq('solution.homework', homework)
 			eq('solution.user', currentUser)

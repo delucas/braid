@@ -8,7 +8,7 @@ class LabelTagLib {
 
 		def role = attrs.role
 
-		out << "<span class='label label-info'>${role.replaceAll('ROLE_','')}</span>"
+		out << "<span class='label label-info'>${role.replaceAll('ROLE_', '')}</span>"
 
 	}
 
@@ -32,7 +32,8 @@ class LabelTagLib {
 			out << '<span class="label label-success">Vigente</span>'
 		} else {
 			def startDate = braid.dateInZone(date: homework.startDate)
-			out << "<span class='label' title='Se publicará el ${startDate}'><i class='icon-white icon-info-sign'></i> Aún no publicada</span>"
+			out << "<span class='label' title='Se publicará el ${startDate}'>" +
+				'<i class="icon-white icon-info-sign"></i> Aún no publicada</span>'
 		}
 	}
 

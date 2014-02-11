@@ -6,13 +6,13 @@ import braid.UserRole
 
 class PromoteUserService {
 
-	public promote(User user, course) {
+	def promote(User user, course) {
 
 		removeAllRoles(user)
 		assignRole(user, Role.findByAuthority('ROLE_JEDI')) 
 	}
 
-	public demote(User user, course) {
+	def demote(User user, course) {
 
 		removeAllRoles(user)
 

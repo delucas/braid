@@ -12,7 +12,7 @@ class AssignmentPresenter {
 	def command
 	def padawan
 
-	def getBestSolution(){
+	def getBestSolution() {
 		solutions.max { it.score }
 	}
 
@@ -28,12 +28,12 @@ class AssignmentPresenter {
 			result = !ungradedSolutions() || firstSolutionOldEnough()
 		}
 
-		return padawan && result 
+		padawan && result 
 	}
 
 	private boolean firstSolutionOldEnough() {
 		use(TimeCategory) {
-			return solutions.first().dateCreated < now - 30.minutes
+			solutions.first().dateCreated < now - 30.minutes
 		}
 	}
 

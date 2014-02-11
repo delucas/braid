@@ -8,7 +8,7 @@ class JoinCourseService {
 
 	def userService
 
-    def joinCourse(Course course){
+    def joinCourse(Course course) {
 		def currentUser = userService.currentUser
 
 		assignMinimalRole(currentUser)

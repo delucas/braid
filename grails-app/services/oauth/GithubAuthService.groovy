@@ -1,6 +1,7 @@
 package oauth
 
 import grails.converters.deep.JSON
+
 import org.scribe.model.OAuthRequest
 import org.scribe.model.Token
 import org.scribe.model.Verb
@@ -11,10 +12,10 @@ class GithubAuthService extends GrailsOAuthService {
 
     @Override
     OAuthService createOAuthService(String callbackUrl) {
-        return createServiceBuilder(GitHubApi,
-                    grailsApplication.config.auth.github.key as String,
-                    grailsApplication.config.auth.github.secret as String,
-                    callbackUrl).build()
+        createServiceBuilder(GitHubApi,
+	        grailsApplication.config.auth.github.key as String,
+	        grailsApplication.config.auth.github.secret as String,
+	        callbackUrl).build()
     }
 
     AuthInfo getAuthInfo(String callbackUrl) {
@@ -34,6 +35,6 @@ class GithubAuthService extends GrailsOAuthService {
 
 		// TODO: deep.JSON is deprecated. Use JSON instead -> http://grails.org/Converters+Reference
         def user = JSON.parse(response.body)
-        new OAuthProfile(username: user.login, uid: user.id, email: user.email,picture:user.avatar_url)
+        new OAuthProfile(username: user.login, uid: user.id, email: user.email, picture:user.avatar_url)
     }
 }

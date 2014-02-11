@@ -1,6 +1,6 @@
 package braid.presenters.homework
 
-import braid.homework.Homework;
+import braid.homework.Homework
 
 class HomeworkListPresenter {
 

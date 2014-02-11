@@ -1,8 +1,5 @@
 package braid.presenters.course
 
-import braid.Link
-import braid.course.Option
-
 class CourseListPresenter {
 
 	def courses

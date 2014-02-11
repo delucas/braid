@@ -1,6 +1,5 @@
 package braid.assignment
 
-import braid.assignment.AssignmentSolution;
 import grails.converters.JSON
 
 class GraderComputationService {
@@ -8,7 +7,7 @@ class GraderComputationService {
 	static transactional = true
 	def grailsApplication
 
-	static rabbitQueue = 'alreadyGradedQueue'
+	final static rabbitQueue = 'alreadyGradedQueue'
 
 	void handleMessage(message) {
 		def returnedMap = JSON.parse(new String(message))

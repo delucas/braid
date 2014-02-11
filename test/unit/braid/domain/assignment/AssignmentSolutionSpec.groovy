@@ -1,8 +1,9 @@
 package braid.domain.assignment
 
+import grails.test.mixin.*
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
-import braid.assignment.AssignmentSolution;
+import braid.assignment.AssignmentSolution
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions

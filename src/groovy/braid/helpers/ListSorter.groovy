@@ -1,6 +1,5 @@
 package braid.helpers
 
-import org.springframework.util.StringUtils
 
 class ListSorter {
 
@@ -15,7 +14,7 @@ class ListSorter {
 		if (list && position) {
 			
 			if (position >= 2) {
-				result += list[0 ..< position-1]
+				result += list[0 ..< position - 1]
 			}
 			
 			result += list[position, position - 1]

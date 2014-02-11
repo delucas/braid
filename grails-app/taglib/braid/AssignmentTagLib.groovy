@@ -15,7 +15,7 @@ class AssignmentTagLib {
 			def wording = assignment.wording
 		
 			out << '<section class="headless-wording md">'
-			out << markdown.renderHtml(){ wording }
+			out << markdown.renderHtml { wording }
 			out << '</section>'
 			
 		} catch (UnknownHostException e) {
