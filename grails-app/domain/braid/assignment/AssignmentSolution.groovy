@@ -1,6 +1,6 @@
 package braid.assignment
 
-import braid.User;
+import braid.User
 
 class AssignmentSolution {
 
@@ -20,7 +20,7 @@ class AssignmentSolution {
 	}
 	
 	static mapping = {
-		feedback(type: "text")
+		feedback(type: 'text')
 	}
 	
 	static transients = ['graded']

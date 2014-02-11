@@ -1,9 +1,7 @@
 package braid.assignment
 
-import java.util.Date;
-
-import braid.course.Course;
-import braid.github.Repository;
+import braid.course.Course
+import braid.github.Repository
 
 class Assignment {
 

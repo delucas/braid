@@ -192,18 +192,6 @@ class CodeReviewCommand {
 	}
 
 	CodeReview toEntity() {
-
-		new CodeReview().with {
-			clarity = clarity
-			conventions = conventions
-			correctness = correctness
-			tests = tests
-
-			comments = comments
-			best = best
-			advice = advice
-
-			return it
-		}
+		new CodeReview(this.properties)
 	}
 }

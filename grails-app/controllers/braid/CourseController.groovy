@@ -53,9 +53,7 @@ class CourseController {
 
 	@Secured(['ROLE_YODA'])
 	def create(CourseSettingsCommand command) {
-		if (request.method == 'GET') {
-		} else {
-
+		if (request.method == 'POST') {
 			if (command.validate()) {
 				// TODO: migrate to a service
 				def course = new Course().with {
@@ -83,7 +81,7 @@ class CourseController {
 	@Secured(['ROLE_YODA'])
 	def students(Long id) {
 		def course = Course.get(id)
-		def members = course.members.sort { a, b -> b.hasRole('ROLE_JEDI') <=> a.hasRole('ROLE_JEDI')}
+		def members = course.members.sort { a, b -> b.hasRole('ROLE_JEDI') <=> a.hasRole('ROLE_JEDI') }
 		def jedis = course.jedis
 
 		[presenter: [course: course, students: members, jedis: jedis]]

@@ -30,7 +30,7 @@ class AssignmentController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-		[currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+		[currentYear: dateService.currentTime[Calendar.YEAR],
 			currentTime: dateService.currentTimeInZone]
 	}
 
@@ -46,7 +46,7 @@ class AssignmentController {
 				dueDate = dateService.toUTC(command.dueDate, userService.currentTimeZone)
 				course = courseService.currentCourse
 
-				return it
+				it
 			}
 
 			assignment.save(flush: true)
@@ -56,7 +56,7 @@ class AssignmentController {
 
 		} else {
 			render view:'create', model: [
-				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+				command: command, currentYear: dateService.currentTime[Calendar.YEAR],
 				currentTime: dateService.currentTimeInZone
 			]
 		}
@@ -141,7 +141,11 @@ class AssignmentController {
 
 		def assignment = Assignment.get(assignmentId)
 
-		if (!assignment.outOfDate) {
+		if (assignment.outOfDate) {
+
+			flash.message = g.message(code: 'braid.assignment.Assignment.solve.outOfDate')
+			redirect action: 'show', params: [id: assignmentId]
+		} else {
 
 			if (command.validate()) {
 				def user = userService.currentUser
@@ -163,9 +167,6 @@ class AssignmentController {
 				presenter.command = command
 				render view:'show', model: [presenter: presenter]
 			}
-		} else {
-			flash.message = g.message(code: 'braid.assignment.Assignment.solve.outOfDate')
-			redirect action: 'show', params: [id: assignmentId]
 		}
 	}
 

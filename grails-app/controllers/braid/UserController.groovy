@@ -66,12 +66,10 @@ class UserController {
 	@Secured(['ROLE_JEDI'])
     def list() {
 
-    	def me = userService.currentUser
 		def course = courseService.currentCourse
-
 		def users = findStudentsApprovedByCourse(course)
 
-		model: [users: users.sort { a, b -> a.name <=> b.name} ]
+		model: [users: users.sort { a, b -> a.name <=> b.name } ]
 	}
 
 	private findStudentsApprovedByCourse(def course) {

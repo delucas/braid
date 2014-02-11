@@ -27,7 +27,7 @@ class HomeworkController {
 
 	@Secured(['ROLE_JEDI'])
 	def create() {
-		[currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+		[currentYear: dateService.currentTime[Calendar.YEAR],
 			currentTime: dateService.currentTimeInZone]
 	}
 
@@ -43,7 +43,7 @@ class HomeworkController {
 				dueDate = dateService.toUTC(command.dueDate, userService.currentTimeZone)
 				course = courseService.currentCourse
 
-				return it
+				it
 			}
 
 			homework.save(flush: true)
@@ -53,7 +53,7 @@ class HomeworkController {
 
 		} else {
 			render view:'create', model: [
-				command: command, currentYear: dateService.currentTime.getAt(Calendar.YEAR),
+				command: command, currentYear: dateService.currentTime[Calendar.YEAR],
 				currentTime: dateService.currentTimeInZone
 			]
 		}
@@ -114,7 +114,11 @@ class HomeworkController {
 		def course = courseService.currentCourse
 		def currentUser = userService.currentUser
 
-		if (!homework.outOfDate) {
+		if (homework.outOfDate) {
+
+			flash.message = g.message(code: 'braid.homework.Homework.solve.outOfDate')
+			redirect action: 'show', params: [id: homeworkId]
+		} else {
 
 			if (command.validate()) {
 
@@ -139,9 +143,6 @@ class HomeworkController {
 					)
 				render view:'showIfPadawan', model: [presenter: presenter]
 			}
-		} else {
-			flash.message = g.message(code: 'braid.homework.Homework.solve.outOfDate')
-			redirect action: 'show', params: [id: homeworkId]
 		}
 	}
 
@@ -164,12 +165,12 @@ class HomeworkController {
 			'from HomeworkSolution s where s.homework = :homework and s.feedback is null',
 			[homework: homework])
 
-		// si no hay, lo redirigimos al inicio
-		if (! homeworkSolution) {
-			redirect action: 'show', params: [id: homeworkId]
-		} else {
+		if (homeworkSolution) {
 			homeworkSolution.reviewer = userService.currentUser
 			homeworkSolution.save()
+		} else {
+			// si no hay, lo redirigimos al inicio
+			redirect action: 'show', params: [id: homeworkId]
 		}
 
 		[homework: homework, homeworkSolution: homeworkSolution]

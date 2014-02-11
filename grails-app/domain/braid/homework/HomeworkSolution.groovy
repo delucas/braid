@@ -1,6 +1,6 @@
 package braid.homework
 
-import braid.User;
+import braid.User
 
 class HomeworkSolution {
 

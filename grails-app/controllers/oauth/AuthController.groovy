@@ -15,7 +15,7 @@ class AuthController {
 			
 			redirect(controller:'githubMock')
 			
-		}else{
+		} else {
 	        GrailsOAuthService service = resolveService(params.provider)
 	        if (!service) {
 	            redirect(url: '/')
@@ -32,7 +32,6 @@ class AuthController {
 			session['authurl'] = authInfo.authUrl
 			
 			session["${params.provider}_authInfo"] = authInfo
-			session["basofia"] = "mi string"
 			
 	        redirect(url: authInfo.authUrl)
 		}
@@ -64,7 +63,7 @@ class AuthController {
         }
     }
 
-    private def resolveService(provider) {
+    private resolveService(provider) {
         def serviceName = "${ provider as String }AuthService"
         grailsApplication.mainContext.getBean(serviceName)
     }

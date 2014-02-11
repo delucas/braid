@@ -18,15 +18,15 @@ class RegisterUserController {
         def profile = session["${params.provider}_profile"]
 
         if (!profile || !session["${params.provider}_authToken"]) {
-            log.warn("No profile or authToken found")
-            return redirect(controller: "error", action: 'forbidden')
+            log.warn('No profile or authToken found')
+            return redirect(controller: 'error', action: 'forbidden')
         }
 
         user.username = profile.username
         user.email = profile.email
         user.oauthProvider = params.provider
 
-        render(view: "register", model: [user: user, provider: params.provider])
+        render(view: 'register', model: [user: user, provider: params.provider])
     }
 
 	def finishRegistration(RegistrationCommand command) {
@@ -37,8 +37,8 @@ class RegisterUserController {
 			def profile = session["${params.oauthProvider}_profile"] as OAuthProfile
 
 			if (!profile || !session["${params.oauthProvider}_authToken"]) {
-				log.warn("No profile or authToken found")
-				throw new BadCredentialsException("No profile or authToken found")
+				log.warn('No profile or authToken found')
+				throw new BadCredentialsException('No profile or authToken found')
 			}
 
 			def theUser = new User().with {
@@ -52,7 +52,7 @@ class RegisterUserController {
 				oauthId = profile.uid
 				avatarUrl = profile.picture
 
-				return it
+				it
 			}
 
 			theUser.save(failOnError: true)

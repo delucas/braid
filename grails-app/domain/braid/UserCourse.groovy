@@ -1,6 +1,6 @@
 package braid
 
-import braid.course.Course;
+import braid.course.Course
 
 class UserCourse implements Serializable {
 

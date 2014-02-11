@@ -1,7 +1,5 @@
 package braid.reviews
 
-import java.util.Date;
-
 import braid.course.Course
 
 class CodeReviewHomework {

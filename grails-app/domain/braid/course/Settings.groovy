@@ -18,12 +18,11 @@ enum Option {
 	
 	Integer value
 	
-	public Option(Integer value) {
+	Option(Integer value) {
 		this.value = value
 	}
 	
 	Integer plus(Option option) {
 		this.value + option.value
 	}
-
 }
