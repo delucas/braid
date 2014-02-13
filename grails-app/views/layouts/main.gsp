@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,7 +21,6 @@
 	href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 
 <r:require module="common" />
-<r:require modules="bootstrap" />
 <g:layoutHead />
 <r:layoutResources />
 

@@ -3,8 +3,6 @@
 	<title>trabajo práctico: ${assignment.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="assignments" value="active" />
-
-	<r:require modules="bootstrap-modal" />
 </head>
 
 <body>

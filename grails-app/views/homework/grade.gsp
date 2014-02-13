@@ -3,8 +3,6 @@
 	<title>tarea: ${homework.title}</title>
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
-
-	<r:require modules="bootstrap-modal" />
 	<r:require module="textEditor"/>
 </head>
 <body>

@@ -63,8 +63,11 @@ grails.project.dependency.resolution = {
 
 		runtime ":resources:1.2.RC2"
 		compile ":markdown:1.0.0.RC1"
+		compile(":lesscss-resources:1.3.3") {
+			excludes "svn"
+		}
 
-        compile ":twitter-bootstrap:2.2.2"
+//        compile ":twitter-bootstrap:2.2.2"
 		compile ":font-awesome-resources:4.0.3.0"
 
 		test ":code-coverage:1.2.5"

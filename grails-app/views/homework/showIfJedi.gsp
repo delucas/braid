@@ -4,7 +4,6 @@
 	<meta name="layout" content="main">
 	<parameter name="homeworks" value="active" />
 
-	<r:require modules="bootstrap-modal" />
 </head>
 <body>
 

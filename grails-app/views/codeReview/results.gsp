@@ -4,8 +4,6 @@
 <meta name="layout" content="main">
 
 <parameter name="codeReview" value="active" />
-
-<r:require modules="bootstrap-modal" />
 </head>
 
 <body>

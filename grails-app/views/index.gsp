@@ -12,8 +12,7 @@
 	rel="stylesheet">
 <link href="${resource(dir:'css',file:'landing.css')}" rel="stylesheet">
 
-<r:require modules="bootstrap" />
-<r:require modules="bootstrap-modal" />
+<r:require modules="braidStyle" />
 <r:layoutResources />
 
 <style>
