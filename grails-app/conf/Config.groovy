@@ -106,7 +106,7 @@ auth.github.key = System.env.GITHUB_KEY
 auth.github.secret = System.env.GITHUB_SECRET
 
 
-graderQueueUri = new URI(System.env.CLOUDAMQP_URL ?: 'amqp://guest:guest@localhost')
+graderQueueUri = new URI(System.env.MQ_URL ?: 'amqp://guest:guest@localhost')
 rabbitmq {
 	connectionfactory {
 		username = graderQueueUri.userInfo.split(':')[0]
