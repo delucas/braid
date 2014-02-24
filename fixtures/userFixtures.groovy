@@ -28,8 +28,9 @@ fixture{
 	anakin(User,
 	name:'Anakin Skywalker',
 	dni:'23876543',
-	username:'estudiante',
+	username:'delucas',
 	password:'anakin',
+	email:'videla.lucas@gmail.com',
 	enabled: true)
 
 	leia(User,

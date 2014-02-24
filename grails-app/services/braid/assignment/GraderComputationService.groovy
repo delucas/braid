@@ -5,7 +5,9 @@ import grails.converters.JSON
 class GraderComputationService {
 
 	static transactional = true
+
 	def grailsApplication
+	def notificationService
 
 	final static rabbitQueue = 'alreadyGradedQueue'
 
@@ -18,5 +20,7 @@ class GraderComputationService {
 		solution.score = returnedMap.get('testScore')
 
 		solution.save(flush: true)
+
+		notificationService.informGrade(solution)
 	}
 }
