@@ -6,7 +6,7 @@
 
 <body>
 
-	<div class="span12">
+	<div class="row-fluid">
 		<legend>
 			<g:message code="braid.courses.legend.list" />
 
