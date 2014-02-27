@@ -33,9 +33,7 @@
 			style="background-color: #f5f5f5; padding: 1em; border-radius: 0.5em;">
 			<h2>Informe de la herramienta de corrección</h2>
 
-			<pre>
-		${solution.feedback}
-	</pre>
+			<pre>${solution.feedback}</pre>
 		</div>
 
 		<p>

@@ -17,7 +17,7 @@ class GraderComputationService {
 		AssignmentSolution solution = AssignmentSolution.get(returnedMap.get('solutionId') as Long)
 
 		solution.feedback = returnedMap.get('testDetail')
-		solution.score = returnedMap.get('testScore')
+		solution.score = (returnedMap.get('testScore') as Double).trunc(2)
 
 		solution.save(flush: true)
 
