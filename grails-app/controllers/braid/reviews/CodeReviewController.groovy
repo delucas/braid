@@ -1,6 +1,7 @@
 package braid.reviews
 
 import grails.plugins.springsecurity.Secured
+import braid.UserService;
 import braid.presenters.reviews.CodeReviewHomeworkListPresenter
 import braid.presenters.reviews.CodeReviewResultsPresenter
 
@@ -36,8 +37,13 @@ class CodeReviewController {
 
 	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
 	def show() {
+		def currentUser = userService.currentUser
 		def homework = CodeReviewHomework.get(params.id)
-		redirect action: homework.stage, id: params.id
+		if (currentUser.hasRole('ROLE_JAR_JAR')) {
+			render view: 'show', model: [homework: homework, previousSolution: null]
+		} else {
+			redirect action: homework.stage, id: params.id
+		}
 	}
 
 	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN'])
