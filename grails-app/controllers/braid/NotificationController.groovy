@@ -1,6 +1,7 @@
 package braid
 
 import braid.assignment.AssignmentSolution;
+import braid.homework.HomeworkSolution;
 import grails.plugins.springsecurity.Secured
 
 class NotificationController {
@@ -25,7 +26,7 @@ class NotificationController {
 		render view: '/notification/welcome',
 		model:[user: userService.currentUser]
 	}
-	
+
 	private renderinformGrade() {
 		AssignmentSolution solution = AssignmentSolution.list().first()
 		render view: '/notification/informGrade',
@@ -34,6 +35,17 @@ class NotificationController {
 			user: solution.user
 		]
 	}
+
+	private renderinformHomeworkGrade() {
+		HomeworkSolution solution = HomeworkSolution.list().first()
+		render view: '/notification/informHomeworkGrade',
+		model: [solution: solution,
+			reviewer: solution.reviewer,
+			homework: solution.homework,
+			feedback: solution.feedback
+		]
+	}
+
 	private renderannounce() {
 		Announcement ann = Announcement.list().first()
 		render view: '/notification/announce',

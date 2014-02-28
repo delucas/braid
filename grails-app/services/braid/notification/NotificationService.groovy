@@ -1,9 +1,11 @@
 package braid.notification
 
 import grails.converters.JSON
-import braid.Announcement;
+import braid.Announcement
 import braid.User
 import braid.assignment.AssignmentSolution
+import braid.homework.Homework
+import braid.homework.HomeworkSolution
 
 class NotificationService {
 
@@ -27,6 +29,24 @@ class NotificationService {
 		map << ['subject': "[braid] Tu trabajo `${solution.assignment.title}` ha sido calificado"]
 		map << ['type': 'informGrade']
 		map << ['model': [user: user, solution: solution]]
+
+		rabbitSend 'notificationQueue', (map as JSON) as String
+	}
+
+	def informHomeworkGrade(HomeworkSolution solution) {
+
+		User user = solution.user
+
+		def map = [:]
+		map << ['to': user.email]
+		map << ['subject': "[braid] Tu tarea `${solution.homework.title}` ha sido calificada"]
+		map << ['type': 'informHomeworkGrade']
+		map << ['model': [solution: solution,
+			reviewer: solution.reviewer,
+			homework: solution.homework,
+			feedback: solution.feedback
+			]
+		]
 
 		rabbitSend 'notificationQueue', (map as JSON) as String
 	}

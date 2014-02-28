@@ -13,6 +13,7 @@ class HomeworkController {
 	def courseService
 	def homeworkService
 	def dateService
+	def notificationService
 
 	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
@@ -183,6 +184,8 @@ class HomeworkController {
 		def homeworkSolution = HomeworkSolution.get(homeworkSolutionId)
 		homeworkSolution.feedback = new Feedback(text: feedback, score: score)
 		homeworkSolution.save(flush: true)
+
+		notificationService.informHomeworkGrade(homeworkSolution)
 
 		redirect action:'grade', params: [homeworkId: homeworkSolution.homework.id]
 	}
