@@ -1,6 +1,7 @@
 package braid.notification
 
 import grails.converters.JSON
+import braid.Announcement;
 import braid.User
 import braid.assignment.AssignmentSolution
 
@@ -28,5 +29,20 @@ class NotificationService {
 		map << ['model': [user: user, solution: solution]]
 
 		rabbitSend 'notificationQueue', (map as JSON) as String
+	}
+
+	def announce(Announcement announcement) {
+
+		def recipients = announcement.course.members.findAll { recipient -> recipient.email }
+
+		recipients.each { recipient ->
+			def map = [:]
+			map << ['to': recipient.email]
+			map << ['subject': "[braid] Nuevo anuncio en la plataforma"]
+			map << ['type': 'announce']
+			map << ['model': [announcement: announcement, announcer: announcement.announcer]]
+
+			rabbitSend 'notificationQueue', (map as JSON) as String
+		}
 	}
 }

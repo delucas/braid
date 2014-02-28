@@ -7,6 +7,7 @@ class AnnouncementController {
 
 	def userService
 	def courseService
+	def notificationService
 
 	@Secured(['ROLE_JEDI', 'ROLE_PADAWAN', 'ROLE_JAR_JAR'])
     def list() {
@@ -22,7 +23,9 @@ class AnnouncementController {
 			course: courseService.currentCourse,
 			announcer: userService.currentUser)
 		ann.save()
-		
+
+		notificationService.announce(ann)
+
 		redirect(controller:'home', action:'announcements')
 	}
 	

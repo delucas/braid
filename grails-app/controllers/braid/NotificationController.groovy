@@ -9,7 +9,7 @@ class NotificationController {
 
 	@Secured(['ROLE_JEDI'])
 	def index() {
-		render 'types: test?type=welcome, test?type=informGrade'
+		render 'types: test?type=welcome, test?type=informGrade, test?type=announce'
 	}
 	
 	@Secured(['ROLE_JEDI'])
@@ -32,6 +32,14 @@ class NotificationController {
 		model: [
 			solution: solution,
 			user: solution.user
+		]
+	}
+	private renderannounce() {
+		Announcement ann = Announcement.list().first()
+		render view: '/notification/announce',
+		model: [
+			announcement: ann,
+			announcer: ann.announcer
 		]
 	}
 }
