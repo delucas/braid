@@ -3,7 +3,8 @@
 <head>
 <title>Oops!</title>
 
-<r:require modules="bootstrap" />
+<r:require module="common" />
+<r:layoutResources />
 
 <style>
 body {
