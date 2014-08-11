@@ -58,7 +58,7 @@ class NotificationService {
 		recipients.each { recipient ->
 			def map = [:]
 			map << ['to': recipient.email]
-			map << ['subject': "[braid] Nuevo anuncio en la plataforma"]
+			map << ['subject': "[braid] Nuevo anuncio en ${announcement.course.name}"]
 			map << ['type': 'announce']
 			map << ['model': [announcement: announcement, announcer: announcement.announcer]]
 

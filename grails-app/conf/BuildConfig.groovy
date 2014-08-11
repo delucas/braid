@@ -78,7 +78,7 @@ grails.project.dependency.resolution = {
 
 codenarc {
 	ruleSetFiles = 'file:grails-app/conf/CodeNarcRules.groovy'
-			propertiesFile = 'codenarc.properties'
+	propertiesFile = 'codenarc.properties'
 }
 
 coverage {
